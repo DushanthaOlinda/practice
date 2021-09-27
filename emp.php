@@ -127,9 +127,6 @@ a:active {
         <input type="submit" id="btn" value="Delete Owner" name="Delete_owner">
     </form> 
     <form action="./delete/delete.php" method="POST">
-        <input type="submit" id="btn" value="Delete Property" name="Delete_prop">
-    </form> 
-    <form action="./delete/delete.php" method="POST">
         <input type="submit" id="btn" value="Delete Newspapert" name="Delete_new">
     </form> 
     <form action="./delete/delete.php" method="POST">

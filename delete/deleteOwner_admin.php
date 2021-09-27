@@ -49,8 +49,8 @@ a:active {
 <div id="frm">
     <form action="#" method="POST">
         <p>
-            <label>Employee ID: </label>
-            <input type="number" id="empID" name=empID required>
+            <label>Owner ID: </label>
+            <input type="number" id="owner_ID" name=owner_ID required>
         </p>
         <br>
         <p>
@@ -69,9 +69,9 @@ a:active {
 
   if(isset($_POST['save']))  
   {
-    $empID= $_POST['empID'];
+    $owner_ID= $_POST['owner_ID'];
 
-    $query= "DELETE FROM `employee` WHERE emp_ID=$empID";
+    $query= " DELETE FROM `owner` WHERE owner_ID=$owner_ID";
     $check=mysqli_query($conn,$query);
 
     if($check)
