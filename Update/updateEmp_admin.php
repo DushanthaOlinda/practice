@@ -138,12 +138,10 @@ a:active {
       if($type == "S2M")
       {
         echo"1";
-        $query2 = "UPDATE `employee` SET `salary` = '$salary', `emp_type` = 'Manager' WHERE `employee`.`emp_ID` = $emp_ID";
-        mysqli_query($conn,$query2);
-        $query3 = "DELETE FROM `supervisor` WHERE 'emp_ID'=$emp_ID";
-        mysqli_query($conn,$query3);
-        $query5 = "INSERT INTO `manager`(`emp_ID`, `appointed_date`) VALUES ('$emp_ID','$promo')";
-        mysqli_query($conn,$query5);
+        $query2 = "UPDATE `employee` SET `salary` = '$salary', `emp_type` = 'Manager' WHERE `employee`.`emp_ID` = $emp_ID;";
+        $query2.= "DELETE FROM `supervisor` WHERE emp_ID=$emp_ID;";
+        $query2.= "INSERT INTO `manager`(`emp_ID`, `appointed_date`) VALUES ('$emp_ID','$promo')";
+        mysqli_multi_query($conn,$query2);
       }
       else
       {
