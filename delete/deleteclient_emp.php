@@ -4,7 +4,7 @@ if (!isset($_SESSION["UserRoll"]))
 {
     header("location:header.php");
 }
-if ($_SESSION["UserRoll"] != "Admin") 
+if ($_SESSION["UserRoll"] != "employee") 
 {
     header("location:../header.php");
 }
@@ -45,7 +45,9 @@ a:active {
 }
 </style>
 
-<a href="../admin.php">Go Back<br><br><br></a>
+<a href="../emp.php">Go Back<br><br><br></a>
+
+
 <div id="frm">
     <form action="#" method="POST">
         <p>
@@ -61,8 +63,8 @@ a:active {
 
 <?php
   $dbServername = "localhost";
-  $dbUsername = "root";
-  $dbPassword ="";
+  $dbUsername = "emp";
+  $dbPassword ="emp";
   $dbName = "sewana";
   
   $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die("Connection Failed.");

@@ -126,13 +126,13 @@ a:active {
 
 
 
-    <form action="./delete/delete.php" method="POST">
+    <form action="./delete/deleteOwner_emp.php" method="POST">
         <input type="submit" id="btn" value="Delete Owner" name="Delete_owner">
     </form> 
-    <form action="./delete/delete.php" method="POST">
-        <input type="submit" id="btn" value="Delete Newspapert" name="Delete_new">
+    <form action="./delete/deleteNewpaper_emp.php" method="POST">
+        <input type="submit" id="btn" value="Delete Newspaper" name="Delete_new">
     </form> 
-    <form action="./delete/delete.php" method="POST">
+    <form action="./delete/deleteClient_emp.php" method="POST">
         <input type="submit" id="btn" value="Delete Client" name="Delete_client">
     </form>
 </div>

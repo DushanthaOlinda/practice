@@ -4,7 +4,7 @@ if (!isset($_SESSION["UserRoll"]))
 {
     header("location:header.php");
 }
-if ($_SESSION["UserRoll"] != "Admin") 
+if ($_SESSION["UserRoll"] != "employee") 
 {
     header("location:../header.php");
 }
@@ -45,12 +45,12 @@ a:active {
 }
 </style>
 
-<a href="../admin.php">Go Back<br><br><br></a>
+<a href="../emp.php">Go Back<br><br><br></a>
 <div id="frm">
     <form action="#" method="POST">
         <p>
-            <label>Client Number: </label>
-            <input type="number" id="client_number" name="client_number" required>
+            <label>Owner ID: </label>
+            <input type="number" id="owner_ID" name=owner_ID required>
         </p>
         <br>
         <p>
@@ -61,17 +61,17 @@ a:active {
 
 <?php
   $dbServername = "localhost";
-  $dbUsername = "root";
-  $dbPassword ="";
+  $dbUsername = "emp";
+  $dbPassword ="emp";
   $dbName = "sewana";
   
   $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die("Connection Failed.");
 
   if(isset($_POST['save']))  
   {
-    $client_number= $_POST['client_number'];
+    $owner_ID= $_POST['owner_ID'];
 
-    $query= "DELETE FROM `client` WHERE client_number=$client_number";
+    $query= " DELETE FROM `owner` WHERE owner_ID=$owner_ID";
     $check=mysqli_query($conn,$query);
 
     if($check)
@@ -80,7 +80,7 @@ a:active {
     }
     else
     {
-      echo "Error:<br>" ,$query1.mysqli_error($conn),"<br>",$query2.mysqli_error($conn);
+      echo "Error:<br>" ,$query.mysqli_error($conn);
     }
     mysqli_close($conn);
 

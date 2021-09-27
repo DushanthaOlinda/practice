@@ -4,7 +4,7 @@ if (!isset($_SESSION["UserRoll"]))
 {
     header("location:header.php");
 }
-if ($_SESSION["UserRoll"] != "Admin") 
+if ($_SESSION["UserRoll"] != "employee") 
 {
     header("location:../header.php");
 }
@@ -44,45 +44,51 @@ a:active {
   text-decoration: underline;
 }
 </style>
+<a href="../emp.php">Go Back<br><br><br></a>
 
-<a href="../admin.php">Go Back<br><br><br></a>
-<div id="frm">
+<div if="frm">
     <form action="#" method="POST">
         <p>
-            <label>Client Number: </label>
-            <input type="number" id="client_number" name="client_number" required>
+            <label>Enter client number you want to update: </label>
+            <input type="text" id="client" name="client" required>
         </p>
-        <br>
         <p>
+            <label>Email: </label>
+            <input type="email" id="email" name="email" >
+        </p>
+
+        <p>
+            <label>Branch No: </label>
+            <input type="number" id="branch" name="branch" required>
             <input type="submit" id="btn" name="save" value="Submit">
         </p>
     </form>
 </div>
-
 <?php
   $dbServername = "localhost";
-  $dbUsername = "root";
-  $dbPassword ="";
+  $dbUsername = "emp";
+  $dbPassword ="emp";
   $dbName = "sewana";
   
   $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die("Connection Failed.");
 
-  if(isset($_POST['save']))  
+  if(isset($_POST['save']))
   {
-    $client_number= $_POST['client_number'];
+    $client=$_POST['client'];
+    $email = $_POST['email'];
+    $branchNo = $_POST['branch'];
 
-    $query= "DELETE FROM `client` WHERE client_number=$client_number";
-    $check=mysqli_query($conn,$query);
+    $sql1 = "UPDATE `client` SET `Email`='$email',`branch_no`='$branchNo' WHERE `client_number`=$client";
+    mysqli_query($conn,$sql1);
 
-    if($check)
+    if(mysqli_query($conn,$sql1))
     {
-      echo "Record Deleted successfully.";
+      echo "Record updated successfully.";
     }
     else
     {
-      echo "Error:<br>" ,$query1.mysqli_error($conn),"<br>",$query2.mysqli_error($conn);
+      echo "Error:<br>" ,$sql1.mysqli_error($conn);
     }
     mysqli_close($conn);
-
   }
   ?>
