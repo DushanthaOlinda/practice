@@ -138,16 +138,16 @@ a:active {
     <form action="./delete/deleteEmp_admin.php" method="POST">
         <input type="submit" id="btn" value="Delete Employee" name="Delete_emp">
     </form> 
-    <form action="./delete/delete.php" method="POST">
+    <form action="./delete/deleteOwner_admin.php" method="POST">
         <input type="submit" id="btn" value="Delete Owner" name="Delete_owner">
     </form> 
-    <form action="./delete/delete.php" method="POST">
+    <form action="./delete/deleteProperty_admin.php" method="POST">
         <input type="submit" id="btn" value="Delete Property" name="Delete_prop">
     </form> 
-    <form action="./delete/delete.php" method="POST">
+    <form action="./delete/deleteNewspapert_admin.php" method="POST">
         <input type="submit" id="btn" value="Delete Newspapert" name="Delete_new">
     </form> 
-    <form action="./delete/delete.php" method="POST">
+    <form action="./delete/deleteClient_admin.php" method="POST">
         <input type="submit" id="btn" value="Delete Client" name="Delete_client">
     </form>
 </div>

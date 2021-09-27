@@ -49,8 +49,8 @@ a:active {
 <div id="frm">
     <form action="#" method="POST">
         <p>
-            <label>Employee ID: </label>
-            <input type="number" id="empID" name=empID required>
+            <label>Advertisement ID: </label>
+            <input type="number" id="advertisement_ID" name="advertisement_ID" required>
         </p>
         <br>
         <p>
@@ -69,9 +69,9 @@ a:active {
 
   if(isset($_POST['save']))  
   {
-    $empID= $_POST['empID'];
+    $advertisement_ID= $_POST['advertisement_ID'];
 
-    $query= "DELETE FROM `employee` WHERE emp_ID=$empID";
+    $query= "DELETE FROM `advertised` WHERE advertisement_ID=$advertisement_ID";
     $check=mysqli_query($conn,$query);
 
     if($check)
@@ -80,7 +80,7 @@ a:active {
     }
     else
     {
-      echo "Error:<br>" ,$query.mysqli_error($conn);
+      echo "Error:<br>" ,$query1.mysqli_error($conn),"<br>",$query2.mysqli_error($conn);
     }
     mysqli_close($conn);
 
