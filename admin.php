@@ -96,15 +96,12 @@ a:active {
         <input type="submit" id="btn" value="Update Employee" name="Update_emp">
     </form>
     <form action="./Update/update.php" method="POST">
-        <input type="submit" id="btn" value="Update Branch" name="Update_branch">
-    </form>
-    <form action="./Update/update.php" method="POST">
         <input type="submit" id="btn" value="Update Owner" name="Update_owner">
     </form>
     <form action="./Update/update.php" method="POST">
         <input type="submit" id="btn" value="Update Property" name="Uptade_prop">
     </form>
-    <form action="./Update/update.php" method="POST">
+    <form action="./Update/updateClient_admin.php" method="POST">
         <input type="submit" id="btn" value="Update Client" name="Update_client">
     </form>
 

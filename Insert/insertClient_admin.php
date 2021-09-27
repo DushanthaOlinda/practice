@@ -67,42 +67,18 @@ a:active {
             <label>Branch No: </label>
             <input type="number" id="branchNo" name="branchNo" required>
         </p>
-
         <p>
-            <label>Property: </label>
-            <input type="text" id="property" name="property" required>
+            <label>Maximum Rent</label>
+            <input type="number" id="rent" name="rent" required>
         </p>
-
         <p>
-            <label>Monthly Rentel: </label>
-            <input type="number" id="rental" name="rental" required>
+            <label>Type of Property</label>
+            <input type="text" id="type" name="type" required>
         </p>
-
         <p>
-            <label>Rent Start Date: </label>
-            <input type="date" id="rentstart" name="rentstart" required>
+            <label>Date Willing to Rent</label>
+            <input type="date" id="date" name="date" required>
         </p>
-
-        <p>
-            <label>Payment Method: </label>
-            <input type="radio" id="method" name="method" value="card" required>
-            <label for="method">Card</label>
-            <input type="radio" id="method" name="method" value="cheque" required>
-            <label for="method">Cheque</label>
-            <input type="radio" id="method" name="method" value="cash" required>
-            <label for="method">Cash</label>  
-        </p>
-
-        <p>
-            <label>Duration: </label>
-            <input type="text" id="duration" name="duration" required>
-        </p>
-
-        <p>
-            <label>Rent Finish Date: </label>
-            <input type="date" id="rentfinish" name="rentfinish" required>
-        </p>
-        <br>
         <p>
             <input type="submit" id="btn" name="save" value="Submit">
         </p>
@@ -123,16 +99,21 @@ a:active {
     $fullname = $_POST['fullname'];
     $nic = $_POST['nic'];
     $branchNo = $_POST['branchNo'];
-    $property = $_POST['property'];
-    $rental = $_POST['rental'];
-    $rentstart = $_POST['rentstart'];
-    $gender = $_POST['gender'];
-    $duration = $_POST['duration'];
-    $rentfinish = $_POST['rentfinish'];
+    $rent = $_POST['rent'];
+    $type = $_POST['type'];
+    $date = $_POST['date'];
+    $check ;
 
-    $sql = "INSERT INTO `client` (`client_number`, `Email`, `full_name`, `NIC`, `branch_no`, `property`, `monthly_rental`, `rent_start`, `payment_method`, `duration`, `finished_date`) VALUES (NULL, '$email', '$fullname', '$nic', '$branchNo', '$property', '$rental', '$rentstart', '$gender', '$duration', '$rentfinish')";
+    $sql1 = "INSERT INTO `client` (`client_number`, `Email`, `full_name`, `NIC`, `branch_no`) VALUES (NULL, '$email', '$fullname', '$nic', '$branchNo');";
+    mysqli_query($conn,$sql1);
+    $selectq= "SELECT MAX(client_number) FROM client;";
+    $result = mysqli_query($conn,$selectq);
+    $row= mysqli_fetch_assoc($result);
+    $client_no = $row[("MAX(client_number)")];
+    $sql2= "INSERT INTO `property_requirement`(`client_number`, `maximum_rental`, `type_of_property`, `date_willing_to_rent`) VALUES ('$client_no','$rent','$type','$date')";
+    $check=mysqli_query($conn,$sql2);
 
-    if(mysqli_query($conn,$sql))
+    if($check)
     {
       echo "New record created successfully.";
     }
