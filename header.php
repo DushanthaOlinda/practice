@@ -77,12 +77,12 @@ h1
 </style> -->
 
 <section class="login-dark">
-        <form method="post">
+        <form action="login.php" method="POST">
             <h2 class="visually-hidden">Login Form</h2>
             <h1 class="font-monospace text-uppercase text-center border rounded-0">Sewana Property&nbsp;</h1>
-            <div class="illustration"><i class="icon ion-ios-home"></i></div><input class="placeholder border rounded-pill border-primary form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" name="User Name" placeholder="User Name" autofocus="" title="Enter User Name">
+            <div class="illustration"><i class="icon ion-ios-home"></i></div><input class="placeholder border rounded-pill border-primary form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" name="Username" placeholder="User Name" autofocus="" title="Enter User Name">
             <div class="mb-3"></div>
-            <div class="mb-3"><input class="placeholder border rounded-pill border-primary form-control" type="password" name="password" placeholder="Password"></div>
+            <div class="mb-3"><input class="placeholder border rounded-pill border-primary form-control" type="password" name="Password" placeholder="Password"></div>
             <div class="mb-3"><button class="btn btn-primary font-monospace text-uppercase border rounded-pill d-block w-100" type="submit">Log In</button><button class="btn btn-primary font-monospace text-uppercase border rounded-pill d-block w-100" type="reset">RESET</button></div>
             <div class="btn-group" role="group"></div>
         </form>
