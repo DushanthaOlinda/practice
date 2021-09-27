@@ -135,7 +135,7 @@ a:active {
     </form>
 
 
-    <form action="./delete/delete.php" method="POST">
+    <form action="./delete/deleteEmp_admin.php" method="POST">
         <input type="submit" id="btn" value="Delete Employee" name="Delete_emp">
     </form> 
     <form action="./delete/delete.php" method="POST">
