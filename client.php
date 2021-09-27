@@ -79,8 +79,4 @@ a:active {
     <form action="./show/show.php" method="POST">
         <input type="submit" id="btn" value="Show Property" name="show_prop">
     </form>
-    <form action="./show/show.php" method="POST">
-        <input type="submit" id="btn" value="Show Client" name="show_client">
-    </form>
-
 </div>

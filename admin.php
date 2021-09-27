@@ -104,17 +104,7 @@ a:active {
     <form action="./Update/update.php" method="POST">
         <input type="submit" id="btn" value="Update Property" name="Uptade_prop">
     </form>
-<<<<<<< HEAD
     <form action="./Update/updateClient_admin.php" method="POST">
-=======
-    <form action="./Update/update.php" method="POST">
-        <input type="submit" id="btn" value="UpdateNewspapert" name="Update_new">
-    </form>
-    <form action="./Update/update.php" method="POST">
-        <input type="submit" id="btn" value="Update Advertisement" name="Update_add">
-    </form>
-    <form action="./Update/update.php" method="POST">
->>>>>>> 7cc39ef1a0bae58c32a39e05cf3ba0139d8caa17
         <input type="submit" id="btn" value="Update Client" name="Update_client">
     </form>
 
@@ -140,13 +130,13 @@ a:active {
     <form action="./show/show.php" method="POST">
         <input type="submit" id="btn" value="Show Client" name="show_client">
     </form>
+    <form action="./show/show.php" method="POST">
+        <input type="submit" id="btn" value="Show visit" name="show_visit">
+    </form>
 
 
     <form action="./delete/delete.php" method="POST">
         <input type="submit" id="btn" value="Delete Employee" name="Delete_emp">
-    </form> 
-    <form action="./delete/delete.php" method="POST">   
-        <input type="submit" id="btn" value="Delete Branch" name="Delete_branch">
     </form> 
     <form action="./delete/delete.php" method="POST">
         <input type="submit" id="btn" value="Delete Owner" name="Delete_owner">
@@ -156,9 +146,6 @@ a:active {
     </form> 
     <form action="./delete/delete.php" method="POST">
         <input type="submit" id="btn" value="Delete Newspapert" name="Delete_new">
-    </form> 
-    <form action="./delete/delete.php" method="POST">
-        <input type="submit" id="btn" value="Delete Advertisement" name="Delete_add">
     </form> 
     <form action="./delete/delete.php" method="POST">
         <input type="submit" id="btn" value="Delete Client" name="Delete_client">

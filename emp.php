@@ -80,6 +80,10 @@ a:active {
     <form action="./Insert/insert_emp.php" method="POST">
         <input type="submit" id="btn" value="Insert Client" name="Insert_client">
     </form>
+    
+    <form action="./Insert/insert_emp.php" method="POST">
+    <input type="submit" id="btn" value="Insert Visit" name="Insert_visit">
+    </form>
 
 
     <form action="./Update/update.php" method="POST">
@@ -87,9 +91,6 @@ a:active {
     </form>
     <form action="./Update/update.php" method="POST">
         <input type="submit" id="btn" value="Update Property" name="Uptade_prop">
-    </form>
-    <form action="./Update/update.php" method="POST">
-        <input type="submit" id="btn" value="Update Advertisement" name="Update_add">
     </form>
     <form action="./Update/update.php" method="POST">
         <input type="submit" id="btn" value="Update Client" name="Update_client">
@@ -117,14 +118,12 @@ a:active {
     <form action="./show/show.php" method="POST">
         <input type="submit" id="btn" value="Show Client" name="show_client">
     </form>
+    <form action="./show/show.php" method="POST">
+        <input type="submit" id="btn" value="Show visit" name="show_visit">
+    </form>
 
 
-    <form action="./delete/delete.php" method="POST">
-        <input type="submit" id="btn" value="Delete Employee" name="Delete_emp">
-    </form> 
-    <form action="./delete/delete.php" method="POST">   
-        <input type="submit" id="btn" value="Delete Branch" name="Delete_branch">
-    </form> 
+
     <form action="./delete/delete.php" method="POST">
         <input type="submit" id="btn" value="Delete Owner" name="Delete_owner">
     </form> 
@@ -133,9 +132,6 @@ a:active {
     </form> 
     <form action="./delete/delete.php" method="POST">
         <input type="submit" id="btn" value="Delete Newspapert" name="Delete_new">
-    </form> 
-    <form action="./delete/delete.php" method="POST">
-        <input type="submit" id="btn" value="Delete Advertisement" name="Delete_add">
     </form> 
     <form action="./delete/delete.php" method="POST">
         <input type="submit" id="btn" value="Delete Client" name="Delete_client">
