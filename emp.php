@@ -71,28 +71,27 @@ a:active {
     <form action="./Insert/insertOwner_emp.php" method="POST">
         <input type="submit" id="btn" value="Insert Owner" name="Insert_owner">
     </form>
-    <form action="./Insert/insert_emp.php" method="POST">
+    <form action="./Insert/insertProperty_emp.php" method="POST">
         <input type="submit" id="btn" value="Insert Property" name="Insert_prop">
     </form>
-    <form action="./Insert/insert_emp.php" method="POST">
+    <form action="./Insert/insertAdvertiesment_emp.php" method="POST">
         <input type="submit" id="btn" value="Insert Advertisement" name="Insert_add">
     </form>
-    <form action="./Insert/insert_emp.php" method="POST">
+    <form action="./Insert/insertClient_emp.php" method="POST">
         <input type="submit" id="btn" value="Insert Client" name="Insert_client">
     </form>
-    
-    <form action="./Insert/insert_emp.php" method="POST">
+    <form action="./Insert/insertVisit_emp.php" method="POST">
     <input type="submit" id="btn" value="Insert Visit" name="Insert_visit">
     </form>
 
 
-    <form action="./Update/update.php" method="POST">
+    <form action="./Update/updateOwner_emp.php" method="POST">
         <input type="submit" id="btn" value="Update Owner" name="Update_owner">
     </form>
-    <form action="./Update/update.php" method="POST">
+    <form action="./Update/updateProperty_emp.php" method="POST">
         <input type="submit" id="btn" value="Update Property" name="Uptade_prop">
     </form>
-    <form action="./Update/update.php" method="POST">
+    <form action="./Update/updateClient_emp.php" method="POST">
         <input type="submit" id="btn" value="Update Client" name="Update_client">
     </form>
 

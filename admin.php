@@ -101,7 +101,7 @@ a:active {
     <form action="./Update/updateOwner_admin.php" method="POST">
         <input type="submit" id="btn" value="Update Owner" name="Update_owner">
     </form>
-    <form action="./Update/update.php" method="POST">
+    <form action="./Update/updateProperty_admin.php" method="POST">
         <input type="submit" id="btn" value="Update Property" name="Uptade_prop">
     </form>
     <form action="./Update/updateClient_admin.php" method="POST">
