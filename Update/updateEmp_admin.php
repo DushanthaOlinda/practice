@@ -177,3 +177,5 @@ a:active {
     mysqli_close($conn);
   } 
 ?>
+
+<!-- htmlspecialchars_decode -->
