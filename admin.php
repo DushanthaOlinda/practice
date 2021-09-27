@@ -9,8 +9,8 @@ if ($_SESSION["UserRoll"] != "Admin")
     header("location:header.php");
 }
 ?>
-<!-- Hello -->
-<!-- Hello -->
+
+
 <style>
 
 body
@@ -81,7 +81,7 @@ a:active {
     <form action="./Insert/insertProperty_admin.php" method="POST">
         <input type="submit" id="btn" value="Insert Property" name="Insert_prop">
     </form>
-    <form action="./Insert/insertNewspaper_admin.php" method="POST">
+    <form action="./Insert/insertNewspapert_admin.php" method="POST">
         <input type="submit" id="btn" value="Insert Newspapert" name="Insert_new">
     </form>
     <form action="./Insert/insertAdvertisement_admin.php" method="POST">
@@ -89,6 +89,9 @@ a:active {
     </form>
     <form action="./Insert/insertClient_admin.php" method="POST">
         <input type="submit" id="btn" value="Insert Client" name="Insert_client">
+    </form>
+    <form action="./Insert/insertVisit_admin.php" method="POST">
+    <input type="submit" id="btn" value="Insert Visit" name="Insert_visit">
     </form>
 
 
@@ -101,7 +104,17 @@ a:active {
     <form action="./Update/update.php" method="POST">
         <input type="submit" id="btn" value="Update Property" name="Uptade_prop">
     </form>
+<<<<<<< HEAD
     <form action="./Update/updateClient_admin.php" method="POST">
+=======
+    <form action="./Update/update.php" method="POST">
+        <input type="submit" id="btn" value="UpdateNewspapert" name="Update_new">
+    </form>
+    <form action="./Update/update.php" method="POST">
+        <input type="submit" id="btn" value="Update Advertisement" name="Update_add">
+    </form>
+    <form action="./Update/update.php" method="POST">
+>>>>>>> 7cc39ef1a0bae58c32a39e05cf3ba0139d8caa17
         <input type="submit" id="btn" value="Update Client" name="Update_client">
     </form>
 
