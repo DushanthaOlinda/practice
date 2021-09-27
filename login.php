@@ -5,7 +5,7 @@
     $dbUsername = "root";
     $dbPassword ="";
     $dbName = "sewana";
-
+// Commented
     $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die("Connection Failed.");
 
     if($_SERVER["REQUEST_METHOD"]=="POST")
