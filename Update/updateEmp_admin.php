@@ -120,7 +120,7 @@ a:active {
     $type =$_POST['type'];
     $brn = $_POST['branchNo'];
     $promo = $_POST['checkBox'];
-    echo $type;
+    $check =true ;
 
     $query1 = "SELECT emp_type FROM employee WHERE emp_ID='$emp_ID'";
     $result1 = mysqli_query($conn,$query1);
@@ -141,43 +141,39 @@ a:active {
         $query2 = "UPDATE `employee` SET `salary` = '$salary', `emp_type` = 'Manager' WHERE `employee`.`emp_ID` = $emp_ID;";
         $query2.= "DELETE FROM `supervisor` WHERE emp_ID=$emp_ID;";
         $query2.= "INSERT INTO `manager`(`emp_ID`, `appointed_date`) VALUES ('$emp_ID','$promo')";
-        mysqli_multi_query($conn,$query2);
+        $check= mysqli_multi_query($conn,$query2);
       }
       else
       {
         $query2 = "UPDATE `employee` SET `salary`='$salary',`branch_no`='$brn', WHERE emp_ID='$emp_ID'";
-        mysqli_query($conn,$query2);
+        $check = mysqli_query($conn,$query2);
       }
     }
     else if($emp_type == "Assistant")
     {
-      echo "2";
       
       if($type == "A2S")
       {
-        echo"1";
-        $query2 = "UPDATE `employee` SET `salary` = '$salary', `emp_type` = 'Supervisor' WHERE `employee`.`emp_ID` = $emp_ID";
-        mysqli_query($conn,$query2);
-        $query3 = "DELETE FROM `assistant` WHERE 'emp_ID'='$emp_ID'";
-        mysqli_query($conn,$query3);
-        $query4 = "INSERT INTO `supervisor`(`emp_ID`, `appointed_date`) VALUES ('$emp_ID','$promo')";
-        mysqli_query($conn,$query4);
+        $query2 = "UPDATE `employee` SET `salary` = '$salary', `emp_type` = 'Supervisor' WHERE `employee`.`emp_ID` = $emp_ID;";
+        $query2.= "DELETE FROM `assistant` WHERE 'emp_ID'='$emp_ID';";
+        $query2.= "INSERT INTO `supervisor`(`emp_ID`, `appointed_date`) VALUES ('$emp_ID','$promo');";
+        $check= mysqli_multi_query($conn,$query2);
       }
       else
       {
         $query2 = "UPDATE `employee` SET `salary`='$salary',`branch_no`='$brn', WHERE emp_ID='$emp_ID'";
-        mysqli_query($conn,$query2);
+        $check = mysqli_query($conn,$query2);
       }
     }
 
-    // if($check)
-    // {
-    //   echo "Record Updated successfully.";
-    // }
-    // else
-    // {
-    //   echo "Error:<br>" ,$query1.mysqli_error($conn),"<br>",$query2.mysqli_error($conn);
-    // }
+    if($check)
+    {
+      echo "Record Updated successfully.";
+    }
+    else
+    {
+      echo "Error:<br>" ,$query1.mysqli_error($conn),"<br>",$query2.mysqli_error($conn);
+    }
     mysqli_close($conn);
   } 
 ?>
