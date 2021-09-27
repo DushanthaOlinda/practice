@@ -81,7 +81,7 @@ a:active {
     <form action="./Insert/insertProperty_admin.php" method="POST">
         <input type="submit" id="btn" value="Insert Property" name="Insert_prop">
     </form>
-    <form action="./Insert/insertNewspapert_admin.php" method="POST">
+    <form action="./Insert/insertNewspaper_admin.php" method="POST">
         <input type="submit" id="btn" value="Insert Newspapert" name="Insert_new">
     </form>
     <form action="./Insert/insertAdvertisement_admin.php" method="POST">
