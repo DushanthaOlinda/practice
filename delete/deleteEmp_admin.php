@@ -48,11 +48,42 @@ a:active {
 <a href="../admin.php">Go Back<br><br><br></a>
 
 
+<script type="text/javascript">
+    window.onload = function()
+    {
+      document.getElementById("dvMan").style.visibility = "hidden";
+    }
+    function ShowHideDiv() 
+    {
+        var chkMan = document.getElementById("manager");
+        var chkSup = document.getElementById("supervisor");
+        var chkAss = document.getElementById("assistant");
+        var dvLbl = document.getElementById("dvMan");
+        if(chkMan.checked || chkSup.checked)
+        {
+          document.getElementById("MSA_cont").innerHTML = "Apointed date";
+          document.getElementById("checkBox").setAttribute("type","date");
+          dvLbl.style.visibility = "visible";
+        }
+        else if(chkAss.checked)
+        {
+          document.getElementById("MSA_cont").innerHTML = "Supervisor Number";
+          document.getElementById("checkBox").setAttribute("type","text");
+          dvLbl.style.visibility = "visible";
+        }
+        else
+        {
+          dvLbl.style.visibility = "hidden";
+        }
+    }
+</script>
+
+<a href="../admin.php">Go Back<br><br><br></a>
 <div id="frm">
     <form action="#" method="POST">
         <p>
             <label>Employee ID: </label>
-            <input type="number" id="empID" name="empID" required>
+            <input type="number" id="empID" name=empID required>
         </p>
         <br>
         <p>
@@ -69,11 +100,11 @@ a:active {
   
   $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die("Connection Failed.");
 
-  if(isset($_POST['save']))  
+  if(isset($_POST['submit']))  
   {
-    $empID= $_POST['empID'];
+    $emp_ID= $_POST['emp_ID'];
 
-    $query= "DELETE FROM `employee` WHERE `employee`.`emp_ID` =$empID";
+    $query= "DELETE FROM `employee` WHERE emp_ID=$emp_ID";
     $check=mysqli_query($conn,$query);
 
     if($check)
@@ -88,3 +119,4 @@ a:active {
 
   }
   ?>
+
