@@ -78,16 +78,16 @@ a:active {
     <form action="./Insert/insertOwner_admin.php" method="POST">
         <input type="submit" id="btn" value="Insert Owner" name="Insert_owner">
     </form>
-    <form action="./Insert/insert_admin.php" method="POST">
+    <form action="./Insert/insertProperty_admin.php" method="POST">
         <input type="submit" id="btn" value="Insert Property" name="Insert_prop">
     </form>
-    <form action="./Insert/insert_admin.php" method="POST">
+    <form action="./Insert/insertNewspaper_admin.php" method="POST">
         <input type="submit" id="btn" value="Insert Newspapert" name="Insert_new">
     </form>
-    <form action="./Insert/insert_admin.php" method="POST">
+    <form action="./Insert/insertAdvertisement_admin.php" method="POST">
         <input type="submit" id="btn" value="Insert Advertisement" name="Insert_add">
     </form>
-    <form action="./Insert/insert_admin.php" method="POST">
+    <form action="./Insert/insertClient_admin.php" method="POST">
         <input type="submit" id="btn" value="Insert Client" name="Insert_client">
     </form>
 
@@ -103,12 +103,6 @@ a:active {
     </form>
     <form action="./Update/update.php" method="POST">
         <input type="submit" id="btn" value="Update Property" name="Uptade_prop">
-    </form>
-    <form action="./Update/update.php" method="POST">
-        <input type="submit" id="btn" value="UpdateNewspapert" name="Update_new">
-    </form>
-    <form action="./Update/update.php" method="POST">
-        <input type="submit" id="btn" value="Update Advertisement" name="Update_add">
     </form>
     <form action="./Update/update.php" method="POST">
         <input type="submit" id="btn" value="Update Client" name="Update_client">

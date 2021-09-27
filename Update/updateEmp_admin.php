@@ -78,7 +78,7 @@ a:active {
     </p>
    <p>
      <label>Salary(Rs.):</label>
-     <input type="number" id="salary" name="salary" required>
+     <input type="number" id="salary" name="salary" >
    </p>
    <p>
          <label>Employee Type:</label>
@@ -177,5 +177,3 @@ a:active {
     mysqli_close($conn);
   } 
 ?>
-
-<!-- htmlspecialchars_decode -->
