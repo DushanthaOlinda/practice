@@ -140,10 +140,7 @@ a:active {
     </form> 
     <form action="./delete/deleteOwner_admin.php" method="POST">
         <input type="submit" id="btn" value="Delete Owner" name="Delete_owner">
-    </form> 
-    <form action="./delete/deleteProperty_admin.php" method="POST">
-        <input type="submit" id="btn" value="Delete Property" name="Delete_prop">
-    </form> 
+    </form>
     <form action="./delete/deleteNewspapert_admin.php" method="POST">
         <input type="submit" id="btn" value="Delete Newspapert" name="Delete_new">
     </form> 
