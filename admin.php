@@ -90,6 +90,9 @@ a:active {
     <form action="./Insert/insertClient_admin.php" method="POST">
         <input type="submit" id="btn" value="Insert Client" name="Insert_client">
     </form>
+    <form action="./Insert/insertPropertyRequirenment.php" method="POST">
+        <input type="submit" id="btn" value="Insert Property Requirement" name="Insert_PR">
+    </form>
     <form action="./Insert/insertVisit_admin.php" method="POST">
     <input type="submit" id="btn" value="Insert Visit" name="Insert_visit">
     </form>
