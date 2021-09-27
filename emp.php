@@ -80,6 +80,9 @@ a:active {
     <form action="./Insert/insertClient_emp.php" method="POST">
         <input type="submit" id="btn" value="Insert Client" name="Insert_client">
     </form>
+    <form action="./Insert/insertPropertyRequirenment_emp.php" method="POST">
+        <input type="submit" id="btn" value="Insert Property Requirement" name="Insert_PR">
+    </form>
     <form action="./Insert/insertVisit_emp.php" method="POST">
     <input type="submit" id="btn" value="Insert Visit" name="Insert_visit">
     </form>
