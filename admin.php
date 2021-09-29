@@ -20,19 +20,22 @@ body
 
 #admin
 {
-    font-size: 25px;
+    font-size: 35px;
+    font-family: monospace ;
+    font-weight: bold;
 }
 
  a:link {
   color: green;
   background-color: transparent;
-  text-decoration: none;
+  text-decoration:none;
   font-size: 35px;
 }
 a:visited {
-  color:blue;
+  color: darkred;
   background-color: transparent;
   text-decoration: none;
+  
 }
 a:hover {
   color: red;
@@ -57,16 +60,41 @@ a:active {
 #btn
 {
     font-size: 20px;
-    color: #fff;
-    background: #0c1cfa;
+    color: whitesmoke;
+    background: blueviolet;
     padding: 5px;
 }
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: lightsalmon;
+  color: black;
+}
 </style>
+
+<div class="topnav">
+<a href="logout.php">LogOut</a>
+</div>
+<br>
+
 <div id="admin">
     <p>Admin</p>
-</div>
-
-<a href="logout.php">Logout<br><br><br></a>
+</div> <br>
 
 <div class="frm">
     <form action="./Insert/insertEmp_admin.php" method="POST">
@@ -82,7 +110,7 @@ a:active {
         <input type="submit" id="btn" value="Insert Property" name="Insert_prop">
     </form>
     <form action="./Insert/insertNewspaper_admin.php" method="POST">
-        <input type="submit" id="btn" value="Insert Newspapert" name="Insert_new">
+        <input type="submit" id="btn" value="Insert Newspaper" name="Insert_new">
     </form>
     <form action="./Insert/insertAdvertisement_admin.php" method="POST">
         <input type="submit" id="btn" value="Insert Advertisement" name="Insert_add">
@@ -112,20 +140,20 @@ a:active {
     </form>
 
 
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showEmp_admin.php" method="POST">
         <input type="submit" id="btn" value="Show Employee" name="show_emp">
     </form>
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showBranch_admin.php" method="POST">
         <input type="submit" id="btn" value="Show Branch" name="show_branch">
     </form>
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showOwner_admin.php" method="POST">
         <input type="submit" id="btn" value="Show Owner" name="show_owner">
     </form>
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showProperty_admin.php" method="POST">
         <input type="submit" id="btn" value="Show Property" name="show_prop">
     </form>
-    <form action="./show/show.php" method="POST">
-        <input type="submit" id="btn" value="Show Newspapert" name="show_new">
+    <form action="./show/showNewspaper_admin.php" method="POST">
+        <input type="submit" id="btn" value="Show Newspaper" name="show_new">
     </form>
     <form action="./show/showAdvertisement_admin.php" method="POST">
         <input type="submit" id="btn" value="Show Advertisement" name="show_add">
@@ -133,12 +161,11 @@ a:active {
     <form action="./show/showClient_admin.php" method="POST">
         <input type="submit" id="btn" value="Show Client" name="show_client">
     </form>
-    <form action="./show/showPropertyRequirement_admin.php" method="POST">
-        <input type="submit" id="btn" value="Show Property Requirement" name="show_PR">
-    </form>
-    <form action="./show/show.php" method="POST">
     <form action="./show/showVisit_admin.php" method="POST">
-        <input type="submit" id="btn" value="Show visit" name="show_visit">
+        <input type="submit" id="btn" value="Show Visit" name="show_visit">
+    </form>
+    <form action="./show/showPropertyRequirement_admin.php" method="POST">
+        <input type="submit" id="btn" value="Show Property Requirement" name="show_requirement">
     </form>
 
 
@@ -149,7 +176,7 @@ a:active {
         <input type="submit" id="btn" value="Delete Owner" name="Delete_owner">
     </form>
     <form action="./delete/deleteNewspapert_admin.php" method="POST">
-        <input type="submit" id="btn" value="Delete Newspapert" name="Delete_new">
+        <input type="submit" id="btn" value="Delete Newspaper" name="Delete_new">
     </form> 
     <form action="./delete/deleteClient_admin.php" method="POST">
         <input type="submit" id="btn" value="Delete Client" name="Delete_client">

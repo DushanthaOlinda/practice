@@ -45,9 +45,55 @@ a:active {
   background-color: transparent;
   text-decoration: underline;
 }
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {background-color: yellowgreen;}
+th {
+  background-color: #04AA6D;
+  color: white;
+}
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
 </style>
 
-<a href="../admin.php">Go Back<br><br><br></a>
+<div class="topnav">
+<a href="../admin.php">Go Back</a>
+</div>
+<br><br><br>
 
 <?php
 echo "<table style='border: solid 1px black;'>";
@@ -79,7 +125,7 @@ $dbname = "sewana";
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("SELECT property_number, client_number, visited_date, comment FROM Visit");
+    $stmt = $conn->prepare("SELECT property_number, client_number, date, comment FROM Visit");
     $stmt->execute();
  
     // set the resulting array to associative

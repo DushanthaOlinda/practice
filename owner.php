@@ -19,7 +19,9 @@ body
 
 #owner
 {
-    font-size: 25px;
+    font-size: 35px;
+    font-family: monospace ;
+    font-weight: bold;
 }
 
  a:link {
@@ -55,28 +57,59 @@ a:active {
 }
 #btn
 {
-    font-size: 50px;
+    font-size: 20px;
     color: #fff;
     background: #0c1cfa;
     padding: 5px;
 }
-</style>
-<div id="client">
-    <p>Client</p>
-</div>
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
 
-<a href="logout.php">Logout<br><br><br></a>
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: lightsalmon;
+  color: black;
+}
+</style>
+
+<div class="topnav">
+<a href="logout.php">LogOut</a>
+</div>
+<br>
+
+<div id="owner">
+    <p>Owner</p>
+</div><br>
 
 <div class="frm">
 
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showProperty_owner.php" method="POST">
         <input type="submit" id="btn" value="Show Property" name="show_prop">
     </form>
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showAdvertisement_owner.php" method="POST">
         <input type="submit" id="btn" value="Show Advertisement" name="show_add">
     </form>
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showClient_owner.php" method="POST">
         <input type="submit" id="btn" value="Show Client" name="show_client">
+    </form>
+    <form action="./show/showPropertyRequirement_owner.php" method="POST">
+        <input type="submit" id="btn" value="Show Property Requirement" name="show_PR">
+    </form>
+    <form action="./show/showVisit_owner.php" method="POST">
+        <input type="submit" id="btn" value="Show Visit" name="show_visit">
     </form>
 
 </div>

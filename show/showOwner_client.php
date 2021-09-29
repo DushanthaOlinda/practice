@@ -8,7 +8,7 @@ if (!isset($_SESSION["UserRoll"]))
 {
     header("location:header.php");
 }
-if ($_SESSION["UserRoll"] != "Admin") 
+if ($_SESSION["UserRoll"] != "client") 
 {
     header("location:../header.php");
 }
@@ -45,7 +45,6 @@ a:active {
   background-color: transparent;
   text-decoration: underline;
 }
-
 table {
   border-collapse: collapse;
   width: 100%;
@@ -90,14 +89,15 @@ th {
   color: black;
 }
 </style>
+
 <div class="topnav">
-<a href="../admin.php">Go Back</a>
+<a href="../client.php">Go Back</a>
 </div>
 <br><br><br>
 
 <?php
 echo "<table style='border: solid 1px black;'>";
- echo"<tr><th>Branch Number</th><th>Contact Number</th><th>Address</th><th>Email</th><th>District</th></tr>";
+ echo"<tr><th>Owner ID</th><th>Address</th><th>Name</th><th>Email</th><th>Contact Number</th><th>Branch No</th><th>Owner Type</th></tr>";
 
 class TableRows extends RecursiveIteratorIterator {
     function __construct($it) {
@@ -118,14 +118,14 @@ class TableRows extends RecursiveIteratorIterator {
 }
 
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "client";
+$password = "client";
 $dbname = "sewana";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("SELECT branch_no, contact_number, address, email, district FROM Branch");
+    $stmt = $conn->prepare("SELECT owner_ID, address, name, email, contact_number, branch_no, owner_type FROM Owner");
     $stmt->execute();
  
     // set the resulting array to associative
