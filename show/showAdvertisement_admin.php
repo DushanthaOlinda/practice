@@ -45,6 +45,19 @@ a:active {
   background-color: transparent;
   text-decoration: underline;
 }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {background-color: yellow;}
 </style>
 
 <a href="../admin.php">Go Back<br><br><br></a>

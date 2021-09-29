@@ -43,6 +43,29 @@ a:active {
   background-color: transparent;
   text-decoration: underline;
 }
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {background-color: yellowgreen;}
+th {
+  background-color: #04AA6D;
+  color: white;
+}
+
 </style>
 
 <a href="../emp.php">Go Back<br><br><br></a>
