@@ -8,7 +8,7 @@ if (!isset($_SESSION["UserRoll"]))
 {
     header("location:header.php");
 }
-if ($_SESSION["UserRoll"] != "Admin") 
+if ($_SESSION["UserRoll"] != "owner") 
 {
     header("location:../header.php");
 }
@@ -47,11 +47,11 @@ a:active {
 }
 </style>
 
-<a href="../admin.php">Go Back<br><br><br></a>
+<a href="../owner.php">Go Back<br><br><br></a>
 
 <?php
 echo "<table style='border: solid 1px black;'>";
- echo"<tr><th>Property Number</th><th>Client Number</th><th>Visited Date</th><th>Comment</th></tr>";
+ echo"<tr><th>NewsPaper Name</th><th>Email</th><th>Address</th><th>Contact Number</th></tr>";
 
 class TableRows extends RecursiveIteratorIterator {
     function __construct($it) {
@@ -72,14 +72,14 @@ class TableRows extends RecursiveIteratorIterator {
 }
 
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "owner";
+$password = "owner";
 $dbname = "sewana";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("SELECT property_number, client_number, date, comment FROM Visit");
+    $stmt = $conn->prepare("SELECT newspaper_name, email, address, contact_number FROM Advertisement");
     $stmt->execute();
  
     // set the resulting array to associative

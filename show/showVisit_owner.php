@@ -8,7 +8,7 @@ if (!isset($_SESSION["UserRoll"]))
 {
     header("location:header.php");
 }
-if ($_SESSION["UserRoll"] != "Admin") 
+if ($_SESSION["UserRoll"] != "owner") 
 {
     header("location:../header.php");
 }
@@ -47,7 +47,7 @@ a:active {
 }
 </style>
 
-<a href="../admin.php">Go Back<br><br><br></a>
+<a href="../owner.php">Go Back<br><br><br></a>
 
 <?php
 echo "<table style='border: solid 1px black;'>";
@@ -72,8 +72,8 @@ class TableRows extends RecursiveIteratorIterator {
 }
 
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "owner";
+$password = "owner";
 $dbname = "sewana";
 
 try {

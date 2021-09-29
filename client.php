@@ -70,13 +70,19 @@ a:active {
 <div class="frm">
 
   
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showBranch_client.php" method="POST">
         <input type="submit" id="btn" value="Show Branch" name="show_branch">
     </form>
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showOwner_client.php" method="POST">
         <input type="submit" id="btn" value="Show Owner" name="show_owner">
     </form>
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showProperty_client.php" method="POST">
         <input type="submit" id="btn" value="Show Property" name="show_prop">
+    </form>
+    <form action="./show/showPropertyRequirement_client.php" method="POST">
+        <input type="submit" id="btn" value="Show Property Requirement" name="show_PR">
+    </form>
+    <form action="./show/showVisit_client.php" method="POST">
+        <input type="submit" id="btn" value="Show visit" name="show_visit">
     </form>
 </div>

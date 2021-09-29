@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html>
-<body>
-
 <?php
 session_start();
 if (!isset($_SESSION["UserRoll"])) 
 {
     header("location:header.php");
 }
-if ($_SESSION["UserRoll"] != "Admin") 
+if ($_SESSION["UserRoll"] != "owner") 
 {
     header("location:../header.php");
 }
+
+
 ?>
 <style>
     body
@@ -47,11 +45,16 @@ a:active {
 }
 </style>
 
-<a href="../admin.php">Go Back<br><br><br></a>
+<a href="../owner.php">Go Back<br><br><br></a>
+
+
+<!DOCTYPE html>
+<html>
+<body>
 
 <?php
 echo "<table style='border: solid 1px black;'>";
- echo"<tr><th>Property Number</th><th>Client Number</th><th>Visited Date</th><th>Comment</th></tr>";
+ echo "<tr><th>client_number</th><th>Email</th><th>full_name</th><th>NIC</th><th>branch_no</th></tr>";
 
 class TableRows extends RecursiveIteratorIterator {
     function __construct($it) {
@@ -71,18 +74,17 @@ class TableRows extends RecursiveIteratorIterator {
     }
 }
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sewana";
+$dbServername = "localhost";
+$dbUsername = "owner";
+$dbPassword ="owner";
+$dbName = "sewana";
 
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn = new PDO("mysql:host=$dbServername;dbname=$dbName", $dbUsername, $dbPassword);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("SELECT property_number, client_number, date, comment FROM Visit");
+    $stmt = $conn->prepare("SELECT `client_number`, `Email`, `full_name`, `NIC`, `branch_no` FROM `client`");
     $stmt->execute();
- 
-    // set the resulting array to associative
+
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
     foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {

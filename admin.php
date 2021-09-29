@@ -112,19 +112,19 @@ a:active {
     </form>
 
 
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showEmp_admin.php" method="POST">
         <input type="submit" id="btn" value="Show Employee" name="show_emp">
     </form>
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showBranch_admin.php" method="POST">
         <input type="submit" id="btn" value="Show Branch" name="show_branch">
     </form>
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showOwner_admin.php" method="POST">
         <input type="submit" id="btn" value="Show Owner" name="show_owner">
     </form>
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showProperty_admin.php" method="POST">
         <input type="submit" id="btn" value="Show Property" name="show_prop">
     </form>
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showNewspaper_admin.php" method="POST">
         <input type="submit" id="btn" value="Show Newspapert" name="show_new">
     </form>
     <form action="./show/showAdvertisement_admin.php" method="POST">
@@ -133,14 +133,10 @@ a:active {
     <form action="./show/showClient_admin.php" method="POST">
         <input type="submit" id="btn" value="Show Client" name="show_client">
     </form>
-<<<<<<< Updated upstream
     <form action="./show/showPropertyRequirement_admin.php" method="POST">
         <input type="submit" id="btn" value="Show Property Requirement" name="show_PR">
     </form>
-    <form action="./show/show.php" method="POST">
-=======
     <form action="./show/showVisit_admin.php" method="POST">
->>>>>>> Stashed changes
         <input type="submit" id="btn" value="Show visit" name="show_visit">
     </form>
 

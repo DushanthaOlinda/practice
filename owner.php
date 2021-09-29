@@ -61,22 +61,28 @@ a:active {
     padding: 5px;
 }
 </style>
-<div id="client">
-    <p>Client</p>
+<div id="owner">
+    <p>Owner</p>
 </div>
 
 <a href="logout.php">Logout<br><br><br></a>
 
 <div class="frm">
 
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showProperty_owner.php" method="POST">
         <input type="submit" id="btn" value="Show Property" name="show_prop">
     </form>
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showAdvertisement_owner.php" method="POST">
         <input type="submit" id="btn" value="Show Advertisement" name="show_add">
     </form>
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showClient_owner.php" method="POST">
         <input type="submit" id="btn" value="Show Client" name="show_client">
+    </form>
+    <form action="./show/showPropertyRequirement_owner.php" method="POST">
+        <input type="submit" id="btn" value="Show Property Requirement" name="show_PR">
+    </form>
+    <form action="./show/showVisit_owner.php" method="POST">
+        <input type="submit" id="btn" value="Show visit" name="show_visit">
     </form>
 
 </div>
