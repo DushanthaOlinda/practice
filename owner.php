@@ -19,7 +19,9 @@ body
 
 #owner
 {
-    font-size: 25px;
+    font-size: 35px;
+    font-family: monospace ;
+    font-weight: bold;
 }
 
  a:link {
@@ -55,7 +57,7 @@ a:active {
 }
 #btn
 {
-    font-size: 50px;
+    font-size: 20px;
     color: #fff;
     background: #0c1cfa;
     padding: 5px;
