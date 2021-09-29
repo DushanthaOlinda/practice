@@ -68,9 +68,32 @@ th {
   background-color: #04AA6D;
   color: white;
 }
-</style>
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
 
-<a href="../admin.php">Go Back<br><br><br></a>
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+</style>
+<div class="topnav">
+<a href="../admin.php">Go Back</a>
+</div>
+<br><br><br>
 
 <?php
 echo "<table style='border: solid 1px black;'>";
