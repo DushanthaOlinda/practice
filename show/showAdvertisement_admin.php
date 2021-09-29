@@ -45,6 +45,7 @@ a:active {
   background-color: transparent;
   text-decoration: underline;
 }
+
 table {
   border-collapse: collapse;
   width: 100%;

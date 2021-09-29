@@ -43,10 +43,56 @@ a:active {
   background-color: transparent;
   text-decoration: underline;
 }
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {background-color: yellowgreen;}
+th {
+  background-color: #04AA6D;
+  color: white;
+}
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
 </style>
 
-<a href="../client.php">Go Back<br><br><br></a>
-
+<div class="topnav">
+<a href="../client.php">Go Back</a>
+</div>
+<br><br><br>
 
 <!DOCTYPE html>
 <html>
