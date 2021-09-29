@@ -127,16 +127,20 @@ a:active {
     <form action="./show/show.php" method="POST">
         <input type="submit" id="btn" value="Show Newspapert" name="show_new">
     </form>
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showAdvertisement_admin.php" method="POST">
         <input type="submit" id="btn" value="Show Advertisement" name="show_add">
     </form>
     <form action="./show/showClient_admin.php" method="POST">
         <input type="submit" id="btn" value="Show Client" name="show_client">
     </form>
+<<<<<<< Updated upstream
     <form action="./show/showPropertyRequirement_admin.php" method="POST">
         <input type="submit" id="btn" value="Show Property Requirement" name="show_PR">
     </form>
     <form action="./show/show.php" method="POST">
+=======
+    <form action="./show/showVisit_admin.php" method="POST">
+>>>>>>> Stashed changes
         <input type="submit" id="btn" value="Show visit" name="show_visit">
     </form>
 
