@@ -130,8 +130,11 @@ a:active {
     <form action="./show/show.php" method="POST">
         <input type="submit" id="btn" value="Show Advertisement" name="show_add">
     </form>
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showClient_admin.php" method="POST">
         <input type="submit" id="btn" value="Show Client" name="show_client">
+    </form>
+    <form action="./show/showPropertyRequirement_admin.php" method="POST">
+        <input type="submit" id="btn" value="Show Property Requirement" name="show_PR">
     </form>
     <form action="./show/show.php" method="POST">
         <input type="submit" id="btn" value="Show visit" name="show_visit">
