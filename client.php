@@ -110,6 +110,6 @@ a:active {
         <input type="submit" id="btn" value="Show Property Requirement" name="show_PR">
     </form>
     <form action="./show/showVisit_client.php" method="POST">
-        <input type="submit" id="btn" value="Show visit" name="show_visit">
+        <input type="submit" id="btn" value="Show Visit" name="show_visit">
     </form>
 </div>

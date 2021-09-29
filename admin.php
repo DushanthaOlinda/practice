@@ -20,8 +20,9 @@ body
 
 #admin
 {
-    font-size: 25px;
+    font-size: 35px;
     font-family: monospace ;
+    font-weight: bold;
 }
 
  a:link {
@@ -109,7 +110,7 @@ a:active {
         <input type="submit" id="btn" value="Insert Property" name="Insert_prop">
     </form>
     <form action="./Insert/insertNewspaper_admin.php" method="POST">
-        <input type="submit" id="btn" value="Insert Newspapert" name="Insert_new">
+        <input type="submit" id="btn" value="Insert Newspaper" name="Insert_new">
     </form>
     <form action="./Insert/insertAdvertisement_admin.php" method="POST">
         <input type="submit" id="btn" value="Insert Advertisement" name="Insert_add">
@@ -152,7 +153,7 @@ a:active {
         <input type="submit" id="btn" value="Show Property" name="show_prop">
     </form>
     <form action="./show/showNewspaper_admin.php" method="POST">
-        <input type="submit" id="btn" value="Show Newspapert" name="show_new">
+        <input type="submit" id="btn" value="Show Newspaper" name="show_new">
     </form>
     <form action="./show/showAdvertisement_admin.php" method="POST">
         <input type="submit" id="btn" value="Show Advertisement" name="show_add">
@@ -161,10 +162,10 @@ a:active {
         <input type="submit" id="btn" value="Show Client" name="show_client">
     </form>
     <form action="./show/showVisit_admin.php" method="POST">
-        <input type="submit" id="btn" value="Show visit" name="show_visit">
+        <input type="submit" id="btn" value="Show Visit" name="show_visit">
     </form>
     <form action="./show/showPropertyRequirement_admin.php" method="POST">
-        <input type="submit" id="btn" value="Show requirement" name="show_requirement">
+        <input type="submit" id="btn" value="Show Property Requirement" name="show_requirement">
     </form>
 
 
@@ -175,7 +176,7 @@ a:active {
         <input type="submit" id="btn" value="Delete Owner" name="Delete_owner">
     </form>
     <form action="./delete/deleteNewspapert_admin.php" method="POST">
-        <input type="submit" id="btn" value="Delete Newspapert" name="Delete_new">
+        <input type="submit" id="btn" value="Delete Newspaper" name="Delete_new">
     </form> 
     <form action="./delete/deleteClient_admin.php" method="POST">
         <input type="submit" id="btn" value="Delete Client" name="Delete_client">

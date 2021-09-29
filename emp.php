@@ -19,7 +19,9 @@ body
 
 #emp
 {
-    font-size: 25px;
+    font-size: 35px;
+    font-family: monospace ;
+    font-weight: bold;
 }
 
  a:link {
@@ -149,7 +151,7 @@ a:active {
         <input type="submit" id="btn" value="Show Visit" name="show_visit">
     </form>
     <form action="./show/showPropertyRequirement_emp.php" method="POST">
-        <input type="submit" id="btn" value="Show requirement" name="show_requirement">
+        <input type="submit" id="btn" value="Show Property Requirement" name="show_requirement">
     </form>
 
 

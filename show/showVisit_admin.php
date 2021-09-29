@@ -125,7 +125,7 @@ $dbname = "sewana";
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("SELECT property_number, client_number, visited_date, comment FROM Visit");
+    $stmt = $conn->prepare("SELECT property_number, client_number, date, comment FROM Visit");
     $stmt->execute();
  
     // set the resulting array to associative
