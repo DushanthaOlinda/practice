@@ -99,29 +99,32 @@ a:active {
     </form>
 
 
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showEmp_emp.php" method="POST">
         <input type="submit" id="btn" value="Show Employee" name="show_emp">
     </form>
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showBranch_emp.php" method="POST">
         <input type="submit" id="btn" value="Show Branch" name="show_branch">
     </form>
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showOwner_emp.php" method="POST">
         <input type="submit" id="btn" value="Show Owner" name="show_owner">
     </form>
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showProperty_emp.php" method="POST">
         <input type="submit" id="btn" value="Show Property" name="show_prop">
     </form>
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showNewspaper_emp.php" method="POST">
         <input type="submit" id="btn" value="Show Newspapert" name="show_new">
     </form>
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showAdvertisement_emp.php" method="POST">
         <input type="submit" id="btn" value="Show Advertisement" name="show_add">
     </form>
-    <form action="./show/show.php" method="POST">
+    <form action="./show/showClient_emp.php" method="POST">
         <input type="submit" id="btn" value="Show Client" name="show_client">
     </form>
-    <form action="./show/show.php" method="POST">
-        <input type="submit" id="btn" value="Show visit" name="show_visit">
+    <form action="./show/showVisit_emp.php" method="POST">
+        <input type="submit" id="btn" value="Show Visit" name="show_visit">
+    </form>
+    <form action="./show/showPropertyRequirement_emp.php" method="POST">
+        <input type="submit" id="btn" value="Show requirement" name="show_requirement">
     </form>
 
 
