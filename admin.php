@@ -21,18 +21,20 @@ body
 #admin
 {
     font-size: 25px;
+    font-family: monospace ;
 }
 
  a:link {
   color: green;
   background-color: transparent;
-  text-decoration: none;
+  text-decoration:none;
   font-size: 35px;
 }
 a:visited {
-  color:blue;
+  color: darkred;
   background-color: transparent;
   text-decoration: none;
+  
 }
 a:hover {
   color: red;
@@ -57,16 +59,41 @@ a:active {
 #btn
 {
     font-size: 20px;
-    color: #fff;
-    background: #0c1cfa;
+    color: whitesmoke;
+    background: blueviolet;
     padding: 5px;
 }
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: lightsalmon;
+  color: black;
+}
 </style>
+
+<div class="topnav">
+<a href="logout.php">LogOut</a>
+</div>
+<br>
+
 <div id="admin">
     <p>Admin</p>
-</div>
-
-<a href="logout.php">Logout<br><br><br></a>
+</div> <br>
 
 <div class="frm">
     <form action="./Insert/insertEmp_admin.php" method="POST">
@@ -133,11 +160,11 @@ a:active {
     <form action="./show/showClient_admin.php" method="POST">
         <input type="submit" id="btn" value="Show Client" name="show_client">
     </form>
-    <form action="./show/showPropertyRequirement_admin.php" method="POST">
-        <input type="submit" id="btn" value="Show Property Requirement" name="show_PR">
-    </form>
     <form action="./show/showVisit_admin.php" method="POST">
         <input type="submit" id="btn" value="Show visit" name="show_visit">
+    </form>
+    <form action="./show/showPropertyRequirement_admin.php" method="POST">
+        <input type="submit" id="btn" value="Show requirement" name="show_requirement">
     </form>
 
 
