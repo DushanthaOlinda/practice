@@ -61,7 +61,7 @@ a:active {
 {
     font-size: 20px;
     color: whitesmoke;
-    background: blueviolet;
+    background: darkgoldenrod;
     padding: 5px;
 }
 /* Style the top navigation bar */
@@ -94,7 +94,8 @@ a:active {
 
 <div id="admin">
     <p>Admin</p>
-</div> <br>
+</div> 
+<h2 align="center" style="background-color: blanchedalmond;color:brown"><b><u>Insert Options</u></b></h2>
 
 <div class="frm">
     <form action="./Insert/insertEmp_admin.php" method="POST">
@@ -125,6 +126,7 @@ a:active {
     <input type="submit" id="btn" value="Insert Visit" name="Insert_visit">
     </form>
 
+    <h2 align="center" style="background-color: blanchedalmond;color:brown"><b><u>Update Options</u></b></h2>
 
     <form action="./Update/updateEmp_admin.php" method="POST">
         <input type="submit" id="btn" value="Update Employee" name="Update_emp">
@@ -139,7 +141,7 @@ a:active {
         <input type="submit" id="btn" value="Update Client" name="Update_client">
     </form>
 
-
+<h2 align="center" style="background-color: blanchedalmond;color:brown"><b><u>Show Options</u></b></h2>
     <form action="./show/showEmp_admin.php" method="POST">
         <input type="submit" id="btn" value="Show Employee" name="show_emp">
     </form>
@@ -168,7 +170,7 @@ a:active {
         <input type="submit" id="btn" value="Show Property Requirement" name="show_requirement">
     </form>
 
-
+    <h2 align="center" style="background-color: blanchedalmond;color:brown"><b><u>Delete Options</u></b></h2>
     <form action="./delete/deleteEmp_admin.php" method="POST">
         <input type="submit" id="btn" value="Delete Employee" name="Delete_emp">
     </form> 
