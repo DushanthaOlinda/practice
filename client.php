@@ -59,7 +59,7 @@ a:active {
 {
     font-size: 20px;
     color: #fff;
-    background: #0c1cfa;
+    background: darkred;
     padding: 5px;
 }
 /* Style the top navigation bar */
@@ -92,11 +92,11 @@ a:active {
 
 <div id="client">
     <p>Client</p>
-</div><br>
+</div>
 
 <div class="frm">
 
-  
+<h2 align="center" style="background-color: blanchedalmond;color:brown"><b><u>Show Options</u></b></h2>
     <form action="./show/showBranch_client.php" method="POST">
         <input type="submit" id="btn" value="Show Branch" name="show_branch">
     </form>

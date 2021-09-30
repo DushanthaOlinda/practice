@@ -59,7 +59,7 @@ a:active {
 {
     font-size: 20px;
     color: #fff;
-    background: #0c1cfa;
+    background: darkslateblue;
     padding: 5px;
 }
 /* Style the top navigation bar */
@@ -92,8 +92,9 @@ a:active {
 
 <div id="emp">
     <p>Employee</p>
-</div><br>
+</div>
 
+<h2 align="center" style="background-color: blanchedalmond;color:brown"><b><u>Insert Options</u></b></h2>
 <div class="frm">
     <form action="./Insert/insertOwner_emp.php" method="POST">
         <input type="submit" id="btn" value="Insert Owner" name="Insert_owner">
@@ -114,7 +115,7 @@ a:active {
     <input type="submit" id="btn" value="Insert Visit" name="Insert_visit">
     </form>
 
-
+    <h2 align="center" style="background-color: blanchedalmond;color:brown"><b><u>Update Options</u></b></h2>
     <form action="./Update/updateOwner_emp.php" method="POST">
         <input type="submit" id="btn" value="Update Owner" name="Update_owner">
     </form>
@@ -125,7 +126,7 @@ a:active {
         <input type="submit" id="btn" value="Update Client" name="Update_client">
     </form>
 
-
+    <h2 align="center" style="background-color: blanchedalmond;color:brown"><b><u>Show Options</u></b></h2>
     <form action="./show/showEmp_emp.php" method="POST">
         <input type="submit" id="btn" value="Show Employee" name="show_emp">
     </form>
@@ -154,7 +155,7 @@ a:active {
         <input type="submit" id="btn" value="Show Property Requirement" name="show_requirement">
     </form>
 
-
+    <h2 align="center" style="background-color: blanchedalmond;color:brown"><b><u>Delete Options</u></b></h2>
 
     <form action="./delete/deleteOwner_emp.php" method="POST">
         <input type="submit" id="btn" value="Delete Owner" name="Delete_owner">

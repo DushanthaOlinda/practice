@@ -59,7 +59,7 @@ a:active {
 {
     font-size: 20px;
     color: #fff;
-    background: #0c1cfa;
+    background: darkslategrey;
     padding: 5px;
 }
 /* Style the top navigation bar */
@@ -88,14 +88,13 @@ a:active {
 <div class="topnav">
 <a href="logout.php">LogOut</a>
 </div>
-<br>
 
 <div id="owner">
     <p>Owner</p>
 </div><br>
 
 <div class="frm">
-
+<h2 align="center" style="background-color: blanchedalmond;color:brown"><b><u>Show Options</u></b></h2>
     <form action="./show/showProperty_owner.php" method="POST">
         <input type="submit" id="btn" value="Show Property" name="show_prop">
     </form>
