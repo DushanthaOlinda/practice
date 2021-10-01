@@ -57,6 +57,7 @@ if ($_SESSION["UserRoll"] != "owner") {
     }
 
     .btn-o {
+        font-size: 25px;
         background-color: lightgreen;
     }
 

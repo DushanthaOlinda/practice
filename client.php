@@ -57,6 +57,7 @@ if ($_SESSION["UserRoll"] != "client") {
     }
 
     .btn-o {
+        font-size: 25px;
         background-color: lightgreen;
     }
 
@@ -94,8 +95,8 @@ if ($_SESSION["UserRoll"] != "client") {
     </div>
     <div>
         <h2 align="center" style="background-color: blanchedalmond;color:brown"><b><u>Update Options</u></b></h2>
-        <form action="./Update/updateProperty_client.php" method="POST">
-            <input type="submit" class="btn  btn-o" id="btn" value="Update Property" name="Uptade_prop">
+        <form action="./Update/updateClient_client.php" method="POST">
+            <input type="submit" class="btn  btn-o" id="btn" value="Update Client" name="Uptade_client">
         </form><br>
     </div>
     <div>

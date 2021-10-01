@@ -57,6 +57,7 @@ if ($_SESSION["UserRoll"] != "employee") {
     }
 
     .btn-o {
+        font-size: 25px;
         background-color: lightgreen;
     }
 
@@ -72,10 +73,8 @@ if ($_SESSION["UserRoll"] != "employee") {
 
 <nav class="navbar navbar-light bg-transparent">
     <div class="container-fluid">
-
         <img src="./assets/img/logo.png" alt="" width="100" height="100" class="d-inline-block align-text-top">
         <h2 class="text-dark"> Sewana Property ( Employee) </h2>
-
         <form class="d-flex">
             <button type="button" class="d-block btn btn-primary m-3 w-100 p-4 "><a class="text-decoration-none text-white" href="logout.php">Log Out</a></button>
         </form>
@@ -94,7 +93,7 @@ if ($_SESSION["UserRoll"] != "employee") {
         <form action="./Insert/insertProperty_emp.php" method="POST">
             <input type="submit"  class="btn  btn-o" id="btn" value="Insert Property" name="Insert_prop">
         </form><br>
-        <form action="./Insert/insertAdvertisement_emp.php" method="POST">
+        <form action="./Insert/insertAdvertiesment_emp.php" method="POST">
             <input type="submit"  class="btn  btn-o" id="btn" value="Insert Advertisement" name="Insert_add">
         </form><br>
         <form action="./Insert/insertClient_emp.php" method="POST">

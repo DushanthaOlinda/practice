@@ -1,77 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Sewana property</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="../assets/css/Features-Boxed.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/css/theme.bootstrap_4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="../assets/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="../assets/css/Ludens---1-Index-Table-with-Search--Sort-Filters-v20.css">
+    <link rel="stylesheet" href="../assets/css/Ludens---3-Edit-with-Summernote.css">
+    <link rel="stylesheet" href="../assets/css/Ludens---3-Edit.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
 <?php
 session_start();
-if (!isset($_SESSION["UserRoll"])) 
-{
+if (!isset($_SESSION["UserRoll"])) {
     header("location:header.php");
 }
-if ($_SESSION["UserRoll"] != "employee") 
-{
-    header("location:../header.php");
+if ($_SESSION["UserRoll"] != "employee") {
+    header("location:header.php");
 }
-
 ?>
+
+
 <style>
-    body
-{
-    background: rgb(161, 228, 164);
-}
+    body {
+        background-image: url('../assets/img/cp.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    }
 
-#admin
-{
-    font-size: 25px;
-}
 
- a:link {
-  color: green;
-  background-color: transparent;
-  text-decoration: none;
-  font-size: 35px;
-}
-a:visited {
-  color:blue;
-  background-color: transparent;
-  text-decoration: none;
-}
-a:hover {
-  color: red;
-  background-color: transparent;
-  text-decoration: underline;
-}
-a:active {
-  color: yellow;
-  background-color: transparent;
-  text-decoration: underline;
-}
-/* Style the top navigation bar */
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-}
+    .frm {
+        border: solid gray 1px;
+        width: 100%;
+        border-radius: 5px;
+        background: rgb(0, 0, 0, 0.5);
+        display: flex;
+        padding: 50px;
+    }
 
-/* Style the topnav links */
-.topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
+    .frm div {
+        padding-left: 5%;
+    }
 
-/* Change color on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
+    .btn-o {
+        background-color: lightgreen;
+    }
 
+
+    @media (max-width:1180px) {
+        .frm {
+            display: flex;
+            flex-direction: column;
+        }
+
+    }
 </style>
 
-<div class="topnav">
-<a href="../emp.php">Go Back</a>
-</div>
-<br><br><br>
+<nav class="navbar navbar-light bg-transparent">
+    <div class="container-fluid">
+        <img src="../assets/img/logo.png" alt="" width="100" height="100" class="d-inline-block align-text-top">
+        <h2 class="text-dark"> Sewana Property ( Employee) </h2>
+        <form class="d-flex">
+            <button type="button" class="d-block btn btn-primary m-3 w-100 p-4 "><a class="text-decoration-none text-white" href="../emp.php">Go back</a></button>
+        </form>
+    </div>
+</nav>
 
-<div if="frm">
+<div class="frm">
     <form action="#" method="POST">
         <p>
             <label>Client number: </label>

@@ -56,7 +56,9 @@ if ($_SESSION["UserRoll"] != "Admin") {
     }
 
     .btn-o{
-        background-color:lightgreen;    
+        font-size: 25px;
+        background-color:darkblue;
+        color: lightblue;    
     }
 
 
@@ -73,7 +75,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
   <div class="container-fluid">
   
   <img src="./assets/img/logo.png" alt="" width="100" height="100" class="d-inline-block align-text-top">
-    <h2 class="text-dark">  Sewana Property ( Admin) </h2>
+    <h1 class="text-dark">  Sewana Property ( Admin) </h1>
     
     <form class="d-flex">
     <button type="button" class="d-block btn btn-primary m-3 w-100 p-4 "><a class="text-decoration-none text-white" href="logout.php">Log Out</a></button>
