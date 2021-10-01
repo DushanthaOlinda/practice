@@ -25,62 +25,22 @@ include_once 'login.php';
     <link rel="stylesheet" href="assets/css/Ludens---1-Index-Table-with-Search--Sort-Filters-v20.css">
     <link rel="stylesheet" href="assets/css/Ludens---3-Edit-with-Summernote.css">
     <link rel="stylesheet" href="assets/css/Ludens---3-Edit.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 
 <body>
-
-<!-- <style>
-    body
-{
-    background: rgb(161, 228, 164);
+    <style>
+        .placeholder{
+    cursor: text !important;
 }
-
-h1
-{
-    font-size: 100px;
-    font-style: italic;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    text-align: center;
-    font-weight: bold;
-    text-shadow: royalblue;
-}
-#frm
-{
-    border:solid gray 1px;
-    width: 20%;
-    border-radius: 5px;
-    margin: 100px auto;
-    background: seashell;
-    padding: 50px;
-    font-size: 50px;
-}
-#user
-{
-    font-size: 25px;
-    font-weight: bold;
-}
-#pass
-{
-    font-size: 25px;
-    font-weight: bold;
-}
-#btn
-{
-    font-size: 50px;
-    color: #fff;
-    background: #0c1cfa;
-    padding: 5px;
-    margin-left: 25%;
-}
-
-</style> -->
+    </style>
 
 <section class="login-dark">
         <form action="login.php" method="POST">
             <h2 class="visually-hidden">Login Form</h2>
             <h1 class="font-monospace text-uppercase text-center border rounded-0">Sewana Property&nbsp;</h1>
-            <div class="illustration"><i class="icon ion-ios-home"></i></div><input class="placeholder border rounded-pill border-primary form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" name="Username" placeholder="User Name" autofocus="" title="Enter User Name">
+            <div class="img-logo"><img src="./assets/img/logo.png" width="100%" height="100%"></div><br>
+            <input class="placeholder border rounded-pill border-primary form-control cursortext" type="text"  name="Username" placeholder="User Name" autofocus="" title="Enter User Name">
             <div class="mb-3"></div>
             <div class="mb-3"><input class="placeholder border rounded-pill border-primary form-control" type="password" name="Password" placeholder="Password"></div>
             <div class="mb-3"><button class="btn btn-primary font-monospace text-uppercase border rounded-pill d-block w-100" type="submit">Log In</button><button class="btn btn-primary font-monospace text-uppercase border rounded-pill d-block w-100" type="reset">RESET</button></div>
