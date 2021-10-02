@@ -1,146 +1,132 @@
 <!DOCTYPE html>
-<html>
-<body>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Sewana property</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="../assets/css/Features-Boxed.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/css/theme.bootstrap_4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="../assets/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="../assets/css/Ludens---1-Index-Table-with-Search--Sort-Filters-v20.css">
+    <link rel="stylesheet" href="../assets/css/Ludens---3-Edit-with-Summernote.css">
+    <link rel="stylesheet" href="../assets/css/Ludens---3-Edit.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
 <?php
 session_start();
-if (!isset($_SESSION["UserRoll"])) 
-{
+if (!isset($_SESSION["UserRoll"])) {
     header("location:header.php");
 }
-if ($_SESSION["UserRoll"] != "Admin") 
-{
-    header("location:../header.php");
+if ($_SESSION["UserRoll"] != "Admin") {
+    header("location:header.php");
 }
 ?>
+
+
 <style>
-    body
-{
-    background: rgb(161, 228, 164);
-}
-
-#admin
-{
-    font-size: 25px;
-}
-
- a:link {
-  color: green;
-  background-color: transparent;
-  text-decoration: none;
-  font-size: 35px;
-}
-a:visited {
-  color:blue;
-  background-color: transparent;
-  text-decoration: none;
-}
-a:hover {
-  color: red;
-  background-color: transparent;
-  text-decoration: underline;
-}
-a:active {
-  color: yellow;
-  background-color: transparent;
-  text-decoration: underline;
-}
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th {
-  padding: 8px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
-}
-
-td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-tr:hover {background-color: yellowgreen;}
-th {
-  background-color: #04AA6D;
-  color: white;
-}
-/* Style the top navigation bar */
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-}
-
-/* Style the topnav links */
-.topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Change color on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
+    body {
+        background-image: url('../assets/img/cp.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    }
 </style>
 
-<div class="topnav">
-<a href="../admin.php">Go Back</a>
-</div>
-<br><br><br>
+<nav class="navbar navbar-light bg-transparent">
+    <div class="container-fluid">
+        <img src="../assets/img/logo.png" alt="" width="100" height="100" class="d-inline-block align-text-top">
+        <h2 class="text-dark"> Sewana Property ( Admin) </h2>
+        <form class="d-flex">
+            <button type="button" class="d-block btn btn-primary m-3 w-100 p-4 "><a class="text-decoration-none text-white" href="../admin.php">Go back</a></button>
+        </form>
+    </div>
+</nav>
 
 <?php
-echo "<table style='border: solid 1px black;'>";
- echo"<tr><th>Employee ID</th><th>Gender</th><th>Name</th><th>Start Date</th><th>Salary</th><th>DOB</th><th>NIC</th><th>Contact Number</th><th>Employee Type</th><th>Branch Number</th></tr>";
-
-class TableRows extends RecursiveIteratorIterator {
-    function __construct($it) {
-        parent::__construct($it, self::LEAVES_ONLY);
-    }
-
-    function current() {
-        return "<td style='width: 150px; border: 1px solid black;'>" . parent::current(). "</td>";
-    }
-
-    function beginChildren() {
-        echo "<tr>";
-    }
-
-    function endChildren() {
-        echo "</tr>" . "\n";
-    }
-}
 
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "sewana";
+$conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection Failed.");
 
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("SELECT emp_ID, gender, name, start_date, salary, DOB, NIC, contact_number, emp_type, branch_no FROM employee");
-    $stmt->execute();
- 
-    // set the resulting array to associative
-    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
-    foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
-        echo $v;
-    }
+$quary = "  SELECT  * from employee INNER JOIN manager on employee.emp_ID=manager.emp_ID
+            UNION
+            SELECT * FROM employee INNER JOIN supervisor on employee.emp_ID=supervisor.emp_ID
+            UNION ALL
+            SELECT * FROM employee INNER JOIN assistant on employee.emp_ID=assistant.emp_ID;";
+$records = mysqli_query($conn, $quary);
+if (mysqli_num_rows($records) > 0){}
+    else {
+    $msg = "No Record found";
 }
-catch(PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
-$conn = null;
-echo "</table>";
 ?>
 
+<table>
+    <tr>
+        <th>Employee ID</th>
+        <th>Gender</th>
+        <th>Name</th>
+        <th>Start Date</th>
+        <th>Salary</th>
+        <th>Date Of Birth</th>
+        <th>NIC</th>
+        <th>Contact Number</th>
+        <th>Employee Type</th>
+        <th>Branch Number</th>
+        <th>Appointed Date/Supervisor Number(only for Assistants)</th>
+        <th>Type ID</th>
+    </tr>
+    <?php
+while ($row = mysqli_fetch_array($records))
+?>
+    {
+        <tr>
+            <td><?php echo $row['emp_ID']; ?></td>
+            <td><?php echo $row['gender']; ?></td>
+            <td><?php echo $row['name']; ?></td>
+            <td><?php echo $row['start_date']; ?></td>
+            <td><?php echo $row['salary']; ?></td>
+            <td><?php echo $row['DOB']; ?></td>
+            <td><?php echo $row['NIC']; ?></td>
+            <td><?php echo $row['contact_number']; ?></td>
+            <td><?php echo $row['emp_type']; ?></td>
+            <td><?php echo $row['branch_no']; ?></td>
+            <td><?php if ($row['emp_type'] == "Manager") {
+                echo $row['appointed_date'];
+            } else if ($row['emp_type'] == "Supervisor") {
+                echo $row['appointed_date'];
+            } else {
+                echo $row['supervisor_number'];
+            }?>
+            </td>
+            <td><?php
+            if ($row['emp_type'] == "Manager") {
+                echo $row['manager_number'];
+            } else if ($row['emp_type'] == "Supervisor") {
+                echo $row['supervisor_number'];
+            } else {
+                echo $row['assistant_number'];
+            }
+            ?>
+            </td>
+        </tr>
+    }
+</table>
+<?php
+mysqli_close($conn);
+?>
 </body>
 </html>
