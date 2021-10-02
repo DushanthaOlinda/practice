@@ -9,7 +9,7 @@ include_once 'login.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type= "text/css" href="styles.css">
+<!--    <link rel="stylesheet" type= "text/css" href="./assets/css/styles.css">-->
     <title>Sewana property</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -25,21 +25,20 @@ include_once 'login.php';
     <link rel="stylesheet" href="assets/css/Ludens---1-Index-Table-with-Search--Sort-Filters-v20.css">
     <link rel="stylesheet" href="assets/css/Ludens---3-Edit-with-Summernote.css">
     <link rel="stylesheet" href="assets/css/Ludens---3-Edit.css">
-    <link rel="stylesheet" href="./assets/css/styles.css">
+<!--    <link rel="stylesheet" href="./assets/css/styles.css">-->
 </head>
 
-<body>
     <style>
         .placeholder{
     cursor: text !important;
 }
     </style>
 
-<section class="login-dark">
+    <section class="login-dark m-auto" >
         <form action="login.php" method="POST">
             <h2 class="visually-hidden">Login Form</h2>
             <h1 class="font-monospace text-uppercase text-center border rounded-0">Sewana Property&nbsp;</h1>
-            <div class="img-logo"><img src="./assets/img/logo.png" width="100%" height="100%"></div><br>
+            <div class="img-logo"><img src="./assets/img/logo.png" width="100%" height="100%" alt=""></div><br>
             <input class="placeholder border rounded-pill border-primary form-control cursortext" type="text"  name="Username" placeholder="User Name" autofocus="" title="Enter User Name">
             <div class="mb-3"></div>
             <div class="mb-3"><input class="placeholder border rounded-pill border-primary form-control" type="password" name="Password" placeholder="Password"></div>

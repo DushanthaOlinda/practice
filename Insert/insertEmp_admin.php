@@ -44,27 +44,140 @@ if ($_SESSION["UserRoll"] != "Admin") {
 
 
     .frm {
-        border: solid gray 1px;
-        width: 100%;
+        align-content: center;
+        /*padding-left: 50px;*/
+        max-width: 700px;
+        width: 80%;
+        background: rgb(0,0,0,0.5);
+        padding: 25px 30px;
         border-radius: 5px;
-        background: rgb(0, 0, 0, 0.5);
+        color: white;
+        font-weight: bolder;
+
+    }
+    .frm .title{
+        font-size: 25px;
+        font-width: 500;
+        position: relative;
+    }
+    .frm .title::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 30px;
+        background: linear-gradient(135deg, #71b7e6. #9b59b6);
+    }
+    .frm form .user-details{
         display: flex;
-        padding: 50px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    form .user-details .input-box{
+        margin-bottom: 15px;
+        width: calc(100%/2-20px);
+    }
+    form .user-details .input-box .name{
+        display: block;
+        font-width: 500;
+        margin-bottom: 5px;
+    }
+    /*form .user-details .input-box input{*/
+    /*    height: 45px;*/
+    /*    width: 100%;*/
+    /*    outline: none;*/
+    /*    border-radius: 5px;*/
+    /*    border: 1px solid #ccc;*/
+    /*    padding-left: 15px;*/
+    /*    font-size: 16px;*/
+    /*    border-bottom-width: 2px;*/
+    /*    transition: all 0.3s ease;*/
+    /*}*/
+    .user-details .input-box input:focus,
+    .user-details .input-box input:valid{
+        border: #9b59b6;
+    }
+    /*form .gender-details .gender-title {*/
+    /*   font-size: 20px;*/
+    /*   font-weight: 500;*/
+    /*}*/
+
+    /*form .gender-details .gen-cat{*/
+    /*    display: flex;*/
+    /*    width: 80%;*/
+    /*    margin: 14px 0;*/
+    /*    justify-content: space-between;*/
+    /*}*/
+
+    /*.gender-details .gen-cat label{*/
+    /*    display: flex;*/
+    /*    align-items: center;*/
+    /*}*/
+
+    /*.gender-details .gen-cat .dot{*/
+    /*    height: 18px;*/
+    /*    width: 18px;*/
+    /*    background: #d9d9d9;*/
+    /*    border-radius: 80%;*/
+    /*    margin-right: 10px;*/
+    /*    border: 5px solid transparent;*/
+    /*    transition: all 0.3s ease;*/
+    /*}*/
+
+    /*#dot-1:checked ~ .gen-cat label .one,*/
+    /*#dot-1:checked ~ .gen-cat label .two{*/
+    /*    border-color: #d9d9d9;*/
+    /*    background: #9b59b6;*/
+    /*}*/
+    /*form input[type="radio"]{*/
+    /*    display: none;*/
+    /*}*/
+
+    /*form .button input {*/
+    /*    height: 100%;*/
+    /*    width: 100%;*/
+    /*    color: #fff;*/
+    /*    border: none;*/
+    /*    font-size: 18px;*/
+    /*    font-weight: 500;*/
+    /*    border-radius: 5px;*/
+    /*    letter-spacing: 1px;*/
+    /*    background: linear-gradient(135deg, #71b7e6. #9b59b6);*/
+
+    }
+    .grad{
+        background: linear-gradient(-135deg, #71b7e6. #9b59b6);
     }
 
-    .frm div {
-        padding-left: 5%;
-    }
+    /*.frm div {*/
+    /*    padding-left: 5%;*/
+    /*}*/
 
-    .btn-o {
-        background-color: lightgreen;
-    }
+    /*.btn-o {*/
+    /*    background-color: lightgreen;*/
+    /*}*/
 
 
-    @media (max-width:1180px) {
+    @media (max-width:584px) {
         .frm {
-            display: flex;
-            flex-direction: column;
+            max-width: 100%;
+            /*display: flex;*/
+            /*flex-direction: column;*/
+        }
+        form .user-details .input-box{
+            margin-bottom: 15px;
+            width:100%;
+        }
+        form .gender-details .gen-cat {
+            width: 100%;
+        }
+        .frm form .user-details{
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+        .user-details::-webkit-scrollbar{
+            width: 0;
         }
 
     }
@@ -104,60 +217,132 @@ if ($_SESSION["UserRoll"] != "Admin") {
   }
 </script>
 
-<div class="frm">
+<div class="frm m-auto ">
+    <div class="title">Insert Employee</div>
   <form action="#" method="POST">
-    <p>
-      <label>Name:</label>
-      <input type="text" id="name" name="Name" required>
-    </p>
-    <p>
-      <label>Gender</label>
-        <input type="radio" id="gender" name="gender" value="M" required>
-      <label for="gender">Male</label>
-        <input type="radio" id="gender" name="gender" value="F" required>
-        <label for="gender">Female</label>
-    </p>
-    <p>
-      <lable>Start Date:</lable>
-      <input type="date" id="start_date" name="start_date" value="Start_date" required>
-    </p>
-    <p>
-      <label>Date of Birth:</label>
-      <input type="date" id="DOB" name="DOB" value="DOB" required>
-    </p>
-    <p>
-      <label>NIC:</label>
-      <input type="text" id="NIC" name="NIC" required>
-    </p>
-    <p>
-      <label>Contact Number:</label>
-      <input type="tel" id="phone" name="phone" placeholder="0112345678" pattern="[0-9]{10}" required>
-      <small>Format: 0112345678</small>
-    </p>
-    <p>
-      <label>Salary(Rs.):</label>
-      <input type="number" id="salary" name="salary" required>
-    </p>
-    <p>
-      <label>Employee Type:</label>
-      <input type="radio" id="manager" name="type" value="Manager" onclick="ShowHideDiv()" required>
-      <label for="manager">Manager</label>
-      <input type="radio" id="supervisor" name="type" value="Supervisor" onclick="ShowHideDiv()" required>
-      <label for="supervisor">Supervisor</label>
-      <input type="radio" id="assistant" name="type" value="Assistant" onclick="ShowHideDiv()" required>
-      <label for="assistant">Assistant</label>
-    <div id="dvMan">
-      <label id="MSA_cont"></label>
-      <input type="text" id="checkBox" name="checkBox" required>
-    </div><br>
-    </p>
-    <p>
-      <label>Branch Number</label>
-      <input type="text" id="branchNo" name="branchNo">
-    </p>
-    <p>
-      <input type="submit" id="btn" name="save" value="Submit">
-    </p>
+      <div class="user-details">
+          <div class="input-box">
+              <span class="name">Name</span>
+              <input type="text" id="name" name="Name" required>
+          </div>
+          <div class="gender-details">
+              <div class="input-box">
+                  <span class="gender">Gender</span>
+<!--              <input type="radio" name="gender" id="dot-1">-->
+<!--              <input type="radio" name="gender" id="dot-2">-->
+<!--              <span class="gender-title">Gender</span>-->
+<!--              <div class="gen-cat">-->
+<!--                  <label for="dot-1">-->
+<!--                      <span class="dot one"></span>-->
+<!--                      <span class="gender">Male</span>-->
+<!--                  </label>-->
+<!--                  <label for="dot-2">-->
+<!--                      <span class="dot two"></span>-->
+<!--                      <span class="gender">Female</span>-->
+<!--                  </label>-->
+<!--              </div>-->
+                  <input type="radio" id="gender" name="gender" value="M" required>
+                <label for="gender">Male</label>
+                  <input type="radio" id="gender" name="gender" value="F" required>
+                  <label for="gender">Female</label>
+              </div>
+          </div>
+          <div class="input-box">
+              <span class="start-date">Start Date</span>
+              <input type="date" id="start_date" name="start_date" value="Start_date" required>
+          </div>
+          <div class="input-box">
+              <span class="DOB">Date Of Birth</span>
+              <input type="date" id="DOB" name="DOB" value="DOB" required>
+          </div>
+          <div class="input-box">
+              <span class="NIC">NIC</span>
+              <input type="text" id="NIC" name="NIC" required>
+          </div>
+          <div class="input-box">
+              <span class="phone">Contact Number</span>
+              <input type="tel" id="phone" name="phone" placeholder="0112345678" pattern="[0-9]{10}" required>
+              <small>Format: 0112345678</small>
+          </div>
+          <div class="input-box">
+              <span class="branchNo">Branch Number</span>
+              <input type="number" id="branchNo" name="branchNo" required>
+          </div>
+          <div class="input-box">
+              <span class="salary">Salary(Rs:)</span>
+              <input type="number" id="salary" name="salary" required>
+          </div>
+          <div class="input-box">
+              <span class="type">Employee Type:</span>
+              <input type="radio" id="manager" name="type" value="Manager" onclick="ShowHideDiv()" required>
+              <label for="manager">Manager</label>
+              <input type="radio" id="supervisor" name="type" value="Supervisor" onclick="ShowHideDiv()" required>
+              <label for="supervisor">Supervisor</label>
+              <input type="radio" id="assistant" name="type" value="Assistant" onclick="ShowHideDiv()" required>
+              <label for="assistant">Assistant</label>
+              <div id="dvMan">
+                  <label id="MSA_cont"></label>
+                  <input type="text" id="checkBox" name="checkBox" required>
+          </div>
+
+
+              <div class="btn btn-primary w-100">
+                  <input type="submit" class=" btn " id="btn" name="save" value="Insert">
+              </div>
+
+      </div>
+              <!--    <p>-->
+<!--      <label>Name:</label>-->
+<!--      <input type="text" id="name" name="Name" required>-->
+<!--    </p>-->
+<!--    <p>-->
+<!--      <label>Gender</label>-->
+<!--        <input type="radio" id="gender" name="gender" value="M" required>-->
+<!--      <label for="gender">Male</label>-->
+<!--        <input type="radio" id="gender" name="gender" value="F" required>-->
+<!--        <label for="gender">Female</label>-->
+<!--    </p>-->
+<!--    <p>-->
+<!--      <lable>Start Date:</lable>-->
+<!--      <input type="date" id="start_date" name="start_date" value="Start_date" required>-->
+<!--    </p>-->
+<!--    <p>-->
+<!--      <label>Date of Birth:</label>-->
+<!--      <input type="date" id="DOB" name="DOB" value="DOB" required>-->
+<!--    </p>-->
+<!--    <p>-->
+<!--      <label>NIC:</label>-->
+<!--      <input type="text" id="NIC" name="NIC" required>-->
+<!--    </p>-->
+<!--    <p>-->
+<!--      <label>Contact Number:</label>-->
+<!--      <input type="tel" id="phone" name="phone" placeholder="0112345678" pattern="[0-9]{10}" required>-->
+<!--      <small>Format: 0112345678</small>-->
+<!--    </p>-->
+<!--    <p>-->
+<!--      <label>Salary(Rs.):</label>-->
+<!--      <input type="number" id="salary" name="salary" required>-->
+<!--    </p>-->
+<!--    <p>-->
+<!--      <label>Employee Type:</label>-->
+<!--      <input type="radio" id="manager" name="type" value="Manager" onclick="ShowHideDiv()" required>-->
+<!--      <label for="manager">Manager</label>-->
+<!--      <input type="radio" id="supervisor" name="type" value="Supervisor" onclick="ShowHideDiv()" required>-->
+<!--      <label for="supervisor">Supervisor</label>-->
+<!--      <input type="radio" id="assistant" name="type" value="Assistant" onclick="ShowHideDiv()" required>-->
+<!--      <label for="assistant">Assistant</label>-->
+<!--    <div id="dvMan">-->
+<!--      <label id="MSA_cont"></label>-->
+<!--      <input type="text" id="checkBox" name="checkBox" required>-->
+<!--    </div><br>-->
+<!--    </p>-->
+<!--    <p>-->
+<!--      <label>Branch Number</label>-->
+<!--      <input type="text" id="branchNo" name="branchNo">-->
+<!--    </p>-->
+<!--    <p>-->
+<!--      <input type="submit" id="btn" name="save" value="Submit">-->
+<!--    </p>-->
   </form>
 </div>
 
@@ -187,7 +372,7 @@ if (isset($_POST['save'])) {
   $result = mysqli_query($conn, $selectQ);
   $row = mysqli_fetch_assoc($result);
   $emp_ID = $row[("MAX(emp_ID)")];
-  $check;
+  $check = false;
 
   if ($type == "Manager") {
     $query2 = "INSERT INTO `manager` (`emp_ID`, `manager_number`, `appointed_date`) VALUES ('$emp_ID', NULL, '$appDate')";
