@@ -44,27 +44,72 @@ if ($_SESSION["UserRoll"] != "Admin") {
 
 
     .frm {
-        border: solid gray 1px;
-        width: 100%;
+        align-content: center;
+        /*padding-left: 50px;*/
+        max-width: 700px;
+        width: 80%;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 25px 30px;
         border-radius: 5px;
-        background: rgb(0, 0, 0, 0.5);
+        color: white;
+        font-weight: bolder;
+
+    }
+
+    .frm .title {
+        font-size: 25px;
+        font-width: 500;
+        position: relative;
+    }
+
+    .frm .title::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 30px;
+        background: linear-gradient(135deg, #71b7e6. #9b59b6);
+    }
+
+    .frm form .user-details {
         display: flex;
-        padding: 50px;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 
-    .frm div {
-        padding-left: 5%;
+    form .user-details .input-box {
+        margin-bottom: 15px;
+        width: calc(100%/2-20px);
     }
 
-    .btn-o {
-        background-color: lightgreen;
+    form .user-details .input-box .name {
+        display: block;
+        margin-bottom: 5px;
     }
 
+    .user-details .input-box input:focus,
+    .user-details .input-box input:valid {
+        border: #9b59b6;
+    }
 
-    @media (max-width:1180px) {
+    @media (max-width:584px) {
         .frm {
-            display: flex;
-            flex-direction: column;
+            max-width: 100%;
+        }
+
+        form .user-details .input-box {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .frm form .user-details {
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+
+        .user-details::-webkit-scrollbar {
+            width: 0;
         }
 
     }
@@ -109,45 +154,90 @@ if ($_SESSION["UserRoll"] != "Admin") {
     }
 </script>
 
-<div class="frm">
+<div class="frm m-auto">
+    <div class="title">Insert Property Owner</div>
     <form action="#" method="POST">
-        <p>
-            <label>Name:</label>
-            <input type="text" id="name" name="name" required>
-        </p>
-        <p>
-            <label>Address:</label>
-            <input type="text" id="address" name="address" required>
-        </p>
-        <p>
-            <label>Email:</label>
-            <input type="email" id="email" name="email" required>
-        </p>
-        <p>
-            <label>Contact Number:</label>
-            <input type="tel" id="phone" name="phone" placeholder="0112345678" pattern="[0-9]{10}" required>
-            <small>Format: 0112345678</small>
-        </p>
-        <p>
-            <label>Branch Number</label>
-            <input type="text" id="branchNo" name="branchNo" required>
-        </p>
-        <p>
-            <label>Owner Type:</label>
-            <input type="radio" id="person" name="type" value="Person" onclick="ShowHideDiv()" required>
-            <label for="person">Person</label>
-            <input type="radio" id="company" name="type" value="Company" onclick="ShowHideDiv()" required>
-            <label for="company">Company</label>
-        <div id="dvMan">
-            <label id="MSA_cont"></label>
-            <input type="text" id="checkBox" name="checkBox" required>
-        </div><br>
-        </p>
-        <p>
-            <input type="submit" id="btn" name="save" value="Submit">
-        </p>
+        <div class="user-details">
+            <div class="input-box">
+                <span class="name">Name</span>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="input-box">
+                <span class="address">Address</span>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="input-box">
+                <span class="email">Email</span>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-box">
+                <span class="phone">Contact Number</span>
+                <input type="tel" id="phone" name="phone" placeholder="0112345678" pattern="[0-9]{10}" required>
+                <small>Format: 0112345678</small>
+            </div>
+            <div class="input-box">
+                <span class="branchNo">Branch Number</span>
+                <input type="number" id="branchNo" name="branchNo" required>
+            </div>
+            <div class="owner-details">
+                <div class="input-box">
+                    <span class="type">Owner Type</span>
+                    <input type="radio" id="person" name="type" value="Person" onclick="ShowHideDiv()" required>
+                    <label for="person">Person</label>
+                    <input type="radio" id="company" name="type" value="Company" onclick="ShowHideDiv()" required>
+                    <label for="company">Company</label>
+                    <div id="dvMan">
+                        <label id="MSA_cont"></label>
+                        <input type="text" id="checkBox" name="checkBox" required>
+                    </div>
+                </div>
+            </div>
+            <div class="btn btn-primary w-100">
+                <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
+            </div>
+        </div>
     </form>
 </div>
+
+<!--<div class="frm">-->
+<!--    <form action="#" method="POST">-->
+<!--        <p>-->
+<!--            <label>Name:</label>-->
+<!--            <input type="text" id="name" name="name" required>-->
+<!--        </p>-->
+<!--        <p>-->
+<!--            <label>Address:</label>-->
+<!--            <input type="text" id="address" name="address" required>-->
+<!--        </p>-->
+<!--        <p>-->
+<!--            <label>Email:</label>-->
+<!--            <input type="email" id="email" name="email" required>-->
+<!--        </p>-->
+<!--        <p>-->
+<!--            <label>Contact Number:</label>-->
+<!--            <input type="tel" id="phone" name="phone" placeholder="0112345678" pattern="[0-9]{10}" required>-->
+<!--            <small>Format: 0112345678</small>-->
+<!--        </p>-->
+<!--        <p>-->
+<!--            <label>Branch Number</label>-->
+<!--            <input type="text" id="branchNo" name="branchNo" required>-->
+<!--        </p>-->
+<!--        <p>-->
+<!--            <label>Owner Type:</label>-->
+<!--            <input type="radio" id="person" name="type" value="Person" onclick="ShowHideDiv()" required>-->
+<!--            <label for="person">Person</label>-->
+<!--            <input type="radio" id="company" name="type" value="Company" onclick="ShowHideDiv()" required>-->
+<!--            <label for="company">Company</label>-->
+<!--        <div id="dvMan">-->
+<!--            <label id="MSA_cont"></label>-->
+<!--            <input type="text" id="checkBox" name="checkBox" required>-->
+<!--        </div><br>-->
+<!--        </p>-->
+<!--        <p>-->
+<!--            <input type="submit" id="btn" name="save" value="Submit">-->
+<!--        </p>-->
+<!--    </form>-->
+<!--</div>-->
 
 <?php
 $dbServername = "localhost";
@@ -173,7 +263,7 @@ if(isset($_POST['save']))
     $result = mysqli_query($conn,$selectQ);
     $row= mysqli_fetch_assoc($result);
     $owner_ID = $row[("MAX(owner_ID)")];
-    $check ;
+    $check = false ;
 
     if($type == "Person")
     {
@@ -188,11 +278,13 @@ if(isset($_POST['save']))
 
     if($check)
     {
-        echo "New record created successfully.";
+        echo "New record created successfully.<br>";
+        echo $quaery1,"<br>";
+        echo $query2;
     }
     else
     {
-        echo "Error:<br>" ,$query1.mysqli_error($conn),"<br>",$query2.mysqli_error($conn);
+        echo "Error:<br>" ,$quaery1.mysqli_error($conn),"<br>",$query2.mysqli_error($conn);
     }
     mysqli_close($conn);
 }

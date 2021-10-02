@@ -45,7 +45,8 @@ if ($_SESSION["UserRoll"] != "Admin") {
 
     .frm {
         border: solid gray 1px;
-        width: 100%;
+        width: 50%;
+        color: white;
         border-radius: 5px;
         background: rgb(0, 0, 0, 0.5);
         display: flex;
@@ -56,9 +57,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
         padding-left: 5%;
     }
 
-    .btn-o {
-        background-color: lightgreen;
-    }
+
 
 
     @media (max-width:1180px) {
@@ -80,16 +79,12 @@ if ($_SESSION["UserRoll"] != "Admin") {
     </div>
 </nav>
 
-<div class="frm">
-    <form action="#" method="POST">
-        <p>
-            <label>Advertisement ID: </label>
-            <input type="number" id="advertisement_ID" name="advertisement_ID" required>
-        </p>
-        <br>
-        <p>
-            <input type="submit" id="btn" name="save" value="Submit">
-        </p>
+<div class="frm form-control m-auto align-items-center">
+    <form action="#" method="POST" class="m-auto">
+            <label class="text-white">Advertisement ID: </label><br>
+            <input type="number" class="form-text" id="advertisement_ID" name="advertisement_ID" required><br><br>
+
+        <input type="submit" class=" btn btn-primary w-100" id="btn" name="save" value="Submit">
     </form>
 </div>
 
@@ -110,11 +105,12 @@ if ($_SESSION["UserRoll"] != "Admin") {
 
     if($check)
     {
-      echo "Record Deleted successfully.";
+      echo "Record Deleted successfully.<br>";
+      echo $query;
     }
     else
     {
-      echo "Error:<br>" ,$query1.mysqli_error($conn),"<br>",$query2.mysqli_error($conn);
+      echo "Error:<br>" ,$query.mysqli_error($conn);
     }
     mysqli_close($conn);
 

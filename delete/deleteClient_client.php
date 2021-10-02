@@ -34,6 +34,7 @@ if ($_SESSION["UserRoll"] != "client") {
 ?>
 
 
+
 <style>
     body {
         background-image: url('../assets/img/cp.png');
@@ -45,7 +46,8 @@ if ($_SESSION["UserRoll"] != "client") {
 
     .frm {
         border: solid gray 1px;
-        width: 100%;
+        width: 50%;
+        color: white;
         border-radius: 5px;
         background: rgb(0, 0, 0, 0.5);
         display: flex;
@@ -56,9 +58,7 @@ if ($_SESSION["UserRoll"] != "client") {
         padding-left: 5%;
     }
 
-    .btn-o {
-        background-color: lightgreen;
-    }
+
 
 
     @media (max-width:1180px) {
@@ -80,16 +80,12 @@ if ($_SESSION["UserRoll"] != "client") {
     </div>
 </nav>
 
-<div class="frm">
-    <form action="#" method="POST">
-        <p>
-            <label>Client Number: </label>
-            <input type="number" id="client_number" name="client_number" required>
-        </p>
-        <br>
-        <p>
-            <input type="submit" id="btn" name="save" value="Submit">
-        </p>
+<div class="frm form-control m-auto align-items-center">
+    <form action="#" method="POST" class="m-auto">
+        <label class="text-white">Client Number: </label><br>
+        <input type="number" class="form-text" id="client_number" name="client_number" required><br><br>
+
+        <input type="submit" class=" btn btn-primary w-100" id="btn" name="save" value="Submit">
     </form>
 </div>
 
