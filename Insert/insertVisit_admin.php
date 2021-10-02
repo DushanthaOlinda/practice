@@ -44,27 +44,72 @@ if ($_SESSION["UserRoll"] != "Admin") {
 
 
     .frm {
-        border: solid gray 1px;
-        width: 100%;
+        align-content: center;
+        /*padding-left: 50px;*/
+        max-width: 700px;
+        width: 80%;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 25px 30px;
         border-radius: 5px;
-        background: rgb(0, 0, 0, 0.5);
+        color: white;
+        font-weight: bolder;
+
+    }
+
+    .frm .title {
+        font-size: 25px;
+        font-width: 500;
+        position: relative;
+    }
+
+    .frm .title::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 30px;
+        background: linear-gradient(135deg, #71b7e6. #9b59b6);
+    }
+
+    .frm form .user-details {
         display: flex;
-        padding: 50px;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 
-    .frm div {
-        padding-left: 5%;
+    form .user-details .input-box {
+        margin-bottom: 15px;
+        width: calc(100%/2-20px);
     }
 
-    .btn-o {
-        background-color: lightgreen;
+    form .user-details .input-box .name {
+        display: block;
+        margin-bottom: 5px;
     }
 
+    .user-details .input-box input:focus,
+    .user-details .input-box input:valid {
+        border: #9b59b6;
+    }
 
-    @media (max-width:1180px) {
+    @media (max-width:584px) {
         .frm {
-            display: flex;
-            flex-direction: column;
+            max-width: 100%;
+        }
+
+        form .user-details .input-box {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .frm form .user-details {
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+
+        .user-details::-webkit-scrollbar {
+            width: 0;
         }
 
     }
@@ -80,33 +125,36 @@ if ($_SESSION["UserRoll"] != "Admin") {
     </div>
 </nav>
 
-<div class="frm">
+<div class="frm m-auto">
+    <div class="title">Insert Visit</div>
     <form action="#" method="POST">
-        <p>
-            <label>Property Number: </label>
-            <input type="number" id="propertynumber" name="propertynumber" required>
-        </p>
+        <div class="user-details"></div>
+        <div class="input-box">
+            <span class="number">Property Number:</span>
+            <input type="number" id="number" name="propertynumber" required><br><br>
+        </div>
 
-        <p>
-            <label>Client Number: </label>
-            <input type="number" id="clientnumber" name="clientnumber" required>
-        </p>
+        <div class="input-box">
+            <span class="address">Client Number:</span>
+            <input type="number" id="Cnumber" name="clientnumber" required><br><br>
+        </div>
 
-        <p>
-            <label>Visited Date: </label>
-            <input type="date" id="visitedDate" name="visitedDate" required>
-        </p>
+        <div class="input-box">
+            <span class="date">Visited Date:</span>
+            <input type="date" id="date" name="visitedDate" required><br><br>
+        </div>
 
-        <p>
-            <label>Comment: </label>
-            <input type="text" id="comment" name="comment" required>
-        </p>
-        <br>
-        <p>
-            <input type="submit" id="btn" name="save" value="Submit">
-        </p>
+        <div class="input-box">
+            <span class="comment">Comment:</span>
+            <input type="text" id="comment" name="comment" required><br><br>
+        </div>
+
+        <div class="btn btn-primary w-100">
+            <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
+        </div>
     </form>
 </div>
+
 
 <?php
   $dbServername = "localhost";
@@ -127,7 +175,8 @@ if ($_SESSION["UserRoll"] != "Admin") {
 
       if(mysqli_query($conn,$sql))
      {
-       echo "New record created successfully.";
+       echo "New record created successfully.<br>";
+       echo $sql;
      }
      else
      {
