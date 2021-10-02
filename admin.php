@@ -83,6 +83,21 @@ if ($_SESSION["UserRoll"] != "Admin") {
   </div>
 </nav>
 
+<<<<<<< Updated upstream
+=======
+    <form action="./Update/updateEmp_admin.php" method="POST">
+        <input type="submit" id="btn" value="Update Employee" name="Update_emp">
+    </form>
+    <form action="./Update/updateOwner.php" method="POST">
+        <input type="submit" id="btn" value="Update Owner" name="Update_owner">
+    </form>
+    <form action="./Update/update.php" method="POST">
+        <input type="submit" id="btn" value="Update Property" name="Uptade_prop">
+    </form>
+    <form action="./Update/updateClient_admin.php" method="POST">
+        <input type="submit" id="btn" value="Update Client" name="Update_client">
+    </form>
+>>>>>>> Stashed changes
 
 <br>
 

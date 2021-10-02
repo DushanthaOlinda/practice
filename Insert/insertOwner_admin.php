@@ -29,11 +29,19 @@ if (!isset($_SESSION["UserRoll"])) {
     header("location:header.php");
 }
 if ($_SESSION["UserRoll"] != "Admin") {
+<<<<<<< Updated upstream
     header("location:header.php");
+=======
+    header("location:../header.php");
+>>>>>>> Stashed changes
 }
 ?>
 
+<<<<<<< Updated upstream
 
+=======
+?>
+>>>>>>> Stashed changes
 <style>
     body {
         background-image: url('../assets/img/cp.png');
@@ -85,7 +93,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
     {
       document.getElementById("dvMan").style.visibility = "hidden";
     }
-    function ShowHideDiv() 
+    function ShowHideDiv()
     {
         var chkMan = document.getElementById("person");
         var chkAss = document.getElementById("company");
@@ -150,50 +158,43 @@ if ($_SESSION["UserRoll"] != "Admin") {
 </div>
 
 <?php
-    $dbServername = "localhost";
-    $dbUsername = "root";
-    $dbPassword ="";
-    $dbName = "sewana";
-  
-    $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die("Connection Failed.");
-  
-    if(isset($_POST['save'])) 
-    {
-      $name = $_POST['name'];
-      $address = $_POST['address'];
-      $email = $_POST['email'];
-      $phone = $_POST['phone'];
-      $brn = $_POST['branchNo'];
-      $type = $_POST['type'];
-      $checkBox =$_POST['checkBox'];
+$dbServername = "localhost";
+$dbUsername = "root";
+$dbPassword = "";
+$dbName = "sewana";
 
-      $quaery1 = "INSERT INTO `owner` (`owner_ID`, `address`, `name`, `email`, `contact_number`, `branch_no`, `owner_type`) VALUES (NULL, '$address', '$name', '$email', '$phone', '$brn', '$type')";
-      mysqli_query($conn,$quaery1);
-      $selectQ = "SELECT MAX(owner_ID) FROM owner";
-      $result = mysqli_query($conn,$selectQ);
-      $row= mysqli_fetch_assoc($result);
-      $owner_ID = $row[("MAX(owner_ID)")];
-      $check ;
+$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die("Connection Failed.");
 
-      if($type == "Person")
-      {
-        $query2 ="INSERT INTO `person` (`NIC`, `owner_ID`) VALUES ('$checkBox', '$owner_ID')";
-        $check=mysqli_query($conn,$query2);
-      }
-      else
-      {
-        $query2 ="INSERT INTO `company` (`company_ID`, `owner_ID`) VALUES ('$checkBox', '$owner_ID')";
-        $check=mysqli_query($conn,$query2);
-      }
+if (isset($_POST['save'])) {
+    $name = $_POST['name'];
+    $address = $_POST['address'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $brn = $_POST['branchNo'];
+    $type = $_POST['type'];
+    $checkBox = $_POST['checkBox'];
 
-    if($check)
-    {
-      echo "New record created successfully.";
+    $quaery1 = "INSERT INTO `owner` (`owner_ID`, `address`, `name`, `email`, `contact_number`, `branch_no`, `owner_type`) VALUES (NULL, '$address', '$name', '$email', '$phone', '$brn', '$type')";
+    mysqli_query($conn, $quaery1);
+    $selectQ = "SELECT MAX(owner_ID) FROM owner";
+    $result = mysqli_query($conn, $selectQ);
+    $row = mysqli_fetch_assoc($result);
+    $owner_ID = $row[("MAX(owner_ID)")];
+    $check;
+
+    if ($type == "Person") {
+        $query2 = "INSERT INTO `person` (`NIC`, `owner_ID`) VALUES ('$checkBox', '$owner_ID')";
+        $check = mysqli_query($conn, $query2);
+    } else {
+        $query2 = "INSERT INTO `company` (`company_ID`, `owner_ID`) VALUES ('$checkBox', '$owner_ID')";
+        $check = mysqli_query($conn, $query2);
     }
-    else
-    {
-      echo "Error:<br>" ,$query1.mysqli_error($conn),"<br>",$query2.mysqli_error($conn);
+
+    if ($check) {
+        echo "New record created successfully.";
+    } else {
+        echo "Error:<br>", $query1 . mysqli_error($conn), "<br>", $query2 . mysqli_error($conn);
     }
     mysqli_close($conn);
-    }
+}
 ?>
