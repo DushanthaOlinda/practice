@@ -44,27 +44,66 @@ if ($_SESSION["UserRoll"] != "Admin") {
 
 
     .frm {
-        border: solid gray 1px;
-        width: 100%;
+        align-content: center;
+        max-width: 700px;
+        width: 80%;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 25px 30px;
         border-radius: 5px;
-        background: rgb(0, 0, 0, 0.5);
+        color: white;
+        font-weight: bolder;
+
+    }
+
+    .frm .title {
+        font-size: 25px;
+        position: relative;
+    }
+
+    .frm .title::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 30px;
+        background: linear-gradient(135deg, #71b7e6. #9b59b6);
+    }
+
+    .frm form .user-details {
         display: flex;
-        padding: 50px;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 
-    .frm div {
-        padding-left: 5%;
-    }
-
-    .btn-o {
-        background-color: lightgreen;
+    form .user-details .input-box {
+        margin-bottom: 15px;
+        width: calc(100%/2-20px);
     }
 
 
-    @media (max-width:1180px) {
+    .user-details .input-box input:focus,
+    .user-details .input-box input:valid {
+        border: #9b59b6;
+    }
+
+    @media (max-width:584px) {
         .frm {
-            display: flex;
-            flex-direction: column;
+            max-width: 100%;
+        }
+
+        form .user-details .input-box {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .frm form .user-details {
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+
+        .user-details::-webkit-scrollbar {
+            width: 0;
         }
 
     }
@@ -80,28 +119,62 @@ if ($_SESSION["UserRoll"] != "Admin") {
     </div>
 </nav>
 
-<div class="frm">
+<div class="frm m-auto">
+    <div class="title">Insert Newspaper</div>
+    <form action="#" method="POST">
+        <div class="user-details"></div>
+        <div class="input-box">
+            <span class="newspaper">Newspaper Name</span>
+            <input type="text" id="newspaper" name="newspaper" required><br><br>
+        </div>
+        <div class="input-box">
+            <span class="email">Email</span>
+            <input type="email" id="email" name="email"  required><br><br>
+        </div>
+        <div class="input-box">
+            <span class="address">Address</span>
+            <input type="text" id="address" name="address" equired><br><br>
+        </div>
+        <div class="input-box">
+            <span class="phone">Contact Number</span>
+            <label for="phone"></label><input type="tel" id="phone" name="phone" placeholder="0112345678" pattern="[0-9]{10}" required>
+            <small>Format: 0112345678</small><br><br>
+        </div>
+        <div class="btn btn-primary w-100">
+            <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
+        </div>
+    </form>
+</div>
+
+<!-- <div class="frm">
     <form action="#" method="POST">
         <p>
-            <label>Date:</label>
-            <input type="date" id="date" name="date" required>
-        </p>
-
-        <p>
-            <label>Newspaper Name: </label>
+            <label>Newpaper Name: </label>
             <input type="text" id="newspaper" name="newspaper" required>
         </p>
 
         <p>
-            <label>Property Number:</label>
-            <input type="number" id="propertyNumber" name="propertyNumber" required>
+            <label>Email:</label>
+            <input type="email" id="email" name="email" required>
         </p>
-        <br>
+
+        <p>
+            <label>Address: </label>
+            <input type="address" id="address" name="address" required>
+        </p>
+
+        <p>
+            <label>Contact Number: </label>
+            <input type="tel" id="phone" name="phone" placeholder="0112345678" pattern="[0-9]{10}" required>
+            <small>Format: 0112345678</small>
+        </p>
+      <br>
         <p>
             <input type="submit" id="btn" name="save" value="Submit">
         </p>
     </form>
-</div>
+</div> -->
+
 
 <?php
   $dbServername = "localhost";
@@ -113,20 +186,22 @@ if ($_SESSION["UserRoll"] != "Admin") {
 
   if(isset($_POST['save']))
   {
-    $date = $_POST['date'];
     $newspaper = $_POST['newspaper'];
-    $propertyNumber = $_POST['propertyNumber'];
+    $email = $_POST['email'];
+    $address = $_POST['address'];
+    $phone = $_POST['phone'];
 
-    $sql= " INSERT INTO `advertised` (`advertisement_ID`, `date`, `newspaper_name`, `property_number`) VALUES (NULL, '$date', '$newspaper', '$propertyNumber')";
+    $sql= " INSERT INTO `advertisement` (`newspaper_name`, `Email`, `address`, `contact_number`) VALUES ('$newspaper', '$email', '$address', '$phone')";
 
     if(mysqli_query($conn,$sql))
-     {
-       echo "New record created successfully.";
-     }
-     else
-     {
-       echo "Error:<br>" ,$sql.mysqli_error($conn);
-     }
-     mysqli_close($conn);
+    {
+      echo "New record created successfully.<br>";
+      echo $sql;
+    }
+    else
+    {
+      echo "Error:<br>" ,$sql.mysqli_error($conn);
+    }
+    mysqli_close($conn);
   }
-  ?>
+?>
