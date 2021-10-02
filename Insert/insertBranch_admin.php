@@ -45,7 +45,6 @@ if ($_SESSION["UserRoll"] != "Admin") {
 
     .frm {
         align-content: center;
-        /*padding-left: 50px;*/
         max-width: 700px;
         width: 80%;
         background: rgba(0, 0, 0, 0.5);
@@ -58,7 +57,6 @@ if ($_SESSION["UserRoll"] != "Admin") {
 
     .frm .title {
         font-size: 25px;
-        font-width: 500;
         position: relative;
     }
 
@@ -83,10 +81,6 @@ if ($_SESSION["UserRoll"] != "Admin") {
         width: calc(100%/2-20px);
     }
 
-    form .user-details .input-box .name {
-        display: block;
-        margin-bottom: 5px;
-    }
 
     .user-details .input-box input:focus,
     .user-details .input-box input:valid {
@@ -129,33 +123,28 @@ if ($_SESSION["UserRoll"] != "Admin") {
     <div class="title">Insert Branch</div>
     <form action="#" method="POST">
         <div class="user-details"></div>
+        <div class="input-box">
+            <span class="phone">Contact Number</span>
+            <label for="phone"></label><input type="tel" id="phone" name="phone" placeholder="0112345678" pattern="[0-9]{10}" required>
+            <small>Format: 0112345678</small><br><br>
+        </div>
+        <div class="input-box">
+            <span class="address">Address</span>
+            <input type="text" id="address" name="address" equired><br><br>
+        </div>
+        <div class="input-box">
+            <span class="email">Email</span>
+            <input type="email" id="email" name="email"  required><br><br>
+        </div>
+        <div class="input-box">
+            <span class="district">District</span>
+            <input type="text" id="district" name="district" required><br><br>
+        </div>
+        <div class="btn btn-primary w-100">
+            <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
+        </div>
     </form>
 </div>
-
-<!--<div class="frm">-->
-<!--  <form action="#" method="POST">-->
-<!--    <p>-->
-<!--      <label>Contact Number:</label>-->
-<!--      <input type="tel" id="phone" name="phone" placeholder="0112345678" pattern="[0-9]{10}" required>-->
-<!--      <small>Format: 0112345678</small>-->
-<!--    </p>-->
-<!--    <p>-->
-<!--      <label>Address:</label>-->
-<!--      <input type="text" id="address" name="address" required>-->
-<!--    </p>-->
-<!--    <p>-->
-<!--      <label>Email:</label>-->
-<!--      <input type="email" id="email" name="email" required>-->
-<!--    </p>-->
-<!--    <p>-->
-<!--      <label>District:</label>-->
-<!--      <input type="text" id="district" name="district" required>-->
-<!--    </p>-->
-<!--    <p>-->
-<!--      <input type="submit" id="btn" name="save" value="Submit">-->
-<!--    </p>-->
-<!--  </form>-->
-<!--</div>-->
 
 <?php
 $dbServername = "localhost";
@@ -174,7 +163,8 @@ if (isset($_POST['save'])) {
   $sql = "INSERT INTO `branch` (`branch_no`, `contact_number`, `address`, `email`, `district`) VALUES (NULL, '$phone', '$address', '$email', '$district')";
 
   if (mysqli_query($conn, $sql)) {
-    echo "New record created successfully.";
+    echo "New record created successfully.<br>";
+    echo $sql;
   } else {
     echo "Error:<br>", $sql . mysqli_error($conn);
   }
