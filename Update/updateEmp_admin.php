@@ -157,13 +157,13 @@ if ($_SESSION["UserRoll"] != "Admin") {
         </div><br>
 
         <div class="input-box">
-         <span class="type">Employee Type:</span>
+         <span class="type">Employee Type:</span><br>
         <input type="radio" id="manager" name="type" value="S2M" onclick="ShowHideDiv()" required>
-      <label for="manager">Supervisor --> Manager</label>
+      <label for="manager">Supervisor --> Manager</label><br>
       <input type="radio" id="supervisor" name="type" value="A2S" onclick="ShowHideDiv()" required>
-      <label for="supervisor">Assistant --> Supervisor</label>
+      <label for="supervisor">Assistant --> Supervisor</label><br>
       <input type="radio" id="assistant" name="type" value="NO" onclick="ShowHideDiv()" required>
-      <label for="assistant">No promotion</label>
+      <label for="assistant">No promotion</label><br>
       <div id="dvMan">
        <label id="MSA_cont"></label>
       <input type="text" id="checkBox" name="checkBox" required>
