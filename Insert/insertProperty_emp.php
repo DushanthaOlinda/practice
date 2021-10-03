@@ -44,27 +44,77 @@ if ($_SESSION["UserRoll"] != "employee") {
 
 
     .frm {
+        align-content: center;
+        max-width: 700px;
+        width: 80%;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 25px 30px;
+        border-radius: 5px;
+        color: white;
+        font-weight: bolder;
+
+    }
+
+    .frm .title {
+        font-size: 25px;
+        position: relative;
+    }
+
+    .frm .title::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 30px;
+        background: linear-gradient(135deg, #71b7e6. #9b59b6);
+    }
+
+    .frm form .user-details {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    form .user-details .input-box {
+        margin-bottom: 15px;
+        width: calc(100%/2-20px);
+    }
+
+
+    .user-details .input-box input:focus,
+    .user-details .input-box input:valid {
+        border: #9b59b6;
+    }
+    .sql {
         border: solid gray 1px;
         width: 100%;
         border-radius: 5px;
-        background: rgb(0, 0, 0, 0.5);
+        background: rgb(0, 0, 0, 0.75);
         display: flex;
         padding: 50px;
+        color: white;
+        font-weight: bold;
+        font-size: 25px;
     }
 
-    .frm div {
-        padding-left: 5%;
-    }
-
-    .btn-o {
-        background-color: lightgreen;
-    }
-
-
-    @media (max-width:1180px) {
+    @media (max-width:584px) {
         .frm {
-            display: flex;
-            flex-direction: column;
+            max-width: 100%;
+        }
+
+        form .user-details .input-box {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .frm form .user-details {
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+
+        .user-details::-webkit-scrollbar {
+            width: 0;
         }
 
     }
@@ -80,7 +130,46 @@ if ($_SESSION["UserRoll"] != "employee") {
     </div>
 </nav>
 
-<div class="frm">
+<div class="frm m-auto">
+    <div class="title">Insert Property</div>
+    <form action="#" method="POST">
+        <div class="user-details">
+    <div class="input-box">
+            <span class="address">Address</span>
+            <input type="text" id="address" name="address" equired><br><br>
+        </div>
+        <div class="input-box">
+            <span class="rooms">Number of Rooms</span>
+            <input type="number" id="rooms" name="rooms"  required><br><br>
+        </div>
+        <div class="input-box">
+                <span class="rental">Proposed Rental(Rs:)</span>
+                <input type="number" id="rental" name="rental" required><br><br>
+        </div>
+        <div class="input-box">
+                <span class="type">Type</span>
+                <input type="text" id="type" name="type" required><br><br>
+        </div>
+        <div class="input-box">
+                <span class="ownerid">Owner ID</span>
+                <input type="number" id="ownerid" name="ownerid" required><br><br>
+        </div>
+        <div class="input-box">
+                <span class="branchNo">Branch Number</span>
+                <input type="number" id="branchNo" name="branchNo" required><br><br>
+        </div>
+        <div class="input-box">
+                <span class="clientnumber">Client Number</span>
+                <input type="number" id="clientnumber" name="clientnumber" required><br><br>
+        </div>
+        <div class="btn btn-primary w-100">
+            <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
+        </div>
+        </div>
+    </form>
+</div>
+
+<!-- <div class="frm">
     <form action="#" method="POST">
         <p>
             <label>Address:</label>
@@ -121,7 +210,7 @@ if ($_SESSION["UserRoll"] != "employee") {
             <input type="submit" id="btn" name="save" value="Submit">
         </p>
     </form>
-</div>
+</div> -->
 
 <?php
   $dbServername = "localhost";
@@ -142,10 +231,14 @@ if ($_SESSION["UserRoll"] != "employee") {
      $branchNo = $_POST['branchNo'];
 
     $sql=" INSERT INTO `property` (`property_number`, `address`, `number_of_rooms`, `proposed_rental`, `type`, `owner_ID`, `client_number`, `branch_no`) VALUES (NULL, '$address', '$rooms', '$rental', '$type', $ownerid, $clientnumber, $branchNo)";
-    
+    ?>
+<div class="sql">
+    <?php
     if(mysqli_query($conn,$sql))
      {
        echo "New record created successfully.";
+       echo "<br>";
+       echo $sql;
      }
      else
      {
@@ -154,3 +247,4 @@ if ($_SESSION["UserRoll"] != "employee") {
      mysqli_close($conn);
     }
 ?>
+</div>
