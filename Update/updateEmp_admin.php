@@ -122,76 +122,74 @@ if ($_SESSION["UserRoll"] != "Admin") {
 <script type="text/javascript">
     window.onload = function()
     {
-      document.getElementById("dvMan").style.visibility = "hidden";
+        document.getElementById("dvMan").style.visibility = "hidden";
     }
-    function ShowHideDiv() 
+    function ShowHideDiv()
     {
         var chkMan = document.getElementById("manager");
         var chkSup = document.getElementById("supervisor");
         var dvLbl = document.getElementById("dvMan");
         if(chkMan.checked || chkSup.checked)
         {
-          document.getElementById("MSA_cont").innerHTML = "Apointed date";
-          document.getElementById("checkBox").setAttribute("type","date");
-          dvLbl.style.visibility = "visible";
+            document.getElementById("MSA_cont").innerHTML = "Apointed date";
+            document.getElementById("checkBox").setAttribute("type","date");
+            dvLbl.style.visibility = "visible";
         }
         else
         {
-          dvLbl.style.visibility = "hidden";
+            dvLbl.style.visibility = "hidden";
         }
     }
 </script>
 
-<div class="frm m-auto">
+<div class ="frm m-auto">
     <div class="title">Update Employee</div>
-    <form action="#" method="POST">
-        <div class="user-details"></div>
-        <div class="input-box">
-            <label>Enter the employee number you want to update: </label>
-            <input type="text" id="emp_ID" name="emp_ID">
-        </div><br>
-
-        <div class="input-box">
-          <span class="number">Salary(Rs.): </span>
-          <input type="number" id="salary" name="salary" required> 
-        </div><br>
-
-        <div class="input-box">
-         <span class="type">Employee Type:</span><br>
-        <input type="radio" id="manager" name="type" value="S2M" onclick="ShowHideDiv()" required>
-      <label for="manager">Supervisor --> Manager</label><br>
-      <input type="radio" id="supervisor" name="type" value="A2S" onclick="ShowHideDiv()" required>
-      <label for="supervisor">Assistant --> Supervisor</label><br>
-      <input type="radio" id="assistant" name="type" value="NO" onclick="ShowHideDiv()" required>
-      <label for="assistant">No promotion</label><br>
-      <div id="dvMan">
-       <label id="MSA_cont"></label>
-      <input type="text" id="checkBox" name="checkBox" required>
-      </div><br>
-    </div>
-
-      <div class="input-box">
-        <span class="number">Branch Number: </span> 
-        <input type="number" id="number" name="branchNo" required>
-      </div><br>
-
-      <div class="btn btn-primary w-100">
-            <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
+    <form action = "#" method="POST">
+        <div class="user-details">
+            <div class="input-box">
+                <span class="emp_ID">Enter the Employee number you want to update</span>
+                <input type="number" id="emp_ID" name="emp_ID" required>
+            </div>
+            <div class="input-box">
+                <span class="salary">Salary(Rs:)</span>
+                <input type="number" id="salary" name="salary" required>
+            </div>
+            <div class="input-box">
+                <span class="branchNo">Branch Number</span>
+                <input type="number" id="branchNo" name="branchNo" required>
+            </div>
+            <div class="input-box">
+                <span class="type">Employee Type</span><br>
+                <input type="radio" id="manager" name="type" value="S2M" onclick="ShowHideDiv()" required>
+                <label for="manager">Supervisor --> Manager</label><br>
+                <input type="radio" id="supervisor" name="type" value="A2S" onclick="ShowHideDiv()" required>
+                <label for="supervisor">Assistant --> Supervisor</label><br>
+                <input type="radio" id="assistant" name="type" value="NO" onclick="ShowHideDiv()" required>
+                <label for="assistant">No promotion</label><br>
+                <div id="dvMan">
+                    <label id="MSA_cont"></label>
+                    <input type="text" id="checkBox" name="checkBox" >
+                </div><br>
+            </div>
+            <div class="btn btn-primary w-100">
+                <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
+            </div>
         </div>
     </form>
-</div>      
+</div>
+
 
 <?php
-  $dbServername = "localhost";
-  $dbUsername = "root";
-  $dbPassword ="";
-  $dbName = "sewana";
+$dbServername = "localhost";
+$dbUsername = "root";
+$dbPassword ="";
+$dbName = "sewana";
 
-  $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die("Connection Failed.");
+$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die("Connection Failed.");
 
-  
-  if(isset($_POST['submit']))  
-  {
+
+if(isset($_POST['save']))
+{
     $emp_ID= $_POST['emp_ID'];
     $salary=$_POST['salary'];
     $type =$_POST['type'];
@@ -205,54 +203,53 @@ if ($_SESSION["UserRoll"] != "Admin") {
     $emp_type = $row1["emp_type"];
     if($emp_type == "Manager")
     {
-      $query2 = "UPDATE `employee` SET `salary`=$salary,`branch_no`='$brn' WHERE emp_ID=$emp_ID";
-      mysqli_query($conn,$query2);
+        $query2 = "UPDATE `employee` SET `salary`=$salary,`branch_no`='$brn' WHERE emp_ID=$emp_ID";
+        mysqli_query($conn,$query2);
     }
     else if($emp_type == "Supervisor")
     {
-      
-      echo "2";
-      if($type == "S2M")
-      {
-        echo"1";
-        $query2 = "UPDATE `employee` SET `salary` = '$salary', `emp_type` = 'Manager' WHERE `employee`.`emp_ID` = $emp_ID;";
-        $query2.= "DELETE FROM `supervisor` WHERE emp_ID=$emp_ID;";
-        $query2.= "INSERT INTO `manager`(`emp_ID`, `appointed_date`) VALUES ('$emp_ID','$promo')";
-        $check= mysqli_multi_query($conn,$query2);
-      }
-      else
-      {
-        $query2 = "UPDATE `employee` SET `salary`='$salary',`branch_no`='$brn', WHERE emp_ID='$emp_ID'";
-        $check = mysqli_query($conn,$query2);
-      }
+
+        echo "2";
+        if($type == "S2M")
+        {
+            echo"1";
+            $query2 = "UPDATE `employee` SET `salary` = '$salary', `emp_type` = 'Manager' WHERE `employee`.`emp_ID` = $emp_ID;";
+            $query2.= "DELETE FROM `supervisor` WHERE emp_ID=$emp_ID;";
+            $query2.= "INSERT INTO `manager`(`emp_ID`, `appointed_date`) VALUES ('$emp_ID','$promo')";
+            $check= mysqli_multi_query($conn,$query2);
+        }
+        else
+        {
+            $query2 = "UPDATE `employee` SET `salary`='$salary',`branch_no`='$brn', WHERE emp_ID='$emp_ID'";
+            $check = mysqli_query($conn,$query2);
+        }
     }
     else if($emp_type == "Assistant")
     {
-      
-      if($type == "A2S")
-      {
-        $query2 = "UPDATE `employee` SET `salary` = '$salary', `emp_type` = 'Supervisor' WHERE `employee`.`emp_ID` = $emp_ID;";
-        $query2.= "DELETE FROM `assistant` WHERE 'emp_ID'='$emp_ID';";
-        $query2.= "INSERT INTO `supervisor`(`emp_ID`, `appointed_date`) VALUES ('$emp_ID','$promo');";
-        $check= mysqli_multi_query($conn,$query2);
-      }
-      else
-      {
-        $query2 = "UPDATE `employee` SET `salary`='$salary',`branch_no`='$brn', WHERE emp_ID='$emp_ID'";
-        $check = mysqli_query($conn,$query2);
-      }
+
+        if($type == "A2S")
+        {
+            $query2 = "UPDATE `employee` SET `salary` = '$salary', `emp_type` = 'Supervisor' WHERE `employee`.`emp_ID` = $emp_ID;";
+            $query2.= "DELETE FROM `assistant` WHERE 'emp_ID'='$emp_ID';";
+            $query2.= "INSERT INTO `supervisor`(`emp_ID`, `appointed_date`) VALUES ('$emp_ID','$promo');";
+            $check= mysqli_multi_query($conn,$query2);
+        }
+        else
+        {
+            $query2 = "UPDATE `employee` SET `salary`='$salary',`branch_no`='$brn', WHERE emp_ID='$emp_ID'";
+            $check = mysqli_query($conn,$query2);
+        }
     }
 
     if($check)
     {
-      echo "Record Updated successfully.<br>";
-      echo $query1;
-      echo $query2;
+        echo "Record Updated successfully.<br>";
+        echo $query1 ,"<br>", $query2;
     }
     else
     {
-      echo "Error:<br>" ,$query1.mysqli_error($conn),"<br>",$query2.mysqli_error($conn);
+        echo "Error:<br>" ,$query1.mysqli_error($conn),"<br>",$query2.mysqli_error($conn);
     }
     mysqli_close($conn);
-  } 
+}
 ?>
