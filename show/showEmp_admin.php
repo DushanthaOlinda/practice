@@ -127,8 +127,9 @@ else {
         <?php
         while ($row = mysqli_fetch_array($records))
         {
-
-            ?>
+    echo '<pre>';
+           print_r($row); ?>
+    </pre>
             <tr>
                 <td><?php echo $row['emp_ID']; ?></td>
                 <td><?php echo $row['gender']; ?></td>
@@ -145,29 +146,22 @@ else {
                     } else if ($row['emp_type'] == "Supervisor") {
                         echo $row['appointed_date'];
                     } else {
-                        if(isset($row['supervisor_number'])) {
+//                        if(isset($row['supervisor_number'])) {
                             echo $row['supervisor_number'];
-                        }else{
-                            echo ' ';
-                        }
+//                        }else{
+//                            echo ' ';
+//                        }
                     }?>
                 </td>
                 <td><?php
                     if ($row['emp_type'] == "Manager") {
                         echo $row['manager_number'];
                     } else if ($row['emp_type'] == "Supervisor") {
-                        if(isset($row['supervisor_number'])) {
                             echo $row['supervisor_number'];
-                        }else{
-                            echo ' ';
-                        }
                     } else {
-                        if(isset($row['assistant_no'])) {
                             echo $row['assistant_no'];
-                        }else{
-                            echo '';
                         }
-                    }
+
                     ?>
                 </td>
             </tr>
