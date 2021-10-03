@@ -138,7 +138,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
         </div><br>
        
         <div class="btn btn-primary w-100">
-            <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
+            <input type="submit" class="text-white btn " id="btn" name="save" value="Update">
         </div>
     </form>
 </div>

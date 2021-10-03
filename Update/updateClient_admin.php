@@ -112,7 +112,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
 <nav class="navbar navbar-light bg-transparent">
     <div class="container-fluid">
         <img src="../assets/img/logo.png" alt="" width="100" height="100" class="d-inline-block align-text-top">
-        <h2 class="text-dark"> Sewana Property ( Admin) </h2>
+        <h2 class="text-dark"> Sewana Property (Admin) </h2>
         <form class="d-flex">
             <button type="button" class="d-block btn btn-primary m-3 w-100 p-4 "><a class="text-decoration-none text-white" href="../admin.php">Go back</a></button>
         </form>
@@ -139,7 +139,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
         </div><br>
 
         <div class="btn btn-primary w-100">
-            <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
+            <input type="submit" class="text-white btn " id="btn" name="save" value="Update">
         </div>
     </form>
 </div>
@@ -164,7 +164,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
     if(mysqli_query($conn,$sql1))
     {
       echo "Record updated successfully.<br>";
-      echo $query;
+      echo $sql1;
     }
     else
     {

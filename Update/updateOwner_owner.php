@@ -33,7 +33,6 @@ if ($_SESSION["UserRoll"] != "owner") {
 }
 ?>
 
-
 <style>
     body {
         background-image: url('../assets/img/cp.png');
@@ -44,27 +43,66 @@ if ($_SESSION["UserRoll"] != "owner") {
 
 
     .frm {
-        border: solid gray 1px;
-        width: 100%;
+        align-content: center;
+        max-width: 700px;
+        width: 80%;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 25px 30px;
         border-radius: 5px;
-        background: rgb(0, 0, 0, 0.5);
+        color: white;
+        font-weight: bolder;
+
+    }
+
+    .frm .title {
+        font-size: 25px;
+        position: relative;
+    }
+
+    .frm .title::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 30px;
+        background: linear-gradient(135deg, #71b7e6. #9b59b6);
+    }
+
+    .frm form .user-details {
         display: flex;
-        padding: 50px;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 
-    .frm div {
-        padding-left: 5%;
-    }
-
-    .btn-o {
-        background-color: lightgreen;
+    form .user-details .input-box {
+        margin-bottom: 15px;
+        width: calc(100%/2-20px);
     }
 
 
-    @media (max-width:1180px) {
+    .user-details .input-box input:focus,
+    .user-details .input-box input:valid {
+        border: #9b59b6;
+    }
+
+    @media (max-width:584px) {
         .frm {
-            display: flex;
-            flex-direction: column;
+            max-width: 100%;
+        }
+
+        form .user-details .input-box {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .frm form .user-details {
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+
+        .user-details::-webkit-scrollbar {
+            width: 0;
         }
 
     }
@@ -73,35 +111,42 @@ if ($_SESSION["UserRoll"] != "owner") {
 <nav class="navbar navbar-light bg-transparent">
     <div class="container-fluid">
         <img src="../assets/img/logo.png" alt="" width="100" height="100" class="d-inline-block align-text-top">
-        <h2 class="text-dark"> Sewana Property ( Admin) </h2>
+        <h2 class="text-dark"> Sewana Property (Owner) </h2>
         <form class="d-flex">
             <button type="button" class="d-block btn btn-primary m-3 w-100 p-4 "><a class="text-decoration-none text-white" href="../owner.php">Go back</a></button>
         </form>
     </div>
 </nav>
 
-<div class="frm">
+<div class="frm m-auto">
+    <div class="title">Update Owner</div>
     <form action="#" method="POST">
-        <p>
-            <label>Enter the owner number:</label>
-            <input type="number" id="ownerID" name="ownerID">
-        </p>
-        <p>
-            <label>Address:</label>
-            <input type="text" id="address" name="address" required>
-        </p>
-        <p>
-            <label>Email:</label>
-            <input type="email" id="email" name="email" required>
-        </p>
-        <p>
-            <label>Contact Number:</label>
-            <input type="tel" id="phone" name="phone" placeholder="0112345678" pattern="[0-9]{10}" required>
-            <small>Format: 0112345678</small>
-        </p>
-        <p>
-            <input type="submit" id="btn" name="save" value="Submit">
-        </p>
+        <div class="user-details"></div>
+        <div class="input-box">
+            <span class="number">Owner ID: </span>
+            <input type="number" id="number" name="ownerID" required></input>
+        </div><br>
+
+        <div class="input-box">
+            <span class="naddress">Address: </span>
+            <input type="text" id="address" name="address" required></input>
+        </div><br>
+
+        <div class="input-box">
+            <span class="email">Email: </span>
+            <input type="email" id="email" name="email" required></input>
+        </div><br>
+
+        <div class="input-box">
+            <span class="phone">Contact Number</span>
+            <label for="phone"></label><input type="tel" id="phone" name="phone" placeholder="0112345678" pattern="[0-9]{10}" required>
+            <small>Format: 0112345678</small><br><br>
+        </div><br>
+
+        <div class="btn btn-primary w-100">
+            <input type="submit" class="text-white btn " id="btn" name="save" value="Update">
+        </div>
+
     </form>
 </div>
 

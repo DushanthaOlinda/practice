@@ -118,7 +118,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
 <nav class="navbar navbar-light bg-transparent">
     <div class="container-fluid">
         <img src="../assets/img/logo.png" alt="" width="100" height="100" class="d-inline-block align-text-top">
-        <h2 class="text-dark"> Sewana Property ( Admin) </h2>
+        <h2 class="text-dark"> Sewana Property (Admin) </h2>
         <form class="d-flex">
             <button type="button" class="d-block btn btn-primary m-3 w-100 p-4 "><a class="text-decoration-none text-white" href="../admin.php">Go back</a></button>
         </form>
@@ -171,7 +171,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
       $visitedDate = $_POST['visitedDate'];
       $comment = $_POST['comment'];
 
-      $sql= " INSERT INTO `visit` (`property_number`, `client_number`, `visited_date`, `comment`) VALUES ('$propertynumber', '$clientnumber', '$visitedDate', '$comment')";
+      $sql= " INSERT INTO `visit` (`property_number`, `client_number`, `date`, `comment`) VALUES ('$propertynumber', '$clientnumber', '$visitedDate', '$comment')";
 
       if(mysqli_query($conn,$sql))
      {
