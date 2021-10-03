@@ -123,7 +123,7 @@ if (mysqli_num_rows($records) > 0) {
             <tr>
                 <td><?php echo $row['advertisement_ID']; ?></td>
                 <td><?php echo $row['date']; ?></td>
-                <td><?php echo $row['newspaper_name ']; ?></td>
+                <td><?php echo $row['newspaper_name']; ?></td>
                 <td><?php echo $row['property_number']; ?></td>
             </tr>
 
