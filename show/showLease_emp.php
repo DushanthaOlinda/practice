@@ -87,7 +87,7 @@ if ($_SESSION["UserRoll"] != "employee") {
         <h2 class="text-dark"> Sewana Property ( Employee) </h2>
         <form class="d-flex">
             <button type="button" class="d-block btn btn-primary m-3 w-100 p-4 "><a
-                        class="text-decoration-none text-white" href="../admin.php">Go back</a></button>
+                        class="text-decoration-none text-white" href="../emp.php">Go back</a></button>
         </form>
     </div>
 </nav>
