@@ -47,7 +47,7 @@ if ($_SESSION["UserRoll"] != "employee") {
         border: solid gray 1px;
         width: 100%;
         border-radius: 5px;
-        background: rgb(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.5);
         display: flex;
         padding: 50px;
     }
@@ -130,6 +130,9 @@ if ($_SESSION["UserRoll"] != "employee") {
         <form action="./show/showEmp_emp.php" method="POST">
             <input type="submit" class="btn  btn-o" id="btn" value="Show Employee" name="show_emp">
         </form><br>
+        <form action="./show/showBranch_emp.php" method="POST">
+            <input type="submit" class="btn  btn-o" id="btn" value="Show Branch" name="show_emp">
+        </form><br>
         <form action="./show/showOwner_emp.php" method="POST">
             <input type="submit" class="btn  btn-o" id="btn" value="Show Owner" name="show_owner">
         </form><br>
@@ -150,6 +153,9 @@ if ($_SESSION["UserRoll"] != "employee") {
         </form><br>
         <form action="./show/showPropertyRequirement_emp.php" method="POST">
             <input type="submit" class="btn  btn-o" id="btn" value="Show Property Requirement" name="show_requirement">
+        </form><br>
+        <form action="./show/showLease_emp.php" method="POST">
+            <input type="submit" class="btn  btn-o" id="btn" value="Show Lease" name="show_lease">
         </form>
     </div>
     <div>

@@ -30,7 +30,7 @@ session_start();
 if (!isset($_SESSION["UserRoll"])) {
     header("location:header.php");
 }
-if ($_SESSION["UserRoll"] != "employee") {
+if ($_SESSION["UserRoll"] != "Admin") {
     header("location:header.php");
 }
 ?>
@@ -49,7 +49,7 @@ if ($_SESSION["UserRoll"] != "employee") {
         border: solid gray 1px;
         width: 100%;
         border-radius: 5px;
-        background: rgb(0, 0, 0, 0.75);
+        background: rgba(0, 0, 0, 0.75);
         display: flex;
         padding: 10%;
     }
@@ -63,7 +63,7 @@ if ($_SESSION["UserRoll"] != "employee") {
         border: solid gray 1px;
         width: 100%;
         border-radius: 5px;
-        background: rgb(0, 0, 0, 0.75);
+        background: rgba(0, 0, 0, 0.75);
         display: flex;
         padding: 50px;
         color: white;
@@ -84,24 +84,23 @@ if ($_SESSION["UserRoll"] != "employee") {
 <nav class="navbar navbar-light bg-transparent">
     <div class="container-fluid">
         <img src="../assets/img/logo.png" alt="" width="100" height="100" class="d-inline-block align-text-top">
-        <h2 class="text-dark"> Sewana Property ( Employee) </h2>
+        <h2 class="text-dark"> Sewana Property ( Admin) </h2>
         <form class="d-flex">
             <button type="button" class="d-block btn btn-primary m-3 w-100 p-4 "><a
-                        class="text-decoration-none text-white" href="../emp.php">Go back</a></button>
+                        class="text-decoration-none text-white" href="../admin.php">Go back</a></button>
         </form>
     </div>
 </nav>
 
-
 <?php
 
 $servername = "localhost";
-$username = "emp";
-$password = "emp";
+$username = "root";
+$password = "";
 $dbname = "sewana";
 $conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection Failed.");
 
-$quary = "  SELECT * FROM `branch` ";
+$quary = "  SELECT * FROM `lease` ";
 $records = mysqli_query($conn, $quary);
 if (mysqli_num_rows($records) > 0) {
 } else {
@@ -110,24 +109,28 @@ if (mysqli_num_rows($records) > 0) {
 ?>
 <div class="table-responsive">
     <table class="table-dark table-striped table-hover table-bordered border-light">
-        <caption class="table-dark w-100">Branch Details</caption>
+        <caption class="table-dark w-100">Client Details</caption>
         <thead>
-        <th>Branch Number</th>
-        <th>Contact Number</th>
-        <th>Address</th>
-        <th>Email</th>
-        <th>District</th>
+        <th>Client Number </th>
+        <th>Property Number </th>
+        <th>Employee ID </th>
+        <th>Monthly Rent(Rs.)</th>
+        <th>Payment Method(Rs.)</th>
+        <th>Started Date</th>
+        <th>Finished Date</th>
         </thead>
         <?php
         while ($row = mysqli_fetch_array($records)) {
 
             ?>
             <tr>
-                <td><?php echo $row['branch_no']; ?></td>
-                <td><?php echo $row['contact_number']; ?></td>
-                <td><?php echo $row['address']; ?></td>
-                <td><?php echo $row['email']; ?></td>
-                <td><?php echo $row['district']; ?></td>
+                <td><?php echo $row['client_number']; ?></td>
+                <td><?php echo $row['property_number']; ?></td>
+                <td><?php echo $row['emp_ID']; ?></td>
+                <td><?php echo $row['monthly_rent']; ?></td>
+                <td><?php echo $row['payment_method']; ?></td>
+                <td><?php echo $row['started_date']; ?></td>
+                <td><?php echo $row['finished_date']; ?></td>
             </tr>
 
             <?php

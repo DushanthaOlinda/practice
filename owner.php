@@ -115,6 +115,9 @@ if ($_SESSION["UserRoll"] != "owner") {
         </form><br>
         <form action="./show/showPropertyRequirement_owner.php" method="POST">
             <input type="submit" class="btn  btn-o" id="btn" value="Show Property Requirement" name="show_requirement">
+        </form><br>
+        <form action="./show/showLease_owner.php" method="POST">
+            <input type="submit" class="btn  btn-o" id="btn" value="Show Lease" name="show_lease">
         </form>
     </div>
     <div>
