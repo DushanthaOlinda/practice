@@ -154,10 +154,16 @@ if ($_SESSION["UserRoll"] != "Admin") {
             <input type="number" id="number" name="rental" required></input>
         </div><br> 
 
-        <div class="input-box">
-                <span class="paymentmethod">Payment Method</span>
-                <input type="text" id="paymentmethod" name="paymentmethod" required><br><br>
-            </div> <br>
+            <div class="payement-method">
+                <div class="input-box">
+                    <span class="type">Payment Method</span>
+                    <input type="radio" id="credit card" name="paymentmethod" value="Credit Card" onclick="ShowHideDiv()" required>
+                    <label for="person">Credit Card</label>
+                    <input type="radio" id="cheque" name="paymentmethod" value="Cheque" onclick="ShowHideDiv()" required>
+                    <label for="company">Cheque</label>
+                    <input type="radio" id="cash" name="paymentmethod" value="Cash" onclick="ShowHideDiv()" required>
+                    <label for="company">Cash</label>
+                </div><br>
 
         <div class="input-box">
             <span class="date">Start Date:  </span>
