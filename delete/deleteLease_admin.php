@@ -15,8 +15,7 @@
     <link rel="stylesheet" href="../assets/css/Features-Boxed.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/css/theme.bootstrap_4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/css/theme.bootstrap_4.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
     <link rel="stylesheet" href="../assets/css/Login-Form-Dark.css">
     <link rel="stylesheet" href="../assets/css/Ludens---1-Index-Table-with-Search--Sort-Filters-v20.css">
@@ -24,7 +23,6 @@
     <link rel="stylesheet" href="../assets/css/Ludens---3-Edit.css">
     <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
-<body>
 <?php
 session_start();
 if (!isset($_SESSION["UserRoll"])) {
@@ -45,25 +43,24 @@ if ($_SESSION["UserRoll"] != "Admin") {
     }
 
 
-    .table-responsive {
+    .frm {
         border: solid gray 1px;
-        width: 100%;
+        width: 50%;
+        color: white;
         border-radius: 5px;
-        background: rgba(0, 0, 0, 0.75);
+        background: rgb(0, 0, 0, 0.5);
         display: flex;
-        padding: 10%;
+        padding: 50px;
     }
 
-    .table div {
-        color: white;
+    .frm div {
         padding-left: 5%;
     }
 
-    .sql {
+    .sql{
         border: solid gray 1px;
-        width: 100%;
-        border-radius: 5px;
-        background: rgba(0, 0, 0, 0.75);
+        width: 100%;border-radius: 5px;
+        background : rgb(0, 0, 0, 0.75);
         display: flex;
         padding: 50px;
         color: white;
@@ -72,8 +69,9 @@ if ($_SESSION["UserRoll"] != "Admin") {
     }
 
 
-    @media (max-width: 1180px) {
-        .table-responsive {
+
+    @media (max-width:1180px) {
+        .frm {
             display: flex;
             flex-direction: column;
         }
@@ -86,58 +84,49 @@ if ($_SESSION["UserRoll"] != "Admin") {
         <img src="../assets/img/logo.png" alt="" width="100" height="100" class="d-inline-block align-text-top">
         <h2 class="text-dark"> Sewana Property ( Admin) </h2>
         <form class="d-flex">
-            <button type="button" class="d-block btn btn-primary m-3 w-100 p-4 "><a
-                        class="text-decoration-none text-white" href="../admin.php">Go back</a></button>
+            <button type="button" class="d-block btn btn-primary m-3 w-100 p-4 "><a class="text-decoration-none text-white" href="../admin.php">Go back</a></button>
         </form>
     </div>
 </nav>
 
+<div class="frm form-control m-auto align-items-center">
+    <form action="#" method="POST" class="m-auto">
+            <label class="text-white">Client Number: </label><br>
+            <input type="number" class="form-text" id="client_number" name="client_number" required><br><br>
+
+        <input type="submit" class=" btn btn-primary w-100" id="btn" name="save" value="Submit">
+    </form>
+</div>
+
 <?php
+  $dbServername = "localhost";
+  $dbUsername = "root";
+  $dbPassword ="";
+  $dbName = "sewana";
+  
+  $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die("Connection Failed.");
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sewana";
-$conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection Failed.");
+  if(isset($_POST['save']))  
+  {
+    $client_number= $_POST['client_number'];
 
-$quary = "  SELECT * FROM `advertised` ";
-$records = mysqli_query($conn, $quary);
-if (mysqli_num_rows($records) > 0) {
-} else {
-    $msg = "No Record found";
-}
-?>
-<div class="table-responsive">
-    <table class="table-dark table-striped table-hover table-bordered border-light">
-        <caption class="table-dark w-100">Employee Details</caption>
-        <thead>
-        <th>Advertisement ID</th>
-        <th>Advertised date</th>
-        <th>Newspaper Name</th>
-        <th>Property Number</th>
-        </thead>
-        <?php
-        while ($row = mysqli_fetch_array($records)) {
+    $query= "DELETE FROM `lease` WHERE `client_number`=$client_number";
+    $check=mysqli_query($conn,$query);
 
-            ?>
-            <tr>
-                <td><?php echo $row['advertisement_ID']; ?></td>
-                <td><?php echo $row['date']; ?></td>
-                <td><?php echo $row['newspaper_name']; ?></td>
-                <td><?php echo $row['property_number']; ?></td>
-            </tr>
-
-            <?php
-        }
+    if($check)
+    {
         ?>
-    </table>
-</div>
-
-</div>
 <div class="sql">
     <?php
-    echo "Sql statement:-<br>", $quary;
+      echo "Record Deleted successfully.<br>";
+      echo $query;
+    }
+    else
+    {
+      echo "Error:<br>" ,$query.mysqli_error($conn);
+    }
     mysqli_close($conn);
-    ?>
+
+  }
+  ?>
 </div>
-</body>

@@ -179,6 +179,9 @@ if ($_SESSION["UserRoll"] != "Admin") {
         </form><br>
         <form action="./delete/deleteClient_admin.php" method="POST">
             <input type="submit" class="btn  btn-o" id="btn" value="Delete Client" name="Delete_client">
+        </form><br>
+        <form action="./delete/deleteLease_admin.php" method="POST">
+            <input type="submit" class="btn  btn-o" id="btn" value="Delete Lease" name="Delete_Lease">
         </form>
     </div>
 </div>
