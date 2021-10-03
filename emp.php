@@ -104,6 +104,9 @@ if ($_SESSION["UserRoll"] != "employee") {
         </form><br>
         <form action="./Insert/insertVisit_emp.php" method="POST">
             <input type="submit"  class="btn  btn-o" id="btn" value="Insert Visit" name="Insert_visit">
+        </form><br>
+        <form action="./Insert/insertLease_emp.php" method="POST">
+            <input type="submit"  class="btn  btn-o" id="btn" value="Insert Lease" name="Insert_Lease">
         </form>
     </div>
     <div>

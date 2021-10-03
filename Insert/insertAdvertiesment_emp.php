@@ -44,27 +44,77 @@ if ($_SESSION["UserRoll"] != "employee") {
 
 
     .frm {
-        border: solid gray 1px;
-        width: 100%;
+        align-content: center;
+        max-width: 700px;
+        width: 80%;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 25px 30px;
         border-radius: 5px;
-        background: rgb(0, 0, 0, 0.5);
+        color: white;
+        font-weight: bolder;
+
+    }
+
+    .frm .title {
+        font-size: 25px;
+        position: relative;
+    }
+
+    .frm .title::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 30px;
+        background: linear-gradient(135deg, #71b7e6. #9b59b6);
+    }
+
+    .frm form .user-details {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    form .user-details .input-box {
+        margin-bottom: 15px;
+        width: calc(100%/2-20px);
+    }
+
+
+    .user-details .input-box input:focus,
+    .user-details .input-box input:valid {
+        border: #9b59b6;
+    }
+
+    .sql{
+        border: solid gray 1px;
+        width: 100%;border-radius: 5px;
+        background : rgb(0, 0, 0, 0.75);
         display: flex;
         padding: 50px;
+        color: white;
+        font-weight: bold;
+        font-size: 25px;
     }
 
-    .frm div {
-        padding-left: 5%;
-    }
-
-    .btn-o {
-        background-color: lightgreen;
-    }
-
-
-    @media (max-width:1180px) {
+    @media (max-width:584px) {
         .frm {
-            display: flex;
-            flex-direction: column;
+            max-width: 100%;
+        }
+
+        form .user-details .input-box {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .frm form .user-details {
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+
+        .user-details::-webkit-scrollbar {
+            width: 0;
         }
 
     }
@@ -80,34 +130,26 @@ if ($_SESSION["UserRoll"] != "employee") {
     </div>
 </nav>
 
-
-
-<div class="frm">
+<div class="frm m-auto">
+    <div class="title">Insert Adverstisement</div>
     <form action="#" method="POST">
-        <p>
-            <label>Newpaper Name: </label>
-            <input  type="text" id="newspaper" name="newspaper" required>
-        </p>
-
-        <p>
-            <label for="inputEmail4" class="form-label">Email:</label>
-            <input type="email" id="email" name="email" required>
-        </p>
-
-        <p>
-            <label>Address: </label>
-            <input type="address" id="address" name="address" required>
-        </p>
-
-        <p>
-            <label>Contact Number: </label>
-            <input type="tel" id="phone" name="phone" placeholder="0112345678" pattern="[0-9]{10}" required>
-            <small>Format: 0112345678</small>
-        </p>
-      <br>
-        <p>
-            <input type="submit" id="btn" name="save" value="Submit">
-        </p>
+        <div class="user-details">
+        <div class="input-box">
+            <span class="date">Date</span>
+            <input type="date" id="date" name="date"  required><br><br>
+        </div>
+        <div class="input-box">
+            <span class="newspaper">Newspaper Name</span>
+            <input type="text" id="newspaper" name="newspaper" required><br><br>
+        </div>
+        <div class="input-box">
+            <span class="propertyNumber">Property Number</span>
+            <input type="number" id="propertyNumber" name="propertyNumber" equired><br><br>
+        </div>
+        <div class="btn btn-primary w-100">
+            <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
+        </div>
+        </div>
     </form>
 </div>
 
@@ -121,21 +163,24 @@ if ($_SESSION["UserRoll"] != "employee") {
 
   if(isset($_POST['save']))
   {
+    $date = $_POST['date'];
     $newspaper = $_POST['newspaper'];
-    $email = $_POST['email'];
-    $address = $_POST['address'];
-    $phone = $_POST['phone'];
+    $propertyNumber = $_POST['propertyNumber'];
 
-    $sql= " INSERT INTO `advertisement` (`newspaper_name`, `Email`, `address`, `contact_number`) VALUES ('$newspaper', '$email', '$address', '$phone')";
-
-    if(mysqli_query($conn,$sql))
-    {
-      echo "New record created successfully.";
-    }
-    else
-    {
-      echo "Error:<br>" ,$sql.mysqli_error($conn);
-    }
-    mysqli_close($conn);
-  }
+    $sql= " INSERT INTO `advertised` (`advertisement_ID`, `date`, `newspaper_name`, `property_number`) VALUES (NULL, '$date', '$newspaper', '$propertyNumber')";
 ?>
+<div class="sql">
+    <?php
+     if(mysqli_query($conn,$sql))
+     {
+       echo "New record created successfully.<br>";
+       echo $sql;
+     }
+     else
+     {
+       echo "Error:<br>" ,$sql.mysqli_error($conn);
+     }
+     mysqli_close($conn);
+  }
+  ?>
+</div>

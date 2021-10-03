@@ -44,27 +44,77 @@ if ($_SESSION["UserRoll"] != "client") {
 
 
     .frm {
+        align-content: center;
+        max-width: 700px;
+        width: 80%;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 25px 30px;
+        border-radius: 5px;
+        color: white;
+        font-weight: bolder;
+
+    }
+
+    .frm .title {
+        font-size: 25px;
+        position: relative;
+    }
+
+    .frm .title::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 30px;
+        background: linear-gradient(135deg, #71b7e6. #9b59b6);
+    }
+
+    .frm form .user-details {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    form .user-details .input-box {
+        margin-bottom: 15px;
+        width: calc(100%/2-20px);
+    }
+
+
+    .user-details .input-box input:focus,
+    .user-details .input-box input:valid {
+        border: #9b59b6;
+    }
+    .sql {
         border: solid gray 1px;
         width: 100%;
         border-radius: 5px;
-        background: rgb(0, 0, 0, 0.5);
+        background: rgb(0, 0, 0, 0.75);
         display: flex;
         padding: 50px;
+        color: white;
+        font-weight: bold;
+        font-size: 25px;
     }
 
-    .frm div {
-        padding-left: 5%;
-    }
-
-    .btn-o {
-        background-color: lightgreen;
-    }
-
-
-    @media (max-width:1180px) {
+    @media (max-width:584px) {
         .frm {
-            display: flex;
-            flex-direction: column;
+            max-width: 100%;
+        }
+
+        form .user-details .input-box {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .frm form .user-details {
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+
+        .user-details::-webkit-scrollbar {
+            width: 0;
         }
 
     }
@@ -73,49 +123,49 @@ if ($_SESSION["UserRoll"] != "client") {
 <nav class="navbar navbar-light bg-transparent">
     <div class="container-fluid">
         <img src="../assets/img/logo.png" alt="" width="100" height="100" class="d-inline-block align-text-top">
-        <h2 class="text-dark"> Sewana Property ( Admin) </h2>
+        <h2 class="text-dark"> Sewana Property ( Client) </h2>
         <form class="d-flex">
             <button type="button" class="d-block btn btn-primary m-3 w-100 p-4 "><a class="text-decoration-none text-white" href="../client.php">Go back</a></button>
         </form>
     </div>
 </nav>
 
-<div class="frm">
+<div class="frm m-auto">
+    <div class="title">Insert Client</div>
     <form action="#" method="POST">
-        <p>
-            <label>Email: </label>
-            <input type="email" id="email" name="email" required>
-        </p>
-
-        <p>
-            <label>Full Name: </label>
-            <input type="text" id="fullname" name="fullname" required>
-        </p>
-
-        <p>
-            <label>NIC: </label>
-            <input type="text" id="nic" name="nic" required>
-        </p>
-
-        <p>
-            <label>Branch No: </label>
-            <input type="number" id="branchNo" name="branchNo" required>
-        </p>
-        <p>
-            <label>Maximum Rent</label>
-            <input type="number" id="rent" name="rent" required>
-        </p>
-        <p>
-            <label>Type of Property</label>
-            <input type="text" id="type" name="type" required>
-        </p>
-        <p>
-            <label>Date Willing to Rent</label>
-            <input type="date" id="date" name="date" required>
-        </p>
-        <p>
-            <input type="submit" id="btn" name="save" value="Submit">
-        </p>
+        <div class="user-details">
+        <div class="input-box">
+            <span class="email">Email</span>
+            <input type="email" id="email" name="email"  required><br><br>
+        </div>
+        <div class="input-box">
+                <span class="fullname">Name</span>
+                <input type="text" id="fullname" name="fullname" required><br><br>
+        </div>
+        <div class="input-box">
+                <span class="nic">NIC</span>
+                <input type="text" id="nic" name="nic" required><br><br>
+        </div>
+        <div class="input-box">
+                <span class="branchNo">Branch Number</span>
+                <input type="number" id="branchNo" name="branchNo" required><br><br>
+        </div>
+        <div class="input-box">
+                <span class="rent">Maximum Rent(Rs:)</span>
+                <input type="number" id="rent" name="rent" required><br><br>
+        </div>
+        <div class="input-box">
+                <span class="type">Type of Property</span>
+                <input type="text" id="type" name="type" required><br><br>
+        </div>
+        <div class="input-box">
+                <span class="date">Date Willing to Rent</span>
+                <input type="date" id="date" name="date" value="date" required><br><br>
+            </div>
+        <div class="btn btn-primary w-100">
+            <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
+        </div>
+        </div>
     </form>
 </div>
 
@@ -136,7 +186,7 @@ if ($_SESSION["UserRoll"] != "client") {
     $rent = $_POST['rent'];
     $type = $_POST['type'];
     $date = $_POST['date'];
-    $check ;
+    $check = false ;
 
     $sql1 = "INSERT INTO `client` (`client_number`, `Email`, `full_name`, `NIC`, `branch_no`) VALUES (NULL, '$email', '$fullname', '$nic', '$branchNo');";
     mysqli_query($conn,$sql1);
@@ -146,16 +196,22 @@ if ($_SESSION["UserRoll"] != "client") {
     $client_no = $row[("MAX(client_number)")];
     $sql2= "INSERT INTO `property_requirement`(`client_number`, `maximum_rental`, `type_of_property`, `date_willing_to_rent`) VALUES ('$client_no','$rent','$type','$date')";
     $check=mysqli_query($conn,$sql2);
-
+?>
+<div class="sql">
+    <?php
     if($check)
     {
-      echo "New record created successfully.<br>";
-      echo $query;
+      echo "New record created successfully.";
+      echo "<br>";
+      echo $sql1;
+      echo "<br>";
+      echo $sql2;
     }
     else
     {
-      echo "Error:<br>" ,$sql2.mysqli_error($conn);
+      echo "Error:<br>" ,$sql1.mysqli_error($conn),"<br>",$sql2.mysqli_error($conn);
     }
     mysqli_close($conn);
   }
   ?>
+</div>
