@@ -33,7 +33,6 @@ if ($_SESSION["UserRoll"] != "Admin") {
 }
 ?>
 
-
 <style>
     body {
         background-image: url('../assets/img/cp.png');
@@ -44,27 +43,66 @@ if ($_SESSION["UserRoll"] != "Admin") {
 
 
     .frm {
-        border: solid gray 1px;
-        width: 100%;
+        align-content: center;
+        max-width: 700px;
+        width: 80%;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 25px 30px;
         border-radius: 5px;
-        background: rgb(0, 0, 0, 0.5);
+        color: white;
+        font-weight: bolder;
+
+    }
+
+    .frm .title {
+        font-size: 25px;
+        position: relative;
+    }
+
+    .frm .title::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 30px;
+        background: linear-gradient(135deg, #71b7e6. #9b59b6);
+    }
+
+    .frm form .user-details {
         display: flex;
-        padding: 50px;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 
-    .frm div {
-        padding-left: 5%;
-    }
-
-    .btn-o {
-        background-color: lightgreen;
+    form .user-details .input-box {
+        margin-bottom: 15px;
+        width: calc(100%/2-20px);
     }
 
 
-    @media (max-width:1180px) {
+    .user-details .input-box input:focus,
+    .user-details .input-box input:valid {
+        border: #9b59b6;
+    }
+
+    @media (max-width:584px) {
         .frm {
-            display: flex;
-            flex-direction: column;
+            max-width: 100%;
+        }
+
+        form .user-details .input-box {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .frm form .user-details {
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+
+        .user-details::-webkit-scrollbar {
+            width: 0;
         }
 
     }
@@ -80,27 +118,30 @@ if ($_SESSION["UserRoll"] != "Admin") {
     </div>
 </nav>
 
-<div class="frm">
+<div class="frm m-auto">
+    <div class="title">Update Property</div>
     <form action="#" method="POST">
-        <p>
-            <label>Enter the Property number:</label>
-            <input type="number" id="propNo" name="propNo">
-        </p>
-        <p>
-            <label>Number of rooms:</label>
-            <input type="number" id="rof" name="rof" required>
-        </p>
-        <p>
-            <label>proposed rent:</label>
-            <input type="number" id="propRent" name="propRent" required>
-        </p>
-        <p>
-            <input type="submit" id="btn" name="save" value="Submit">
-        </p>
+        <div class="user-details"></div>
+        <div class="input-box">
+           <span class="number">Enter the Property Number: </span>
+            <input type="number" id="property_number" name="propNo" required>
+        </div><br>
+
+        <div class="input-box">
+            <span class="number">Number of rooms: </span>
+            <input type="number" id="rooms" name="rof" required>
+        </div><br>
+
+        <div class="input-box">
+            <span class="number">Property Rent: </span>
+            <input type="number" id="rent" name="propRent" required>
+        </div><br>
+       
+        <div class="btn btn-primary w-100">
+            <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
+        </div>
     </form>
 </div>
-
-
 
 <?php
       $dbServername = "localhost";
@@ -121,7 +162,8 @@ if ($_SESSION["UserRoll"] != "Admin") {
           
         if($check)
         {
-        echo "Record Updated successfully.";
+        echo "Record Updated successfully.<br>";
+        echo $query1;
         }
         else
         {

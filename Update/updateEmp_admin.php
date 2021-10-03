@@ -44,27 +44,66 @@ if ($_SESSION["UserRoll"] != "Admin") {
 
 
     .frm {
-        border: solid gray 1px;
-        width: 100%;
+        align-content: center;
+        max-width: 700px;
+        width: 80%;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 25px 30px;
         border-radius: 5px;
-        background: rgb(0, 0, 0, 0.5);
+        color: white;
+        font-weight: bolder;
+
+    }
+
+    .frm .title {
+        font-size: 25px;
+        position: relative;
+    }
+
+    .frm .title::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 30px;
+        background: linear-gradient(135deg, #71b7e6. #9b59b6);
+    }
+
+    .frm form .user-details {
         display: flex;
-        padding: 50px;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 
-    .frm div {
-        padding-left: 5%;
-    }
-
-    .btn-o {
-        background-color: lightgreen;
+    form .user-details .input-box {
+        margin-bottom: 15px;
+        width: calc(100%/2-20px);
     }
 
 
-    @media (max-width:1180px) {
+    .user-details .input-box input:focus,
+    .user-details .input-box input:valid {
+        border: #9b59b6;
+    }
+
+    @media (max-width:584px) {
         .frm {
-            display: flex;
-            flex-direction: column;
+            max-width: 100%;
+        }
+
+        form .user-details .input-box {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .frm form .user-details {
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+
+        .user-details::-webkit-scrollbar {
+            width: 0;
         }
 
     }
@@ -103,39 +142,43 @@ if ($_SESSION["UserRoll"] != "Admin") {
     }
 </script>
 
-<div class ="frm">
-  <form action = "#" method="POST">
-    <p>
-      <label>Enter the Employee number you want to update:</label>
-      <input type="text" id="emp_ID" name="emp_ID">
-    </p>
-   <p>
-     <label>Salary(Rs.):</label>
-     <input type="number" id="salary" name="salary" >
-   </p>
-   <p>
-         <label>Employee Type:</label>
-      <input type="radio" id="manager" name="type" value="S2M" onclick="ShowHideDiv()" required>
-      <label for="manager">Supervisor --> Manager</label>
+<div class="frm m-auto">
+    <div class="title">Update Employee</div>
+    <form action="#" method="POST">
+        <div class="user-details"></div>
+        <div class="input-box">
+            <label>Enter the employee number you want to update: </label>
+            <input type="text" id="emp_ID" name="emp_ID">
+        </div><br>
+
+        <div class="input-box">
+            <span class="salary">Salary(Rs:)</span>
+            <input type="number" id="salary" name="salary" required>
+        </div><br>
+
+        <div class="input-box">
+            <span class="branchNo">Branch Number</span>
+            <input type="number" id="branchNo" name="branchNo" required>
+        </div><br>
+
+        <div class="input-box">
+         <span class="type">Employee Type:</span><br>
+        <input type="radio" id="manager" name="type" value="S2M" onclick="ShowHideDiv()" required>
+      <label for="manager">Supervisor --> Manager</label><br>
       <input type="radio" id="supervisor" name="type" value="A2S" onclick="ShowHideDiv()" required>
-      <label for="supervisor">Assistant --> Supervisor</label>
+      <label for="supervisor">Assistant --> Supervisor</label><br>
       <input type="radio" id="assistant" name="type" value="NO" onclick="ShowHideDiv()" required>
-      <label for="assistant">No promotion</label>
+      <label for="assistant">No promotion</label><br>
       <div id="dvMan">
        <label id="MSA_cont"></label>
-      <input type="text" id="checkBox" name="checkBox" >
+      <input type="text" id="checkBox" name="checkBox" required>
       </div><br>
-   </p>
-   <p>
-     <label>Branch Number</label>
-     <input type="text" id="branchNo" name="branchNo">
-   </p>
-   <p>
-      <input type="submit" id="btn" name="submit" value="Submit">
-   </p>
-  </form> 
-</div>
-
+    </div>
+      <div class="btn btn-primary w-100">
+            <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
+        </div>
+    </form>
+</div>      
 
 <?php
   $dbServername = "localhost";
@@ -146,7 +189,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
   $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die("Connection Failed.");
 
   
-  if(isset($_POST['submit']))  
+  if(isset($_POST['save']))
   {
     $emp_ID= $_POST['emp_ID'];
     $salary=$_POST['salary'];
@@ -201,7 +244,9 @@ if ($_SESSION["UserRoll"] != "Admin") {
 
     if($check)
     {
-      echo "Record Updated successfully.";
+      echo "Record Updated successfully.<br>";
+      echo $query1;
+      echo $query2;
     }
     else
     {

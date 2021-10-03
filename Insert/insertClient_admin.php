@@ -44,27 +44,66 @@ if ($_SESSION["UserRoll"] != "Admin") {
 
 
     .frm {
-        border: solid gray 1px;
-        width: 100%;
+        align-content: center;
+        max-width: 700px;
+        width: 80%;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 25px 30px;
         border-radius: 5px;
-        background: rgb(0, 0, 0, 0.5);
+        color: white;
+        font-weight: bolder;
+
+    }
+
+    .frm .title {
+        font-size: 25px;
+        position: relative;
+    }
+
+    .frm .title::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 30px;
+        background: linear-gradient(135deg, #71b7e6. #9b59b6);
+    }
+
+    .frm form .user-details {
         display: flex;
-        padding: 50px;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 
-    .frm div {
-        padding-left: 5%;
-    }
-
-    .btn-o {
-        background-color: lightgreen;
+    form .user-details .input-box {
+        margin-bottom: 15px;
+        width: calc(100%/2-20px);
     }
 
 
-    @media (max-width:1180px) {
+    .user-details .input-box input:focus,
+    .user-details .input-box input:valid {
+        border: #9b59b6;
+    }
+
+    @media (max-width:584px) {
         .frm {
-            display: flex;
-            flex-direction: column;
+            max-width: 100%;
+        }
+
+        form .user-details .input-box {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .frm form .user-details {
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+
+        .user-details::-webkit-scrollbar {
+            width: 0;
         }
 
     }
@@ -80,42 +119,40 @@ if ($_SESSION["UserRoll"] != "Admin") {
     </div>
 </nav>
 
-<div class="frm">
+<div class="frm m-auto">
+    <div class="title">Insert Client</div>
     <form action="#" method="POST">
-        <p>
-            <label>Email: </label>
-            <input type="email" id="email" name="email" required>
-        </p>
-
-        <p>
-            <label>Full Name: </label>
-            <input type="text" id="fullname" name="fullname" required>
-        </p>
-
-        <p>
-            <label>NIC: </label>
-            <input type="text" id="nic" name="nic" required>
-        </p>
-
-        <p>
-            <label>Branch No: </label>
-            <input type="number" id="branchNo" name="branchNo" required>
-        </p>
-        <p>
-            <label>Maximum Rent</label>
-            <input type="number" id="rent" name="rent" required>
-        </p>
-        <p>
-            <label>Type of Property</label>
-            <input type="text" id="type" name="type" required>
-        </p>
-        <p>
-            <label>Date Willing to Rent</label>
-            <input type="date" id="date" name="date" required>
-        </p>
-        <p>
-            <input type="submit" id="btn" name="save" value="Submit">
-        </p>
+        <div class="input-box">
+            <span class="email">Email</span>
+            <input type="email" id="email" name="email"  required><br><br>
+        </div>
+        <div class="input-box">
+                <span class="fullname">Name</span>
+                <input type="text" id="fullname" name="fullname" required><br><br>
+        </div>
+        <div class="input-box">
+                <span class="nic">NIC</span>
+                <input type="text" id="nic" name="nic" required><br><br>
+        </div>
+        <div class="input-box">
+                <span class="branchNo">Branch Number</span>
+                <input type="number" id="branchNo" name="branchNo" required><br><br>
+        </div>
+        <div class="input-box">
+                <span class="rent">Maximum Rent(Rs:)</span>
+                <input type="number" id="rent" name="rent" required><br><br>
+        </div>
+        <div class="input-box">
+                <span class="type">Type of Property</span>
+                <input type="text" id="type" name="type" required><br><br>
+        </div>
+        <div class="input-box">
+                <span class="date">Date Willing to Rent</span>
+                <input type="date" id="date" name="date" value="date" required><br><br>
+            </div>
+        <div class="btn btn-primary w-100">
+            <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
+        </div>
     </form>
 </div>
 
@@ -150,6 +187,10 @@ if ($_SESSION["UserRoll"] != "Admin") {
     if($check)
     {
       echo "New record created successfully.";
+      echo "<br>";
+      echo $sql1;
+      echo "<br>";
+      echo $sql2;
     }
     else
     {
