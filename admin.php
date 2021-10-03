@@ -134,6 +134,11 @@ if ($_SESSION["UserRoll"] != "Admin") {
         </form><br>
         <form action="./Update/updateClient_admin.php" method="POST">
             <input type="submit" class="btn  btn-o" id="btn" value="Update Client" name="Update_client">
+        </form><br>
+        <form action="./Update/updateLease_admin.php" method="POST">
+            <input type="submit" class="btn  btn-o" id="btn" value="Update Lease" name="Update_lease">
+        </form><br>
+
         </form>
     </div>
     <div>

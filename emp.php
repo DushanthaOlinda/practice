@@ -119,7 +119,11 @@ if ($_SESSION["UserRoll"] != "employee") {
         </form><br>
         <form action="./Update/updateClient_emp.php" method="POST">
             <input type="submit" class="btn  btn-o" id="btn" value="Update Client" name="Update_client">
-        </form>
+        </form><br>
+        <form action="./Update/updateLease_emp.php" method="POST">
+            <input type="submit" class="btn  btn-o" id="btn" value="Update Lease" name="Update_lease">
+        </form><br>
+
     </div>
     <div>
         <h2 align="center" style="background-color: blanchedalmond;color:brown"><b><u>Show Options</u></b></h2>
