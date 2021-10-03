@@ -86,6 +86,17 @@ if ($_SESSION["UserRoll"] != "Admin") {
     .user-details .input-box input:valid {
         border: #9b59b6;
     }
+    .sql {
+        border: solid gray 1px;
+        width: 100%;
+        border-radius: 5px;
+        background: rgb(0, 0, 0, 0.75);
+        display: flex;
+        padding: 50px;
+        color: white;
+        font-weight: bold;
+        font-size: 25px;
+    }
 
     @media (max-width:584px) {
         .frm {
@@ -122,6 +133,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
 <div class="frm m-auto">
     <div class="title">Insert Client</div>
     <form action="#" method="POST">
+        <div class="user-details">
         <div class="input-box">
             <span class="email">Email</span>
             <input type="email" id="email" name="email"  required><br><br>
@@ -153,6 +165,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
         <div class="btn btn-primary w-100">
             <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
         </div>
+        </div>
     </form>
 </div>
 
@@ -173,7 +186,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
     $rent = $_POST['rent'];
     $type = $_POST['type'];
     $date = $_POST['date'];
-    $check ;
+    $check = false ;
 
     $sql1 = "INSERT INTO `client` (`client_number`, `Email`, `full_name`, `NIC`, `branch_no`) VALUES (NULL, '$email', '$fullname', '$nic', '$branchNo');";
     mysqli_query($conn,$sql1);
@@ -183,7 +196,9 @@ if ($_SESSION["UserRoll"] != "Admin") {
     $client_no = $row[("MAX(client_number)")];
     $sql2= "INSERT INTO `property_requirement`(`client_number`, `maximum_rental`, `type_of_property`, `date_willing_to_rent`) VALUES ('$client_no','$rent','$type','$date')";
     $check=mysqli_query($conn,$sql2);
-
+?>
+<div class="sql">
+    <?php
     if($check)
     {
       echo "New record created successfully.";
@@ -194,8 +209,9 @@ if ($_SESSION["UserRoll"] != "Admin") {
     }
     else
     {
-      echo "Error:<br>" ,$sql.mysqli_error($conn);
+      echo "Error:<br>" ,$sql1.mysqli_error($conn),"<br>",$sql2.mysqli_error($conn);
     }
     mysqli_close($conn);
   }
   ?>
+</div>

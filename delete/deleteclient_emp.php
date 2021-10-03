@@ -57,7 +57,16 @@ if ($_SESSION["UserRoll"] != "employee") {
         padding-left: 5%;
     }
 
-
+    .sql{
+        border: solid gray 1px;
+        width: 100%;border-radius: 5px;
+        background : rgb(0, 0, 0, 0.75);
+        display: flex;
+        padding: 50px;
+        color: white;
+        font-weight: bold;
+        font-size: 25px;
+    }
 
 
     @media (max-width:1180px) {
@@ -104,6 +113,9 @@ if ($_SESSION["UserRoll"] != "employee") {
     $query= "DELETE FROM `client` WHERE client_number=$client_number";
     $check=mysqli_query($conn,$query);
 
+?>
+<div class="sql">
+    <?php
     if($check)
     {
         echo "Record Deleted successfully.<br>";
@@ -111,9 +123,11 @@ if ($_SESSION["UserRoll"] != "employee") {
     }
     else
     {
-      echo "Error:<br>" ,$query.mysqli_error($conn);
+        echo "Error:<br>" ,$query.mysqli_error($conn);
+
     }
     mysqli_close($conn);
 
-  }
-  ?>
+    }
+    ?>
+</div>

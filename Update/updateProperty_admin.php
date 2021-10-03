@@ -86,6 +86,18 @@ if ($_SESSION["UserRoll"] != "Admin") {
         border: #9b59b6;
     }
 
+    .sql {
+        border: solid gray 1px;
+        width: 100%;
+        border-radius: 5px;
+        background: rgb(0, 0, 0, 0.75);
+        display: flex;
+        padding: 50px;
+        color: white;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
     @media (max-width:584px) {
         .frm {
             max-width: 100%;
@@ -159,7 +171,9 @@ if ($_SESSION["UserRoll"] != "Admin") {
 
         $query1 = "UPDATE `property` SET `number_of_rooms`=$rof,`proposed_rental`=$propRent WHERE property_number=$propNo";
         $check = mysqli_query($conn,$query1);
-          
+        ?>
+<div class="sql">
+    <?php
         if($check)
         {
         echo "Record Updated successfully.<br>";
@@ -172,3 +186,4 @@ if ($_SESSION["UserRoll"] != "Admin") {
         mysqli_close($conn);
       }
 ?>
+</div>

@@ -77,7 +77,19 @@ if ($_SESSION["UserRoll"] != "employee") {
 
     form .user-details .input-box {
         margin-bottom: 15px;
-        width: calc(100%/2-20px);
+        width: calc(100% / 2 - 20px);
+    }
+
+    .sql {
+        border: solid gray 1px;
+        width: 100%;
+        border-radius: 5px;
+        background: rgb(0, 0, 0, 0.75);
+        display: flex;
+        padding: 50px;
+        color: white;
+        font-weight: bold;
+        font-size: 25px;
     }
 
 
@@ -86,7 +98,7 @@ if ($_SESSION["UserRoll"] != "employee") {
         border: #9b59b6;
     }
 
-    @media (max-width:584px) {
+    @media (max-width: 584px) {
         .frm {
             max-width: 100%;
         }
@@ -113,7 +125,8 @@ if ($_SESSION["UserRoll"] != "employee") {
         <img src="../assets/img/logo.png" alt="" width="100" height="100" class="d-inline-block align-text-top">
         <h2 class="text-dark"> Sewana Property (Employee) </h2>
         <form class="d-flex">
-            <button type="button" class="d-block btn btn-primary m-3 w-100 p-4 "><a class="text-decoration-none text-white" href="../emp.php">Go back</a></button>
+            <button type="button" class="d-block btn btn-primary m-3 w-100 p-4 "><a
+                        class="text-decoration-none text-white" href="../emp.php">Go back</a></button>
         </form>
     </div>
 </nav>
@@ -121,24 +134,28 @@ if ($_SESSION["UserRoll"] != "employee") {
 <div class="frm m-auto">
     <div class="title">Update Property</div>
     <form action="#" method="POST">
-        <div class="user-details"></div>
-        <div class="input-box">
-           <span class="number">Enter the Property Number: </span>
-            <input type="number" id="property_number" name="propNo" required>
-        </div><br>
+        <div class="user-details">
+            <div class="input-box">
+                <span class="number">Enter the Property Number: </span>
+                <input type="number" id="property_number" name="propNo" required>
+            </div>
+            <br>
 
-        <div class="input-box">
-            <span class="number">Number of rooms: </span>
-            <input type="number" id="rooms" name="rof" required>
-        </div><br>
+            <div class="input-box">
+                <span class="number">Number of rooms: </span>
+                <input type="number" id="rooms" name="rof" required>
+            </div>
+            <br>
 
-        <div class="input-box">
-            <span class="number">Property Rent: </span>
-            <input type="number" id="rent" name="propRent" required>
-        </div><br>
-       
-        <div class="btn btn-primary w-100">
-            <input type="submit" class="text-white btn " id="btn" name="save" value="Update">
+            <div class="input-box">
+                <span class="number">Property Rent: </span>
+                <input type="number" id="rent" name="propRent" required>
+            </div>
+            <br>
+
+            <div class="btn btn-primary w-100">
+                <input type="submit" class="text-white btn " id="btn" name="save" value="Update">
+            </div>
         </div>
     </form>
 </div>
@@ -151,24 +168,24 @@ if ($_SESSION["UserRoll"] != "employee") {
     
       $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die("Connection Failed.");
 
-      if(isset($_POST['save'])) 
-      {
-        $propNo =$_POST['propNo'];
-        $rof =$_POST['rof'];
-        $propRent = $_POST['propRent'];
+      if(isset($_POST['save']))
+{
+$propNo = $_POST['propNo'];
+$rof = $_POST['rof'];
+$propRent = $_POST['propRent'];
 
-        $query1 = "UPDATE `property` SET `number_of_rooms`=$rof,`proposed_rental`=$propRent WHERE property_number=$propNo";
-        $check = mysqli_query($conn,$query1);
-          
-        if($check)
-        {
+$query1 = "UPDATE `property` SET `number_of_rooms`=$rof,`proposed_rental`=$propRent WHERE property_number=$propNo";
+$check = mysqli_query($conn, $query1);
+?>
+<div class="sql">
+    <?php
+    if ($check) {
         echo "Record Updated successfully.<br>";
         echo $query1;
-        }
-        else
-        {
-        echo "Error:<br>" ,$query1.mysqli_error($conn);
-        }
-        mysqli_close($conn);
+    } else {
+        echo "Error:<br>", $query1 . mysqli_error($conn);
+    }
+    mysqli_close($conn);
       }
 ?>
+</div>

@@ -42,6 +42,42 @@ if ($_SESSION["UserRoll"] != "Admin") {
         background-attachment: fixed;
         background-size: 100% 100%;
     }
+
+
+    .table-responsive {
+        border: solid gray 1px;
+        width: 100%;
+        border-radius: 5px;
+        background: rgb(0, 0, 0, 0.75);
+        display: flex;
+        padding: 50px;
+    }
+
+    .table div {
+        color: white;
+        padding-left: 5%;
+    }
+
+    .sql{
+        border: solid gray 1px;
+        width: 100%;border-radius: 5px;
+        background : rgb(0, 0, 0, 0.75);
+        display: flex;
+        padding: 50px;
+        color: white;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+
+
+    @media (max-width:1180px) {
+        .table-responsive{
+            display: flex;
+            flex-direction: column;
+        }
+
+    }
 </style>
 
 <nav class="navbar navbar-light bg-transparent">
@@ -73,9 +109,10 @@ if (mysqli_num_rows($records) > 0){}
     $msg = "No Record found";
 }
 ?>
-
-<table>
-    <tr>
+<div class="table-responsive">
+<table class="table-dark table-striped table-hover table-bordered border-light">
+    <caption class="table-dark w-100" >Employee Details</caption>
+    <thead>
         <th>Employee ID</th>
         <th>Gender</th>
         <th>Name</th>
@@ -88,11 +125,12 @@ if (mysqli_num_rows($records) > 0){}
         <th>Branch Number</th>
         <th>Appointed Date/Supervisor Number(only for Assistants)</th>
         <th>Type ID</th>
-    </tr>
+    </thead>
     <?php
 while ($row = mysqli_fetch_array($records))
-?>
     {
+
+?>
         <tr>
             <td><?php echo $row['emp_ID']; ?></td>
             <td><?php echo $row['gender']; ?></td>
@@ -123,10 +161,15 @@ while ($row = mysqli_fetch_array($records))
             ?>
             </td>
         </tr>
-    }
-</table>
 <?php
+}?>
+</table>
+</div>
+<div class="sql">
+<?php
+echo "Sql statement:-<br>",$quary;
 mysqli_close($conn);
 ?>
+</div>
 </body>
 </html>

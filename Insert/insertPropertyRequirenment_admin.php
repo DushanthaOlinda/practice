@@ -86,6 +86,17 @@ if ($_SESSION["UserRoll"] != "Admin") {
     .user-details .input-box input:valid {
         border: #9b59b6;
     }
+    .sql {
+        border: solid gray 1px;
+        width: 100%;
+        border-radius: 5px;
+        background: rgb(0, 0, 0, 0.75);
+        display: flex;
+        padding: 50px;
+        color: white;
+        font-weight: bold;
+        font-size: 25px;
+    }
 
     @media (max-width:584px) {
         .frm {
@@ -122,6 +133,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
 <div class="frm m-auto">
     <div class="title">Insert Property Requirements</div>
     <form action="#" method="POST">
+        <div class="user-details">
         <div class="input-box">
                 <span class="client">Client Number</span>
                 <input type="number" id="client" name="client" required><br><br>
@@ -140,6 +152,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
             </div>
         <div class="btn btn-primary w-100">
             <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
+        </div>
         </div>
     </form>
 </div>
@@ -186,7 +199,9 @@ if ($_SESSION["UserRoll"] != "Admin") {
 
     $sql2= "INSERT INTO `property_requirement`(`client_number`, `maximum_rental`, `type_of_property`, `date_willing_to_rent`) VALUES ('$client','$rent','$type','$date')";
     $check=mysqli_query($conn,$sql2);
-
+?>
+<div class="sql">
+<?php
     if($check)
     {
       echo "New record added successfully.<br>";
@@ -199,3 +214,4 @@ if ($_SESSION["UserRoll"] != "Admin") {
     mysqli_close($conn);
   }
   ?>
+</div>

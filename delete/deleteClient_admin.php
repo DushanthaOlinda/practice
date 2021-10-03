@@ -57,6 +57,16 @@ if ($_SESSION["UserRoll"] != "Admin") {
         padding-left: 5%;
     }
 
+    .sql{
+        border: solid gray 1px;
+        width: 100%;border-radius: 5px;
+        background : rgb(0, 0, 0, 0.75);
+        display: flex;
+        padding: 50px;
+        color: white;
+        font-weight: bold;
+        font-size: 25px;
+    }
 
 
 
@@ -105,6 +115,9 @@ if ($_SESSION["UserRoll"] != "Admin") {
 
     if($check)
     {
+        ?>
+<div class="sql">
+    <?php
       echo "Record Deleted successfully.<br>";
       echo $query;
     }
@@ -116,3 +129,4 @@ if ($_SESSION["UserRoll"] != "Admin") {
 
   }
   ?>
+</div>

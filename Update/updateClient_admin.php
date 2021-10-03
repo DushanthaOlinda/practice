@@ -87,6 +87,18 @@ if ($_SESSION["UserRoll"] != "Admin") {
         border: #9b59b6;
     }
 
+    .sql {
+        border: solid gray 1px;
+        width: 100%;
+        border-radius: 5px;
+        background: rgb(0, 0, 0, 0.75);
+        display: flex;
+        padding: 50px;
+        color: white;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
     @media (max-width:584px) {
         .frm {
             max-width: 100%;
@@ -160,7 +172,9 @@ if ($_SESSION["UserRoll"] != "Admin") {
 
     $sql1 = "UPDATE `client` SET `Email`='$email',`branch_no`='$branchNo' WHERE `client_number`=$client";
     mysqli_query($conn,$sql1);
-
+?>
+<div class="sql">
+<?php
     if(mysqli_query($conn,$sql1))
     {
       echo "Record updated successfully.<br>";
@@ -173,3 +187,4 @@ if ($_SESSION["UserRoll"] != "Admin") {
     mysqli_close($conn);
   }
   ?>
+</div>

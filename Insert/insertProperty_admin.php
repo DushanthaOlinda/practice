@@ -86,6 +86,17 @@ if ($_SESSION["UserRoll"] != "Admin") {
     .user-details .input-box input:valid {
         border: #9b59b6;
     }
+    .sql {
+        border: solid gray 1px;
+        width: 100%;
+        border-radius: 5px;
+        background: rgb(0, 0, 0, 0.75);
+        display: flex;
+        padding: 50px;
+        color: white;
+        font-weight: bold;
+        font-size: 25px;
+    }
 
     @media (max-width:584px) {
         .frm {
@@ -122,6 +133,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
 <div class="frm m-auto">
     <div class="title">Insert Property</div>
     <form action="#" method="POST">
+        <div class="user-details">
     <div class="input-box">
             <span class="address">Address</span>
             <input type="text" id="address" name="address" equired><br><br>
@@ -152,6 +164,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
         </div>
         <div class="btn btn-primary w-100">
             <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
+        </div>
         </div>
     </form>
 </div>
@@ -218,7 +231,9 @@ if ($_SESSION["UserRoll"] != "Admin") {
      $branchNo = $_POST['branchNo'];
 
     $sql=" INSERT INTO `property` (`property_number`, `address`, `number_of_rooms`, `proposed_rental`, `type`, `owner_ID`, `client_number`, `branch_no`) VALUES (NULL, '$address', '$rooms', '$rental', '$type', $ownerid, $clientnumber, $branchNo)";
-    
+    ?>
+<div class="sql">
+    <?php
     if(mysqli_query($conn,$sql))
      {
        echo "New record created successfully.";
@@ -232,3 +247,4 @@ if ($_SESSION["UserRoll"] != "Admin") {
      mysqli_close($conn);
     }
 ?>
+</div>

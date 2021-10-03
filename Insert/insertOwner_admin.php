@@ -92,6 +92,17 @@ if ($_SESSION["UserRoll"] != "Admin") {
     .user-details .input-box input:valid {
         border: #9b59b6;
     }
+    .sql {
+        border: solid gray 1px;
+        width: 100%;
+        border-radius: 5px;
+        background: rgb(0, 0, 0, 0.75);
+        display: flex;
+        padding: 50px;
+        color: white;
+        font-weight: bold;
+        font-size: 25px;
+    }
 
     @media (max-width:584px) {
         .frm {
@@ -275,7 +286,9 @@ if(isset($_POST['save']))
         $query2 ="INSERT INTO `company` (`company_ID`, `owner_ID`) VALUES ('$checkBox', '$owner_ID')";
         $check=mysqli_query($conn,$query2);
     }
-
+?>
+<div class="sql">
+    <?php
     if($check)
     {
         echo "New record created successfully.<br>";
@@ -289,3 +302,4 @@ if(isset($_POST['save']))
     mysqli_close($conn);
 }
 ?>
+</div>

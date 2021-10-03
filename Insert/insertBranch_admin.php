@@ -87,6 +87,16 @@ if ($_SESSION["UserRoll"] != "Admin") {
         border: #9b59b6;
     }
 
+    .sql{
+        border: solid gray 1px;
+        width: 100%;border-radius: 5px;
+        background : rgb(0, 0, 0, 0.75);
+        display: flex;
+        padding: 50px;
+        color: white;
+        font-weight: bold;
+        font-size: 25px;
+    }
     @media (max-width:584px) {
         .frm {
             max-width: 100%;
@@ -122,7 +132,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
 <div class="frm m-auto">
     <div class="title">Insert Branch</div>
     <form action="#" method="POST">
-        <div class="user-details"></div>
+        <div class="user-details">
         <div class="input-box">
             <span class="phone">Contact Number</span>
             <label for="phone"></label><input type="tel" id="phone" name="phone" placeholder="0112345678" pattern="[0-9]{10}" required>
@@ -143,6 +153,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
         <div class="btn btn-primary w-100">
             <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
         </div>
+        </div>
     </form>
 </div>
 
@@ -161,7 +172,9 @@ if (isset($_POST['save'])) {
   $district = $_POST['district'];
 
   $sql = "INSERT INTO `branch` (`branch_no`, `contact_number`, `address`, `email`, `district`) VALUES (NULL, '$phone', '$address', '$email', '$district')";
-
+?>
+<div class="sql">
+    <?php
   if (mysqli_query($conn, $sql)) {
     echo "New record created successfully.<br>";
     echo $sql;
@@ -171,3 +184,4 @@ if (isset($_POST['save'])) {
   mysqli_close($conn);
 }
 ?>
+</div>

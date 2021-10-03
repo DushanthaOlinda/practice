@@ -92,6 +92,17 @@ if ($_SESSION["UserRoll"] != "employee") {
     .user-details .input-box input:valid {
         border: #9b59b6;
     }
+    .sql {
+        border: solid gray 1px;
+        width: 100%;
+        border-radius: 5px;
+        background: rgb(0, 0, 0, 0.75);
+        display: flex;
+        padding: 50px;
+        color: white;
+        font-weight: bold;
+        font-size: 25px;
+    }
 
     @media (max-width:584px) {
         .frm {
@@ -128,7 +139,7 @@ if ($_SESSION["UserRoll"] != "employee") {
 <div class="frm m-auto">
     <div class="title">Insert Visit</div>
     <form action="#" method="POST">
-        <div class="user-details"></div>
+        <div class="user-details">
         <div class="input-box">
             <span class="number">Property Number:</span>
             <input type="number" id="number" name="propertynumber" required><br><br>
@@ -152,6 +163,7 @@ if ($_SESSION["UserRoll"] != "employee") {
         <div class="btn btn-primary w-100">
             <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
         </div>
+        </div>
     </form>
 </div>
 
@@ -172,7 +184,9 @@ if ($_SESSION["UserRoll"] != "employee") {
       $comment = $_POST['comment'];
 
       $sql= " INSERT INTO `visit` (`property_number`, `client_number`, `date`, `comment`) VALUES ('$propertynumber', '$clientnumber', '$visitedDate', '$comment')";
-
+?>
+<div class="sql">
+<?php
       if(mysqli_query($conn,$sql))
      {
        echo "New record created successfully.<br>";
@@ -185,3 +199,4 @@ if ($_SESSION["UserRoll"] != "employee") {
      mysqli_close($conn);
  }
 ?>
+</div>

@@ -87,6 +87,17 @@ if ($_SESSION["UserRoll"] != "Admin") {
         border: #9b59b6;
     }
 
+    .sql{
+        border: solid gray 1px;
+        width: 100%;border-radius: 5px;
+        background : rgb(0, 0, 0, 0.75);
+        display: flex;
+        padding: 50px;
+        color: white;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
     @media (max-width:584px) {
         .frm {
             max-width: 100%;
@@ -122,7 +133,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
 <div class="frm m-auto">
     <div class="title">Insert Adverstisement</div>
     <form action="#" method="POST">
-        <div class="user-details"></div>
+        <div class="user-details">
         <div class="input-box">
             <span class="date">Date</span>
             <input type="date" id="date" name="date"  required><br><br>
@@ -137,6 +148,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
         </div>
         <div class="btn btn-primary w-100">
             <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
+        </div>
         </div>
     </form>
 </div>
@@ -179,8 +191,10 @@ if ($_SESSION["UserRoll"] != "Admin") {
     $propertyNumber = $_POST['propertyNumber'];
 
     $sql= " INSERT INTO `advertised` (`advertisement_ID`, `date`, `newspaper_name`, `property_number`) VALUES (NULL, '$date', '$newspaper', '$propertyNumber')";
-
-    if(mysqli_query($conn,$sql))
+?>
+<div class="sql">
+    <?php
+     if(mysqli_query($conn,$sql))
      {
        echo "New record created successfully.<br>";
        echo $sql;
@@ -192,3 +206,4 @@ if ($_SESSION["UserRoll"] != "Admin") {
      mysqli_close($conn);
   }
   ?>
+</div>

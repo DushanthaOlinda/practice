@@ -93,6 +93,18 @@ if ($_SESSION["UserRoll"] != "Admin") {
         border: #9b59b6;
     }
 
+    .sql {
+        border: solid gray 1px;
+        width: 100%;
+        border-radius: 5px;
+        background: rgb(0, 0, 0, 0.75);
+        display: flex;
+        padding: 50px;
+        color: white;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
     @media (max-width:584px) {
         .frm {
             max-width: 100%;
@@ -249,7 +261,9 @@ if (isset($_POST['save'])) {
         $query2 = "INSERT INTO `assistant` (`emp_ID`, `supervisor_number`) VALUES ('$emp_ID', '$appDate')";
         $check = mysqli_query($conn, $query2);
     }
-
+?>
+<div class="sql">
+    <?php
     if ($check) {
         echo "New record created successfully.<br><br>";
         echo $query1;
@@ -261,3 +275,4 @@ if (isset($_POST['save'])) {
     mysqli_close($conn);
 }
 ?>
+</div>
