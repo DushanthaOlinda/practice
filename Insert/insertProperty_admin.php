@@ -160,7 +160,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
         </div>
         <div class="input-box">
                 <span class="clientnumber">Client Number</span>
-                <input type="number" id="clientnumber" name="clientnumber" required><br><br>
+                <input type="number" id="clientnumber" name="clientnumber" ><br><br>
         </div>
         <div class="btn btn-primary w-100">
             <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">

@@ -28,7 +28,7 @@ session_start();
 if (!isset($_SESSION["UserRoll"])) {
     header("location:header.php");
 }
-if ($_SESSION["UserRoll"] != "employee") {
+if ($_SESSION["UserRoll"] != "Admin") {
     header("location:header.php");
 }
 ?>
@@ -123,9 +123,9 @@ if ($_SESSION["UserRoll"] != "employee") {
 <nav class="navbar navbar-light bg-transparent">
     <div class="container-fluid">
         <img src="../assets/img/logo.png" alt="" width="100" height="100" class="d-inline-block align-text-top">
-        <h2 class="text-dark"> Sewana Property ( Employee) </h2>
+        <h2 class="text-dark"> Sewana Property ( Admin) </h2>
         <form class="d-flex">
-            <button type="button" class="d-block btn btn-primary m-3 w-100 p-4 "><a class="text-decoration-none text-white" href="../emp.php">Go back</a></button>
+            <button type="button" class="d-block btn btn-primary m-3 w-100 p-4 "><a class="text-decoration-none text-white" href="../admin.php">Go back</a></button>
         </form>
     </div>
 </nav>
@@ -134,34 +134,34 @@ if ($_SESSION["UserRoll"] != "employee") {
     <div class="title">Insert Property</div>
     <form action="#" method="POST">
         <div class="user-details">
-    <div class="input-box">
-            <span class="address">Address</span>
-            <input type="text" id="address" name="address" equired><br><br>
-        </div>
-        <div class="input-box">
-            <span class="rooms">Number of Rooms</span>
-            <input type="number" id="rooms" name="rooms"  required><br><br>
-        </div>
-        <div class="input-box">
-                <span class="rental">Proposed Rental(Rs:)</span>
-                <input type="number" id="rental" name="rental" required><br><br>
-        </div>
-        <div class="input-box">
-                <span class="type">Type</span>
-                <input type="text" id="type" name="type" required><br><br>
-        </div>
-        <div class="input-box">
-                <span class="ownerid">Owner ID</span>
-                <input type="number" id="ownerid" name="ownerid" required><br><br>
-        </div>
-        <div class="input-box">
-                <span class="branchNo">Branch Number</span>
-                <input type="number" id="branchNo" name="branchNo" required><br><br>
-        </div>
         <div class="input-box">
                 <span class="clientnumber">Client Number</span>
                 <input type="number" id="clientnumber" name="clientnumber" ><br><br>
         </div>
+        <div class="input-box">
+                <span class="propertynumber">Property Number</span>
+                <input type="number" id="propertynumber" name="propertynumber" required><br><br>
+        </div>
+        <div class="input-box">
+                <span class="empid">Employee ID</span>
+                <input type="number" id="empid" name="empid" required><br><br>
+        </div>
+        <div class="input-box">
+                <span class="rent">Monthly Rent(Rs:)</span>
+                <input type="number" id="rent" name="rent" required><br><br>
+        </div>
+        <div class="input-box">
+                <span class="paymentmethod">Payment Method</span>
+                <input type="text" id="paymentmethod" name="paymentmethod" required><br><br>
+            </div>
+        <div class="input-box">
+                <span class="sdate">Started Date</span>
+                <input type="date" id="sdate" name="sdate" value="sdate" required><br><br>
+            </div>
+            <div class="input-box">
+                <span class="fdate">Finished Date</span>
+                <input type="date" id="fdate" name="fdate" value="fdate" required><br><br>
+            </div>
         <div class="btn btn-primary w-100">
             <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
         </div>
@@ -169,68 +169,25 @@ if ($_SESSION["UserRoll"] != "employee") {
     </form>
 </div>
 
-<!-- <div class="frm">
-    <form action="#" method="POST">
-        <p>
-            <label>Address:</label>
-            <input type="text" id="address" name="address" required>
-        </p>
-
-        <p>
-            <label>Number of rooms: </label>
-            <input type="number" id="rooms" name="rooms" required>
-        </p>
-
-        <p>
-            <label>Proposed Rental: </label>
-            <input type="number" id="rental" name="rental" required>
-        </p>
-
-        <p>
-            <label>Type:</label>
-            <input type="text" id="type" name="type" required>
-        </p>
-
-        <p>
-            <label>Owner ID:</label>
-            <input type="text" id="ownerid" name="ownerid" required >
-        </p>
-
-        <p>
-            <label>Client Number:</label>
-            <input type="text" id="clientnumber" name="clientnumber" required >
-        </p>
-
-        <p>
-            <label>Branch No: </label>
-            <input type="number" id="branchNo" name="branchNo" required >
-        </p>
-        <br>
-        <p>
-            <input type="submit" id="btn" name="save" value="Submit">
-        </p>
-    </form>
-</div> -->
-
 <?php
   $dbServername = "localhost";
-  $dbUsername = "emp";
-  $dbPassword ="emp";
+  $dbUsername = "root";
+  $dbPassword ="";
   $dbName = "sewana";
   
   $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die("Connection Failed.");
 
   if(isset($_POST['save']))
  {
-     $address = $_POST['address'];
-     $rooms = $_POST['rooms'];
-     $rental = $_POST['rental'];
-     $type = $_POST['type'];
-     $ownerid = $_POST['ownerid'];
      $clientnumber = $_POST['clientnumber'];
-     $branchNo = $_POST['branchNo'];
+     $propertynumber = $_POST["propertynumber"];
+     $empid = $_POST['empid'];
+     $rent = $_POST['rent'];
+     $paymentmethod = $_POST['paymentmethod'];
+     $sdate = $_POST['sdate'];
+     $fdate = $_POST['fdate'];
 
-    $sql=" INSERT INTO `property` (`property_number`, `address`, `number_of_rooms`, `proposed_rental`, `type`, `owner_ID`, `client_number`, `branch_no`) VALUES (NULL, '$address', '$rooms', '$rental', '$type', $ownerid, $clientnumber, $branchNo)";
+    $sql="INSERT INTO `lease`(`client_number`, `property_number`, `emp_ID`, `monthly_rent`, `payment_method`, `started_date`, `finished_date`) VALUES ('$clientnumber','$propertynumber','$empid','$rent','$paymentmethod','$sdate','$fdate')";
     ?>
 <div class="sql">
     <?php
