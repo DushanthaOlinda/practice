@@ -1,146 +1,145 @@
 <!DOCTYPE html>
-<html>
-<body>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Sewana property</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="../assets/css/Features-Boxed.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/css/theme.bootstrap_4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="../assets/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="../assets/css/Ludens---1-Index-Table-with-Search--Sort-Filters-v20.css">
+    <link rel="stylesheet" href="../assets/css/Ludens---3-Edit-with-Summernote.css">
+    <link rel="stylesheet" href="../assets/css/Ludens---3-Edit.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
 <?php
 session_start();
-if (!isset($_SESSION["UserRoll"])) 
-{
+if (!isset($_SESSION["UserRoll"])) {
     header("location:header.php");
 }
-if ($_SESSION["UserRoll"] != "client") 
-{
-    header("location:../header.php");
+if ($_SESSION["UserRoll"] != "client") {
+    header("location:header.php");
 }
 ?>
+
+
 <style>
-    body
-{
-    background: rgb(161, 228, 164);
-}
+    body {
+        background-image: url('../assets/img/cp.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    }
 
-#admin
-{
-    font-size: 25px;
-}
 
- a:link {
-  color: green;
-  background-color: transparent;
-  text-decoration: none;
-  font-size: 35px;
-}
-a:visited {
-  color:blue;
-  background-color: transparent;
-  text-decoration: none;
-}
-a:hover {
-  color: red;
-  background-color: transparent;
-  text-decoration: underline;
-}
-a:active {
-  color: yellow;
-  background-color: transparent;
-  text-decoration: underline;
-}
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
+    .table-responsive {
+        border: solid gray 1px;
+        width: 100%;
+        border-radius: 5px;
+        background: rgba(0, 0, 0, 0.75);
+        display: flex;
+        padding: 10%;
+    }
 
-th {
-  padding: 8px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
-}
+    .table div {
+        color: white;
+        padding-left: 5%;
+    }
 
-td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
+    .sql {
+        border: solid gray 1px;
+        width: 100%;
+        border-radius: 5px;
+        background: rgba(0, 0, 0, 0.75);
+        display: flex;
+        padding: 50px;
+        color: white;
+        font-weight: bold;
+        font-size: 25px;
+    }
 
-tr:hover {background-color: yellowgreen;}
-th {
-  background-color: #04AA6D;
-  color: white;
-}
-/* Style the top navigation bar */
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-}
 
-/* Style the topnav links */
-.topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
+    @media (max-width: 1180px) {
+        .table-responsive {
+            display: flex;
+            flex-direction: column;
+        }
 
-/* Change color on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
+    }
 </style>
 
-<div class="topnav">
-<a href="../client.php">Go Back</a>
-</div>
-<br><br><br>
+<nav class="navbar navbar-light bg-transparent">
+    <div class="container-fluid">
+        <img src="../assets/img/logo.png" alt="" width="100" height="100" class="d-inline-block align-text-top">
+        <h2 class="text-dark"> Sewana Property ( Client) </h2>
+        <form class="d-flex">
+            <button type="button" class="d-block btn btn-primary m-3 w-100 p-4 "><a
+                        class="text-decoration-none text-white" href="../client.php">Go back</a></button>
+        </form>
+    </div>
+</nav>
+
 
 <?php
-echo "<table style='border: solid 1px black;'>";
- echo"<tr><th>Property Number</th><th>Client Number</th><th>Visited Date</th><th>Comment</th></tr>";
-
-class TableRows extends RecursiveIteratorIterator {
-    function __construct($it) {
-        parent::__construct($it, self::LEAVES_ONLY);
-    }
-
-    function current() {
-        return "<td style='width: 150px; border: 1px solid black;'>" . parent::current(). "</td>";
-    }
-
-    function beginChildren() {
-        echo "<tr>";
-    }
-
-    function endChildren() {
-        echo "</tr>" . "\n";
-    }
-}
 
 $servername = "localhost";
 $username = "client";
 $password = "client";
 $dbname = "sewana";
+$conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection Failed.");
 
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("SELECT property_number, client_number, date, comment FROM Visit");
-    $stmt->execute();
- 
-    // set the resulting array to associative
-    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
-    foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
-        echo $v;
-    }
+$quary = "  SELECT * FROM `visit` ";
+$records = mysqli_query($conn, $quary);
+if (mysqli_num_rows($records) > 0) {
+} else {
+    $msg = "No Record found";
 }
-catch(PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
-$conn = null;
-echo "</table>";
 ?>
+<div class="table-responsive">
+    <table class="table-dark table-striped table-hover table-bordered border-light">
+        <caption class="table-dark w-100">Visit Details</caption>
+        <thead>
+        <th>client Number </th>
+        <th>Property Number</th>
+        <th>Visited Date</th>
+        <th>Comment</th>
+        </thead>
+        <?php
+        while ($row = mysqli_fetch_array($records)) {
 
+            ?>
+            <tr>
+                <td><?php echo $row['client_number']; ?></td>
+                <td><?php echo $row['property_number']; ?></td>
+                <td><?php echo $row['full_name']; ?></td>
+                <td><?php echo $row['date']; ?></td>
+                <td><?php echo $row['comment']; ?></td>
+            </tr>
+
+            <?php
+        }
+        ?>
+    </table>
+</div>
+
+</div>
+<div class="sql">
+    <?php
+    echo "Sql statement:-<br>", $quary;
+    mysqli_close($conn);
+    ?>
+</div>
 </body>
-</html>
