@@ -49,7 +49,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
         border: solid gray 1px;
         width: 100%;
         border-radius: 5px;
-        background: rgb(0, 0, 0, 0.75);
+        background: rgba(0, 0, 0, 0.75);
         display: flex;
         padding: 10%;
     }
@@ -63,7 +63,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
         border: solid gray 1px;
         width: 100%;
         border-radius: 5px;
-        background: rgb(0, 0, 0, 0.75);
+        background: rgba(0, 0, 0, 0.75);
         display: flex;
         padding: 50px;
         color: white;
@@ -108,7 +108,7 @@ if (mysqli_num_rows($records) > 0) {
 ?>
 <div class="table-responsive">
     <table class="table-dark table-striped table-hover table-bordered border-light">
-        <caption class="table-dark w-100">Employee Details</caption>
+        <caption class="table-dark w-100">Property Details</caption>
         <thead>
         <th>Property Number</th>
         <th>Address</th>

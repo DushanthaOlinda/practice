@@ -90,7 +90,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
         border: solid gray 1px;
         width: 100%;
         border-radius: 5px;
-        background: rgb(0, 0, 0, 0.75);
+        background: rgba(0, 0, 0, 0.75);
         display: flex;
         padding: 50px;
         color: white;
@@ -195,7 +195,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
     $rent = $_POST['rent'];
     $type = $_POST['type'];
     $date = $_POST['date'];
-    $check ;
+    $check= false;
 
     $sql2= "INSERT INTO `property_requirement`(`client_number`, `maximum_rental`, `type_of_property`, `date_willing_to_rent`) VALUES ('$client','$rent','$type','$date')";
     $check=mysqli_query($conn,$sql2);
@@ -209,7 +209,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
     }
     else
     {
-      echo "Error:<br>" ,$sql.mysqli_error($conn);
+      echo "Error:<br>" , $sql2.mysqli_error($conn);
     }
     mysqli_close($conn);
   }

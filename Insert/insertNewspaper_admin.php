@@ -91,7 +91,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
         border: solid gray 1px;
         width: 100%;
         border-radius: 5px;
-        background: rgb(0, 0, 0, 0.75);
+        background: rgba(0, 0, 0, 0.75);
         display: flex;
         padding: 50px;
         color: white;
@@ -158,36 +158,6 @@ if ($_SESSION["UserRoll"] != "Admin") {
         </div>
     </form>
 </div>
-
-<!-- <div class="frm">
-    <form action="#" method="POST">
-        <p>
-            <label>Newpaper Name: </label>
-            <input type="text" id="newspaper" name="newspaper" required>
-        </p>
-
-        <p>
-            <label>Email:</label>
-            <input type="email" id="email" name="email" required>
-        </p>
-
-        <p>
-            <label>Address: </label>
-            <input type="address" id="address" name="address" required>
-        </p>
-
-        <p>
-            <label>Contact Number: </label>
-            <input type="tel" id="phone" name="phone" placeholder="0112345678" pattern="[0-9]{10}" required>
-            <small>Format: 0112345678</small>
-        </p>
-      <br>
-        <p>
-            <input type="submit" id="btn" name="save" value="Submit">
-        </p>
-    </form>
-</div> -->
-
 
 <?php
   $dbServername = "localhost";

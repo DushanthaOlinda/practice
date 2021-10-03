@@ -90,7 +90,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
         border: solid gray 1px;
         width: 100%;
         border-radius: 5px;
-        background: rgb(0, 0, 0, 0.75);
+        background: rgba(0, 0, 0, 0.75);
         display: flex;
         padding: 50px;
         color: white;
@@ -168,50 +168,6 @@ if ($_SESSION["UserRoll"] != "Admin") {
         </div>
     </form>
 </div>
-
-<!-- <div class="frm">
-    <form action="#" method="POST">
-        <p>
-            <label>Address:</label>
-            <input type="text" id="address" name="address" required>
-        </p>
-
-        <p>
-            <label>Number of rooms: </label>
-            <input type="number" id="rooms" name="rooms" required>
-        </p>
-
-        <p>
-            <label>Proposed Rental: </label>
-            <input type="number" id="rental" name="rental" required>
-        </p>
-
-        <p>
-            <label>Type:</label>
-            <input type="text" id="type" name="type" required>
-        </p>
-
-        <p>
-            <label>Owner ID:</label>
-            <input type="text" id="ownerid" name="ownerid" required >
-        </p>
-
-        <p>
-            <label>Client Number:</label>
-            <input type="text" id="clientnumber" name="clientnumber" required >
-        </p>
-
-        <p>
-            <label>Branch No: </label>
-            <input type="number" id="branchNo" name="branchNo" required >
-        </p>
-        <br>
-        <p>
-            <input type="submit" id="btn" name="save" value="Submit">
-        </p>
-    </form>
-</div> -->
-
 <?php
   $dbServername = "localhost";
   $dbUsername = "root";

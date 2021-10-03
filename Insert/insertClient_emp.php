@@ -90,7 +90,7 @@ if ($_SESSION["UserRoll"] != "employee") {
         border: solid gray 1px;
         width: 100%;
         border-radius: 5px;
-        background: rgb(0, 0, 0, 0.75);
+        background: rgba(0, 0, 0, 0.75);
         display: flex;
         padding: 50px;
         color: white;
@@ -186,7 +186,7 @@ if ($_SESSION["UserRoll"] != "employee") {
     $rent = $_POST['rent'];
     $type = $_POST['type'];
     $date = $_POST['date'];
-    $check ;
+    $check=false ;
 
     $sql1 = "INSERT INTO `client` (`client_number`, `Email`, `full_name`, `NIC`, `branch_no`) VALUES (NULL, '$email', '$fullname', '$nic', '$branchNo');";
     mysqli_query($conn,$sql1);
@@ -206,7 +206,7 @@ if ($_SESSION["UserRoll"] != "employee") {
     }
     else
     {
-      echo "Error:<br>" ,$sql.mysqli_error($conn);
+      echo "Error:<br>" ,$sql1.mysqli_error($conn),"<br>",$sql2.mysqli_error($conn);
     }
     mysqli_close($conn);
   }

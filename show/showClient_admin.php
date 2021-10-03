@@ -49,7 +49,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
         border: solid gray 1px;
         width: 100%;
         border-radius: 5px;
-        background: rgb(0, 0, 0, 0.75);
+        background: rgba(0, 0, 0, 0.75);
         display: flex;
         padding: 10%;
     }
@@ -63,7 +63,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
         border: solid gray 1px;
         width: 100%;
         border-radius: 5px;
-        background: rgb(0, 0, 0, 0.75);
+        background: rgba(0, 0, 0, 0.75);
         display: flex;
         padding: 50px;
         color: white;
