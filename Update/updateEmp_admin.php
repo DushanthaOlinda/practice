@@ -152,8 +152,13 @@ if ($_SESSION["UserRoll"] != "Admin") {
         </div><br>
 
         <div class="input-box">
-          <span class="number">Salary(Rs.): </span>
-          <input type="number" id="salary" name="salary" required> 
+            <span class="salary">Salary(Rs:)</span>
+            <input type="number" id="salary" name="salary" required>
+        </div><br>
+
+        <div class="input-box">
+            <span class="branchNo">Branch Number</span>
+            <input type="number" id="branchNo" name="branchNo" required>
         </div><br>
 
         <div class="input-box">
@@ -169,12 +174,6 @@ if ($_SESSION["UserRoll"] != "Admin") {
       <input type="text" id="checkBox" name="checkBox" required>
       </div><br>
     </div>
-
-      <div class="input-box">
-        <span class="number">Branch Number: </span> 
-        <input type="number" id="number" name="branchNo" required>
-      </div><br>
-
       <div class="btn btn-primary w-100">
             <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
         </div>
@@ -190,7 +189,7 @@ if ($_SESSION["UserRoll"] != "Admin") {
   $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die("Connection Failed.");
 
   
-  if(isset($_POST['submit']))  
+  if(isset($_POST['save']))
   {
     $emp_ID= $_POST['emp_ID'];
     $salary=$_POST['salary'];
