@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="../assets/css/Features-Boxed.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/css/theme.bootstrap_4.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/css/theme.bootstrap_4.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
     <link rel="stylesheet" href="../assets/css/Login-Form-Dark.css">
     <link rel="stylesheet" href="../assets/css/Ludens---1-Index-Table-with-Search--Sort-Filters-v20.css">
@@ -58,10 +59,11 @@ if ($_SESSION["UserRoll"] != "Admin") {
         padding-left: 5%;
     }
 
-    .sql{
+    .sql {
         border: solid gray 1px;
-        width: 100%;border-radius: 5px;
-        background : rgba(0, 0, 0, 0.75);
+        width: 100%;
+        border-radius: 5px;
+        background: rgba(0, 0, 0, 0.75);
         display: flex;
         padding: 50px;
         color: white;
@@ -70,9 +72,8 @@ if ($_SESSION["UserRoll"] != "Admin") {
     }
 
 
-
-    @media (max-width:1180px) {
-        .table-responsive{
+    @media (max-width: 1180px) {
+        .table-responsive {
             display: flex;
             flex-direction: column;
         }
@@ -85,7 +86,8 @@ if ($_SESSION["UserRoll"] != "Admin") {
         <img src="../assets/img/logo.png" alt="" width="100" height="100" class="d-inline-block align-text-top">
         <h2 class="text-dark"> Sewana Property ( Admin) </h2>
         <form class="d-flex">
-            <button type="button" class="d-block btn btn-primary m-3 w-100 p-4 "><a class="text-decoration-none text-white" href="../admin.php">Go back</a></button>
+            <button type="button" class="d-block btn btn-primary m-3 w-100 p-4 "><a
+                        class="text-decoration-none text-white" href="../admin.php">Go back</a></button>
         </form>
     </div>
 </nav>
@@ -98,82 +100,181 @@ $password = "";
 $dbname = "sewana";
 $conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection Failed.");
 
-$quary = "  SELECT  * from employee LEFT JOIN manager on employee.emp_ID=manager.emp_ID
-           LEFT JOIN supervisor on employee.emp_ID=supervisor.emp_ID
-            LEFT JOIN assistant on employee.emp_ID=assistant.emp_ID;";
-$records = mysqli_query($conn, $quary);
-if (mysqli_num_rows($records) > 0){}
-else {
-    $msg = "No Record found";
-}
+$query = "SELECT * FROM `employee`;";
+$result = mysqli_query($conn, $query);
+if ($conn->affected_rows > 1)
+{
 ?>
 <div class="table-responsive">
     <table class="table-dark table-striped table-hover table-bordered border-light">
-        <caption class="table-dark w-100" >Employee Details</caption>
+        <caption class="table-dark w-100">Employee Details</caption>
         <thead>
-        <th>Employee ID</th>
-        <th>Gender</th>
-        <th>Name</th>
-        <th>Start Date</th>
-        <th>Salary</th>
-        <th>Date Of Birth</th>
-        <th>NIC</th>
-        <th>Contact Number</th>
-        <th>Employee Type</th>
-        <th>Branch Number</th>
-        <th>Appointed Date/Supervisor Number(only for Assistants)</th>
-        <th>Type ID</th>
+        <tr>
+            <th>emp_ID</th>
+            <th>gender</th>
+            <th>name</th>
+            <th>start_date</th>
+            <th>salary</th>
+            <th>DOB</th>
+            <th>contact_number</th>
+            <th>emp_type</th>
+            <th>branch_no</th>
+        </tr>
         </thead>
-        <?php
-        while ($row = mysqli_fetch_array($records))
-        {
-    echo '<pre>';
-           print_r($row); ?>
-    </pre>
-            <tr>
-                <td><?php echo $row['emp_ID']; ?></td>
-                <td><?php echo $row['gender']; ?></td>
-                <td><?php echo $row['name']; ?></td>
-                <td><?php echo $row['start_date']; ?></td>
-                <td><?php echo $row['salary']; ?></td>
-                <td><?php echo $row['DOB']; ?></td>
-                <td><?php echo $row['NIC']; ?></td>
-                <td><?php echo $row['contact_number']; ?></td>
-                <td><?php echo $row['emp_type']; ?></td>
-                <td><?php echo $row['branch_no']; ?></td>
-                <td><?php if ($row['emp_type'] == "Manager") {
-                        echo $row['appointed_date'];
-                    } else if ($row['emp_type'] == "Supervisor") {
-                        echo $row['appointed_date'];
-                    } else {
-//                        if(isset($row['supervisor_number'])) {
-                            echo $row['supervisor_number'];
-//                        }else{
-//                            echo ' ';
-//                        }
-                    }?>
-                </td>
-                <td><?php
-                    if ($row['emp_type'] == "Manager") {
-                        echo $row['manager_number'];
-                    } else if ($row['emp_type'] == "Supervisor") {
-                            echo $row['supervisor_number'];
-                    } else {
-                            echo $row['assistant_no'];
-                        }
 
-                    ?>
-                </td>
+        <?php
+        while ($row = mysqli_fetch_array($result)) {
+
+            ?>
+            <tr>
+                <td> <?php echo $row['emp_ID'] ?></td>
+                <td> <?php echo $row['gender'] ?></td>
+                <td> <?php echo $row['name'] ?></td>
+                <td> <?php echo $row['start_date'] ?></td>
+                <td> <?php echo $row['salary'] ?></td>
+                <td> <?php echo $row['DOB'] ?></td>
+                <td> <?php echo $row['contact_number'] ?></td>
+                <td> <?php echo $row['emp_type'] ?></td>
+                <td> <?php echo $row['branch_no'] ?></td>
             </tr>
             <?php
-        }?>
+        }
+        ?>
+
     </table>
 </div>
-<div class="sql">
+    <div class="sql">
+        <?php
+        echo "Sql statement:-<br>", $query;
+        ?>
+    </div>
+        <?php
+        }
+
+$query = "SELECT * FROM `supervisor`";
+$result1 = mysqli_query($conn, $query);
+if ($conn->affected_rows > 0)
+{
+
+?>
+
+        <div class="table-responsive">
+            <table class="table-dark table-striped table-hover table-bordered border-light">
+                <caption class="table-dark w-100">Supervisor Details</caption>
+                <thead>
+                <tr>
+                    <th>emp_ID</th>
+                    <th>supervisor_number</th>
+                    <th>appointed_date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                while ($row1 = mysqli_fetch_array($result1)) {
+                    ?>
+                    <tr>
+                        <td> <?php echo $row1['emp_ID'] ?></td>
+                        <td> <?php echo $row1['supervisor_number'] ?></td>
+                        <td> <?php echo $row1['appointed_date'] ?></td>
+
+                    </tr>
+                    <?php
+                }
+                ?>
+                </tbody>
+            </table>
+        </div>
+    <div class="sql">
+        <?php
+        echo "Sql statement:-<br>", $query;
+        ?>
+    </div>
+                <?php
+
+}
+$query = "SELECT * FROM `manager`";
+$result1 = mysqli_query($conn, $query);
+if ($conn->affected_rows > 0)
+{
+                ?>
+
+        <div class="table-responsive">
+            <table class="table-dark table-striped table-hover table-bordered border-light">
+                <caption class="table-dark w-100">Supervisor Details</caption>
+                <thead>
+                <tr>
+                    <th>emp_ID</th>
+                    <th>manager_number</th>
+                    <th>appointed_date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                while ($row1 = mysqli_fetch_array($result1)) {
+                    ?>
+                    <tr>
+                        <td> <?php echo $row1['emp_ID'] ?></td>
+                        <td> <?php echo $row1['manager_number'] ?></td>
+                        <td> <?php echo $row1['appointed_date'] ?></td>
+
+                    </tr>
+                    <?php
+                }
+                ?>
+                </tbody>
+            </table>
+        </div>
+    <div class="sql">
     <?php
-    echo "Sql statement:-<br>",$quary;
-    mysqli_close($conn);
+    echo "Sql statement:-<br>", $query;
     ?>
-</div>
+    </div>
+
+                <?php
+
+}
+$query1 = "SELECT * FROM `assistant`";
+$result1 = mysqli_query($conn, $query1);
+if ($conn->affected_rows > 0)
+{
+?>
+<div class="table-responsive">
+            <table class="table-dark table-striped table-hover table-bordered border-light">
+                <caption class="table-dark w-100">Assistant Details</caption>
+                <thead>
+                <tr>
+                    <th>emp_ID</th>
+                    <th>supervisor_number</th>
+                    <th>assistant_no</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                while ($row1 = mysqli_fetch_array($result1)) {
+                    ?>
+                    <tr>
+                        <td> <?php echo $row1['emp_ID'] ?></td>
+                        <td> <?php echo $row1['supervisor_number'] ?></td>
+                        <td> <?php echo $row1['assistant_no'] ?></td>
+
+                    </tr>
+                    <?php
+                }
+                ?>
+                </tbody>
+            </table>
+        </div>
+    <div class="sql">
+        <?php
+        echo "Sql statement:-<br>", $query;
+        ?>
+    </div>
+                <?php
+
+
+}
+?>
+
+
 </body>
 </html>
