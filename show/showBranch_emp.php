@@ -110,7 +110,7 @@ if (mysqli_num_rows($records) > 0) {
 ?>
 <div class="table-responsive">
     <table class="table-dark table-striped table-hover table-bordered border-light">
-        <caption class="table-dark w-100">Employee Details</caption>
+        <caption class="table-dark w-100">Branch Details</caption>
         <thead>
         <th>Branch Number</th>
         <th>Contact Number</th>
