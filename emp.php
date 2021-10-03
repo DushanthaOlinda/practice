@@ -127,7 +127,9 @@ if ($_SESSION["UserRoll"] != "employee") {
     </div>
     <div>
         <h2 align="center" style="background-color: blanchedalmond;color:brown"><b><u>Show Options</u></b></h2>
-    
+        <form action="./show/showEmp_emp.php" method="POST">
+            <input type="submit" class="btn  btn-o" id="btn" value="Show Employee" name="show_emp">
+        </form><br>
         <form action="./show/showOwner_emp.php" method="POST">
             <input type="submit" class="btn  btn-o" id="btn" value="Show Owner" name="show_owner">
         </form><br>

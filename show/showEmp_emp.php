@@ -30,7 +30,7 @@ session_start();
 if (!isset($_SESSION["UserRoll"])) {
     header("location:header.php");
 }
-if ($_SESSION["UserRoll"] != "emp") {
+if ($_SESSION["UserRoll"] != "employee") {
     header("location:header.php");
 }
 ?>
