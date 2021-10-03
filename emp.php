@@ -156,6 +156,9 @@ if ($_SESSION["UserRoll"] != "employee") {
         </form><br>
         <form action="./delete/deleteClient_emp.php" method="POST">
             <input type="submit" class="btn  btn-o" id="btn" value="Delete Client" name="Delete_client">
+        </form><br>
+        <form action="./delete/deleteLease_emp.php" method="POST">
+            <input type="submit" class="btn  btn-o" id="btn" value="Delete Lease" name="Delete_Lease">
         </form>
     </div>
 </div>
