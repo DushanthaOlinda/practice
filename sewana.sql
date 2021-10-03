@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2021 at 07:07 PM
+-- Generation Time: Oct 03, 2021 at 08:11 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -73,6 +73,13 @@ CREATE TABLE `assistant` (
   `emp_ID` int(11) NOT NULL,
   `supervisor_number` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `assistant`
+--
+
+INSERT INTO `assistant` (`emp_ID`, `supervisor_number`) VALUES
+(3, 1);
 
 -- --------------------------------------------------------
 
@@ -167,7 +174,8 @@ CREATE TABLE `employee` (
 
 INSERT INTO `employee` (`emp_ID`, `gender`, `name`, `start_date`, `salary`, `DOB`, `NIC`, `contact_number`, `emp_type`, `branch_no`) VALUES
 (1, 'M', 'Batman', '2021-10-11', '4500.00', '1997-06-10', '1212111v', 710560492, 'Manager', 2),
-(2, 'M', 'Superman', '2021-10-06', '435.00', '2021-09-29', 'fddfdv', 112121212, 'Supervisor', 1);
+(2, 'M', 'Superman', '2021-10-06', '435.00', '2021-09-29', 'fddfdv', 112121212, 'Supervisor', 1),
+(3, 'F', 'Kamala', '2021-09-01', '56000.00', '1999-06-03', '995435742V', 1234567890, 'Assistant', 1);
 
 -- --------------------------------------------------------
 
@@ -512,7 +520,7 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `emp_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `emp_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `manager`
