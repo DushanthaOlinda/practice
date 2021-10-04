@@ -134,52 +134,33 @@ if ($_SESSION["UserRoll"] != "employee") {
     <div class="title">Insert Property Requirements</div>
     <form action="#" method="POST">
         <div class="user-details">
-        <div class="input-box">
+            <div class="input-box">
                 <span class="client">Client Number</span>
                 <input type="number" id="client" name="client" required><br><br>
-        </div>
-        <div class="input-box">
+            </div>
+            <div class="input-box">
                 <span class="rent">Maximum Rent(Rs:)</span>
                 <input type="number" id="rent" name="rent" required><br><br>
-        </div>
-        <div class="input-box">
+            </div>
+            <div class="input-box">
                 <span class="type">Type of Property</span>
-                <input type="text" id="type" name="type" required><br><br>
-        </div>
-        <div class="input-box">
+                  <input type="radio" id="type" name="type" value="Annex" required>
+                <label for="type">Annex</label>
+                  <input type="radio" id="type" name="type" value="House" required>
+                  <label for="type">House</label>
+                  <input type="radio" id="type" name="type" value="Flat" required>
+                  <label for="type">Flat</label>
+            </div>
+            <div class="input-box">
                 <span class="date">Date Willing to Rent</span>
                 <input type="date" id="date" name="date" value="date" required><br><br>
             </div>
-        <div class="btn btn-primary w-100">
-            <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
-        </div>
+            <div class="btn btn-primary w-100">
+                <input type="submit" class="text-white btn " id="btn" name="save" value="Insert">
+            </div>
         </div>
     </form>
 </div>
-
-<!-- <div class="frm">
-    <form action="#" method="POST">
-        <p>
-            <label>Client number: </label>
-            <input type="text" id="client" name="client" required>
-        </p>
-        <p>
-            <label>Maximum Rent</label>
-            <input type="number" id="rent" name="rent" required>
-        </p>
-        <p>
-            <label>Type of Property</label>
-            <input type="text" id="type" name="type" required>
-        </p>
-        <p>
-            <label>Date Willing to Rent</label>
-            <input type="date" id="date" name="date" required>
-        </p>
-        <p>
-            <input type="submit" id="btn" name="save" value="Submit">
-        </p>
-    </form>
-</div> -->
 
 <?php
   $dbServername = "localhost";
@@ -195,7 +176,7 @@ if ($_SESSION["UserRoll"] != "employee") {
     $rent = $_POST['rent'];
     $type = $_POST['type'];
     $date = $_POST['date'];
-    $check ;
+    $check=false ;
 
     $sql2= "INSERT INTO `property_requirement`(`client_number`, `maximum_rental`, `type_of_property`, `date_willing_to_rent`) VALUES ('$client','$rent','$type','$date')";
     $check=mysqli_query($conn,$sql2);
@@ -209,7 +190,7 @@ if ($_SESSION["UserRoll"] != "employee") {
     }
     else
     {
-      echo "Error:<br>" ,$sql.mysqli_error($conn);
+      echo "Error:<br>" ,$sql2.mysqli_error($conn);
     }
     mysqli_close($conn);
   }
