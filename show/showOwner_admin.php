@@ -101,9 +101,9 @@ $password = "";
 $dbname = "sewana";
 $conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection Failed.");
 
-$quary = "SELECT  * from owner INNER JOIN person on owner.owner_ID=person.owner_ID
-          UNION
-          SELECT * FROM owner INNER JOIN company on owner.owner_ID=company.owner_ID; ";
+$quary = "SELECT  * from owner LEFT JOIN person on owner.owner_ID=person.owner_ID
+         
+         LEFT JOIN company on owner.owner_ID=company.owner_ID; ";
 $records = mysqli_query($conn, $quary);
 if (mysqli_num_rows($records) > 0) {
 } else {
